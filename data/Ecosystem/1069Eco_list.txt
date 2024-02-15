@@ -1,0 +1,23 @@
+Algae
+Animal
+Annelida
+Aquatic
+Arthropoda
+Bioreactor
+Bioremediation
+Biotransformation
+Birds
+Built environment
+Cnidaria
+Fungi
+Human
+Insecta
+Lab enrichment
+Lab synthesis
+Mammals
+Microbial
+Modeled
+Plants
+Solid waste
+Terrestrial
+Wastewater

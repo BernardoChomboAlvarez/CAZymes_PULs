@@ -1,0 +1,157 @@
+/opt/sge/default/spool/Fos/job_scripts/114050: 10: source: not found
+diamond v0.9.14.115 | by Benjamin Buchfink <buchfink@gmail.com>
+Licensed under the GNU AGPL <https://www.gnu.org/licenses/agpl.txt>
+Check http://github.com/bbuchfink/diamond for updates.
+
+#CPU threads: 4
+Scoring parameters: (Matrix=BLOSUM62 Lambda=0.267 K=0.041 Penalties=11/1)
+#Target sequences to report alignments for: 1
+Temporary directory: output_dbcan4
+Opening the database...  [2.4e-05s]
+Opening the input file...  [3.9e-05s]
+Opening the output file...  [3.1e-05s]
+Loading query sequences...  [0.008129s]
+Masking queries... # Sequence= 3300006249.a:Ga0099390_1002995_7 aa= '*' pos= 69 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300006249.a:Ga0099390_1002995_7 aa= '*' pos= 69 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300006249.a:Ga0099390_1003485_10 aa= '*' pos= 69 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300006249.a:Ga0099390_1002995_7 aa= '*' pos= 69 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300006249.a:Ga0099390_1003485_10 aa= '*' pos= 69 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300006249.a:Ga0099390_1003485_10 aa= '*' pos= 69 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300006249.a:Ga0099390_1000268_35 aa= '*' pos= 66 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300006249.a:Ga0099390_1000268_35 aa= '*' pos= 66 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300006249.a:Ga0099390_1000268_35 aa= '*' pos= 66 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+ [0.070221s]
+Building query seed set... # Sequence= 3300006249.a:Ga0099390_1001479_12 aa= '*' pos= 61 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300006249.a:Ga0099390_1002713_2 aa= '*' pos= 70 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300006249.a:Ga0099390_1001479_12 aa= '*' pos= 61 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300006249.a:Ga0099390_1002713_2 aa= '*' pos= 70 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+ [0.011263s]
+Algorithm: Query-indexed
+Building query histograms... # Sequence= 3300006249.a:Ga0099390_1001479_12 aa= '*' pos= 61 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300006249.a:Ga0099390_1002713_2 aa= '*' pos= 70 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+ [0.004386s]
+Allocating buffers...  [5e-05s]
+Loading reference sequences... # Sequence= 3300006249.a:Ga0099390_1000053_15 aa= '*' pos= 65 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300006249.a:Ga0099390_1000053_55 aa= '*' pos= 70 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300006249.a:Ga0099390_1000053_15 aa= '*' pos= 65 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300006249.a:Ga0099390_1000561_24 aa= '*' pos= 61 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300006249.a:Ga0099390_1000053_15 aa= '*' pos= 65 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300006249.a:Ga0099390_1000053_55 aa= '*' pos= 70 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300006249.a:Ga0099390_1000053_55 aa= '*' pos= 70 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300006249.a:Ga0099390_1000561_24 aa= '*' pos= 61 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300006249.a:Ga0099390_1000561_24 aa= '*' pos= 61 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300006249.a:Ga0099390_1000402_12 aa= '*' pos= 61 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300006249.a:Ga0099390_1000402_22 aa= '*' pos= 62 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300006249.a:Ga0099390_1000402_12 aa= '*' pos= 61 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300006249.a:Ga0099390_1000402_22 aa= '*' pos= 62 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300006249.a:Ga0099390_1000402_12 aa= '*' pos= 61 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300006249.a:Ga0099390_1000402_22 aa= '*' pos= 62 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300006249.a:Ga0099390_1000809_15 aa= '*' pos= 61 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300006249.a:Ga0099390_1006136_1 aa= '*' pos= 64 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300006249.a:Ga0099390_1000809_15 aa= '*' pos= 61 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300006249.a:Ga0099390_1000809_15 aa= '*' pos= 61 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300006249.a:Ga0099390_1000741_14 aa= '*' pos= 63 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300006249.a:Ga0099390_1001042_9 aa= '*' pos= 68 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300006249.a:Ga0099390_1006136_1 aa= '*' pos= 64 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300006249.a:Ga0099390_1000217_39 aa= '*' pos= 64 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300006249.a:Ga0099390_1001068_2 aa= '*' pos= 68 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300006249.a:Ga0099390_1006136_1 aa= '*' pos= 64 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300006249.a:Ga0099390_1000741_14 aa= '*' pos= 63 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300006249.a:Ga0099390_1000059_17 aa= '*' pos= 66 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300006249.a:Ga0099390_1000059_18 aa= '*' pos= 63 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300006249.a:Ga0099390_1001042_9 aa= '*' pos= 68 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300006249.a:Ga0099390_1000059_61 aa= '*' pos= 66 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300006249.a:Ga0099390_1000059_68 aa= '*' pos= 61 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300006249.a:Ga0099390_1000059_73 aa= '*' pos= 70 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300006249.a:Ga0099390_1000741_14 aa= '*' pos= 63 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300006249.a:Ga0099390_1000217_39 aa= '*' pos= 64 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300006249.a:Ga0099390_1001068_2 aa= '*' pos= 68 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300006249.a:Ga0099390_1001042_9 aa= '*' pos= 68 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300006249.a:Ga0099390_1000059_17 aa= '*' pos= 66 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300006249.a:Ga0099390_1000059_18 aa= '*' pos= 63 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300006249.a:Ga0099390_1000059_61 aa= '*' pos= 66 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300006249.a:Ga0099390_1000059_68 aa= '*' pos= 61 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300006249.a:Ga0099390_1000059_73 aa= '*' pos= 70 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300006249.a:Ga0099390_1000217_39 aa= '*' pos= 64 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300006249.a:Ga0099390_1001068_2 aa= '*' pos= 68 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300006249.a:Ga0099390_1000059_17 aa= '*' pos= 66 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300006249.a:Ga0099390_1000059_18 aa= '*' pos= 63 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300006249.a:Ga0099390_1000106_8 aa= '*' pos= 68 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300006249.a:Ga0099390_1000059_61 aa= '*' pos= 66 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300006249.a:Ga0099390_1000106_15 aa= '*' pos= 68 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300006249.a:Ga0099390_1000059_68 aa= '*' pos= 61 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300006249.a:Ga0099390_1000106_20 aa= '*' pos= 70 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300006249.a:Ga0099390_1000059_73 aa= '*' pos= 70 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300006249.a:Ga0099390_1000106_25 aa= '*' pos= 69 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300006249.a:Ga0099390_1000106_8 aa= '*' pos= 68 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300006249.a:Ga0099390_1000106_15 aa= '*' pos= 68 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300006249.a:Ga0099390_1000106_20 aa= '*' pos= 70 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300006249.a:Ga0099390_1000106_25 aa= '*' pos= 69 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300006249.a:Ga0099390_1000433_9 aa= '*' pos= 66 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300006249.a:Ga0099390_1000492_21 aa= '*' pos= 64 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300006249.a:Ga0099390_1000106_8 aa= '*' pos= 68 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300006249.a:Ga0099390_1000492_24 aa= '*' pos= 68 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300006249.a:Ga0099390_1000106_15 aa= '*' pos= 68 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300006249.a:Ga0099390_1000106_20 aa= '*' pos= 70 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300006249.a:Ga0099390_1000106_25 aa= '*' pos= 69 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300006249.a:Ga0099390_1000417_14 aa= '*' pos= 65 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300006249.a:Ga0099390_1000433_9 aa= '*' pos= 66 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300006249.a:Ga0099390_1000116_3 aa= '*' pos= 70 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300006249.a:Ga0099390_1000116_25 aa= '*' pos= 70 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300006249.a:Ga0099390_1000433_9 aa= '*' pos= 66 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300006249.a:Ga0099390_1000492_21 aa= '*' pos= 64 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300006249.a:Ga0099390_1000492_24 aa= '*' pos= 68 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300006249.a:Ga0099390_1000492_21 aa= '*' pos= 64 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300006249.a:Ga0099390_1000492_24 aa= '*' pos= 68 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300006249.a:Ga0099390_1000261_20 aa= '*' pos= 65 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300006249.a:Ga0099390_1000417_14 aa= '*' pos= 65 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300006249.a:Ga0099390_1000417_14 aa= '*' pos= 65 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300006249.a:Ga0099390_1000221_14 aa= '*' pos= 64 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300006249.a:Ga0099390_1000116_3 aa= '*' pos= 70 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300006249.a:Ga0099390_1000116_3 aa= '*' pos= 70 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300006249.a:Ga0099390_1000116_25 aa= '*' pos= 70 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300006249.a:Ga0099390_1000116_25 aa= '*' pos= 70 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300006249.a:Ga0099390_1000698_17 aa= '*' pos= 70 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300006249.a:Ga0099390_1002417_5 aa= '*' pos= 65 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300006249.a:Ga0099390_1001281_9 aa= '*' pos= 66 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300006249.a:Ga0099390_1000261_20 aa= '*' pos= 65 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300006249.a:Ga0099390_1000272_17 aa= '*' pos= 67 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300006249.a:Ga0099390_1000261_20 aa= '*' pos= 65 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300006249.a:Ga0099390_1000221_14 aa= '*' pos= 64 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300006249.a:Ga0099390_1000241_34 aa= '*' pos= 69 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300006249.a:Ga0099390_1000221_14 aa= '*' pos= 64 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300006249.a:Ga0099390_1000698_17 aa= '*' pos= 70 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300006249.a:Ga0099390_1002417_5 aa= '*' pos= 65 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300006249.a:Ga0099390_1001281_9 aa= '*' pos= 66 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300006249.a:Ga0099390_1000698_17 aa= '*' pos= 70 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300006249.a:Ga0099390_1000234_48 aa= '*' pos= 69 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300006249.a:Ga0099390_1002417_5 aa= '*' pos= 65 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300006249.a:Ga0099390_1001281_9 aa= '*' pos= 66 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300006249.a:Ga0099390_1000272_17 aa= '*' pos= 67 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300006249.a:Ga0099390_1000272_17 aa= '*' pos= 67 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300006249.a:Ga0099390_1000241_34 aa= '*' pos= 69 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300006249.a:Ga0099390_1000234_48 aa= '*' pos= 69 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300006249.a:Ga0099390_1000241_34 aa= '*' pos= 69 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300006249.a:Ga0099390_1000234_48 aa= '*' pos= 69 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+ [3.5123s]
+Building reference histograms...  [2.85179s]
+Allocating buffers...  [0.000139s]
+Initializing temporary storage...  [0.001983s]
+Processing query chunk 0, reference chunk 0, shape 0, index chunk 0.
+Building reference index...  [7.47062s]
+Building query index...  [0.01569s]
+Building seed filter...  [0.346436s]
+Searching alignments...  [8.73324s]
+Deallocating buffers...  [0.253659s]
+Computing alignments...  [0.908243s]
+Deallocating reference...  [0.198484s]
+Loading reference sequences...  [2.4e-05s]
+Deallocating buffers...  [0.001184s]
+Deallocating queries...  [0.000124s]
+Loading query sequences...  [1.4e-05s]
+Closing the input file...  [1e-05s]
+Closing the output file...  [3e-05s]
+Closing the database file...  [6e-06s]
+Total time = 24.3895s
+Reported 69 pairwise alignments, 69 HSPs.
+69 queries aligned.

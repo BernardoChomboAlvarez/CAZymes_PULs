@@ -1,0 +1,353 @@
+/opt/sge/default/spool/Fos/job_scripts/114040: 10: source: not found
+# Sequence= 3300005298.a:Ga0071330_1061897_61 aa= '*' pos= 61 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300005298.a:Ga0071330_1061897_61 aa= '*' pos= 61 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300005298.a:Ga0071330_1064441_11 aa= '*' pos= 68 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300005298.a:Ga0071330_1064441_16 aa= '*' pos= 62 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300005298.a:Ga0071330_1061897_61 aa= '*' pos= 61 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300005298.a:Ga0071330_1064441_11 aa= '*' pos= 68 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300005298.a:Ga0071330_1064441_16 aa= '*' pos= 62 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+diamond v0.9.14.115 | by Benjamin Buchfink <buchfink@gmail.com>
+Licensed under the GNU AGPL <https://www.gnu.org/licenses/agpl.txt>
+Check http://github.com/bbuchfink/diamond for updates.
+
+#CPU threads: 4
+Scoring parameters: (Matrix=BLOSUM62 Lambda=0.267 K=0.041 Penalties=11/1)
+# Sequence= 3300005298.a:Ga0071330_1064441_11 aa= '*' pos= 68 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300005298.a:Ga0071330_1064441_16 aa= '*' pos= 62 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+#Target sequences to report alignments for: 1
+Temporary directory: output_dbcan4
+Opening the database... # Sequence= 3300005298.a:Ga0071330_1064963_116 aa= '*' pos= 70 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300005298.a:Ga0071330_1064963_116 aa= '*' pos= 70 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300005298.a:Ga0071330_1064963_116 aa= '*' pos= 70 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300005298.a:Ga0071330_1055748_79 aa= '*' pos= 68 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300005298.a:Ga0071330_1055748_79 aa= '*' pos= 68 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+ [0.032541s]
+Opening the input file...  [3.1e-05s]
+Opening the output file...  [2.6e-05s]
+Loading query sequences... # Sequence= 3300005298.a:Ga0071330_1055748_79 aa= '*' pos= 68 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300005298.a:Ga0071330_1056877_28 aa= '*' pos= 66 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300005298.a:Ga0071330_1056877_28 aa= '*' pos= 66 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300005298.a:Ga0071330_1056877_38 aa= '*' pos= 70 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+ [0.00422s]
+Masking queries... # Sequence= 3300005298.a:Ga0071330_1056877_38 aa= '*' pos= 70 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300005298.a:Ga0071330_1056877_28 aa= '*' pos= 66 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300005298.a:Ga0071330_1056877_38 aa= '*' pos= 70 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300005298.a:Ga0071330_1056877_107 aa= '*' pos= 68 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300005298.a:Ga0071330_1056877_107 aa= '*' pos= 68 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300005298.a:Ga0071330_1056877_115 aa= '*' pos= 68 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300005298.a:Ga0071330_1056877_120 aa= '*' pos= 65 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300005298.a:Ga0071330_1056877_115 aa= '*' pos= 68 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300005298.a:Ga0071330_1056877_120 aa= '*' pos= 65 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300005298.a:Ga0071330_1056877_107 aa= '*' pos= 68 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300005298.a:Ga0071330_1056877_115 aa= '*' pos= 68 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300005298.a:Ga0071330_1056877_120 aa= '*' pos= 65 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300005298.a:Ga0071330_1062232_6 aa= '*' pos= 62 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300005298.a:Ga0071330_1062232_6 aa= '*' pos= 62 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300005298.a:Ga0071330_1062232_6 aa= '*' pos= 62 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300005298.a:Ga0071330_1062054_43 aa= '*' pos= 69 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+ [0.044975s]
+Building query seed set... # Sequence= 3300005298.a:Ga0071330_1062054_43 aa= '*' pos= 69 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+ [0.006893s]
+Algorithm: Query-indexed
+Building query histograms...  [0.000952s]
+Allocating buffers...  [2.1e-05s]
+Loading reference sequences... # Sequence= 3300005298.a:Ga0071330_1062054_43 aa= '*' pos= 69 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300005298.a:Ga0071330_1062054_133 aa= '*' pos= 64 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300005298.a:Ga0071330_1062054_160 aa= '*' pos= 69 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300005298.a:Ga0071330_1069739_3 aa= '*' pos= 63 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300005298.a:Ga0071330_1062054_133 aa= '*' pos= 64 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300005298.a:Ga0071330_1062054_160 aa= '*' pos= 69 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300005298.a:Ga0071330_1069739_3 aa= '*' pos= 63 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300005298.a:Ga0071330_1062054_133 aa= '*' pos= 64 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300005298.a:Ga0071330_1062054_160 aa= '*' pos= 69 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300005298.a:Ga0071330_1103968_75 aa= '*' pos= 67 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300005298.a:Ga0071330_1069739_3 aa= '*' pos= 63 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300005298.a:Ga0071330_1103968_75 aa= '*' pos= 67 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300005298.a:Ga0071330_1119465_15 aa= '*' pos= 66 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300005298.a:Ga0071330_1103968_75 aa= '*' pos= 67 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300005298.a:Ga0071330_1119465_31 aa= '*' pos= 63 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300005298.a:Ga0071330_1119465_15 aa= '*' pos= 66 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300005298.a:Ga0071330_1119465_31 aa= '*' pos= 63 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300005298.a:Ga0071330_1119465_15 aa= '*' pos= 66 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300005298.a:Ga0071330_1063663_50 aa= '*' pos= 65 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300005298.a:Ga0071330_1119465_31 aa= '*' pos= 63 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300005298.a:Ga0071330_1063663_69 aa= '*' pos= 65 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300005298.a:Ga0071330_1071694_21 aa= '*' pos= 67 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300005298.a:Ga0071330_1063663_50 aa= '*' pos= 65 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300005298.a:Ga0071330_1071694_29 aa= '*' pos= 62 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300005298.a:Ga0071330_1063663_69 aa= '*' pos= 65 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300005298.a:Ga0071330_1063663_50 aa= '*' pos= 65 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300005298.a:Ga0071330_1071694_21 aa= '*' pos= 67 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300005298.a:Ga0071330_1063663_69 aa= '*' pos= 65 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300005298.a:Ga0071330_1071694_29 aa= '*' pos= 62 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300005298.a:Ga0071330_1071694_21 aa= '*' pos= 67 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300005298.a:Ga0071330_1071694_29 aa= '*' pos= 62 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300005298.a:Ga0071330_1064875_43 aa= '*' pos= 64 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300005298.a:Ga0071330_1064875_43 aa= '*' pos= 64 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300005298.a:Ga0071330_1064875_43 aa= '*' pos= 64 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300005298.a:Ga0071330_1069345_138 aa= '*' pos= 64 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300005298.a:Ga0071330_1069345_198 aa= '*' pos= 68 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300005298.a:Ga0071330_1069345_138 aa= '*' pos= 64 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300005298.a:Ga0071330_1069345_138 aa= '*' pos= 64 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300005298.a:Ga0071330_1069345_198 aa= '*' pos= 68 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+# Sequence= 3300005298.a:Ga0071330_1069345_198 aa= '*' pos= 68 is an unknown amino amino acid - replaced with 'X' - valid amino acids are upper and lower case ACDEFGHIKLMNPQRSTVWYX
+ [6.15861s]
+Building reference histograms...  [8.30901s]
+Allocating buffers...  [4.6e-05s]
+Initializing temporary storage...  [0.070149s]
+Processing query chunk 0, reference chunk 0, shape 0, index chunk 0.
+Building reference index...  [22.1272s]
+Building query index...  [0.066598s]
+Building seed filter...  [0.358965s]
+Searching alignments...  [30.2002s]
+Deallocating buffers...  [0.562063s]
+Computing alignments...  [2.46552s]
+Deallocating reference...  [0.376045s]
+Loading reference sequences...  [0.00021s]
+Deallocating buffers...  [0.000696s]
+Deallocating queries...  [0.000583s]
+Loading query sequences...  [0.000106s]
+Closing the input file...  [0.000104s]
+Closing the output file...  [0.000238s]
+Closing the database file...  [0.000103s]
+Total time = 70.8117s
+Reported 121 pairwise alignments, 121 HSPs.
+121 queries aligned.
+diamond v0.9.14.115 | by Benjamin Buchfink <buchfink@gmail.com>
+Licensed under the GNU AGPL <https://www.gnu.org/licenses/agpl.txt>
+Check http://github.com/bbuchfink/diamond for updates.
+
+#CPU threads: 1
+Scoring parameters: (Matrix=BLOSUM62 Lambda=0.267 K=0.041 Penalties=11/1)
+#Target sequences to report alignments for: 1
+Temporary directory: output_dbcan4
+Opening the database...  [2.5e-05s]
+Opening the input file...  [3.1e-05s]
+Opening the output file...  [2.7e-05s]
+Loading query sequences...  [0.005173s]
+Masking queries...  [0.160922s]
+Building query seed set...  [0.007073s]
+Algorithm: Query-indexed
+Building query histograms...  [0.00103s]
+Allocating buffers...  [3.1e-05s]
+Loading reference sequences...  [0.019243s]
+Building reference histograms...  [0.063431s]
+Allocating buffers...  [3.2e-05s]
+Initializing temporary storage...  [0.000584s]
+Processing query chunk 0, reference chunk 0, shape 0, index chunk 0.
+Building reference index...  [0.146175s]
+Building query index...  [0.036474s]
+Building seed filter...  [0.018312s]
+Searching alignments...  [0.38736s]
+Deallocating buffers...  [0.001951s]
+Computing alignments...  [0.286892s]
+Deallocating reference...  [0.001768s]
+Loading reference sequences...  [1.4e-05s]
+Deallocating buffers...  [0.000714s]
+Deallocating queries...  [0.000107s]
+Loading query sequences...  [1.3e-05s]
+Closing the input file...  [1e-05s]
+Closing the output file...  [2.4e-05s]
+Closing the database file...  [5e-06s]
+Total time = 1.13834s
+Reported 325 pairwise alignments, 325 HSPs.
+325 queries aligned.
+Traceback (most recent call last):
+  File "/home/install/miniconda3/envs/run_dbcan4/bin/cgc_standard2json", line 10, in <module>
+    sys.exit(main())
+  File "/home/install/miniconda3/envs/run_dbcan4/lib/python3.8/site-packages/dbcan_cli/cgc_process_json.py", line 114, in main
+    jsonPuls = json.dumps(pul_dict, indent=4)
+  File "/home/install/miniconda3/envs/run_dbcan4/lib/python3.8/json/__init__.py", line 234, in dumps
+    return cls(
+  File "/home/install/miniconda3/envs/run_dbcan4/lib/python3.8/json/encoder.py", line 201, in encode
+    chunks = list(chunks)
+  File "/home/install/miniconda3/envs/run_dbcan4/lib/python3.8/json/encoder.py", line 431, in _iterencode
+    yield from _iterencode_dict(o, _current_indent_level)
+  File "/home/install/miniconda3/envs/run_dbcan4/lib/python3.8/json/encoder.py", line 405, in _iterencode_dict
+    yield from chunks
+  File "/home/install/miniconda3/envs/run_dbcan4/lib/python3.8/json/encoder.py", line 405, in _iterencode_dict
+    yield from chunks
+  File "/home/install/miniconda3/envs/run_dbcan4/lib/python3.8/json/encoder.py", line 325, in _iterencode_list
+    yield from chunks
+  File "/home/install/miniconda3/envs/run_dbcan4/lib/python3.8/json/encoder.py", line 405, in _iterencode_dict
+    yield from chunks
+  File "/home/install/miniconda3/envs/run_dbcan4/lib/python3.8/json/encoder.py", line 438, in _iterencode
+    o = _default(o)
+  File "/home/install/miniconda3/envs/run_dbcan4/lib/python3.8/json/encoder.py", line 179, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type int64 is not JSON serializable
+
+
+***************************0. SIGNALP start*************************************************
+
+
+
+
+***************************1. DIAMOND start*************************************************
+
+
+
+
+***************************1. DIAMOND end***************************************************
+
+
+
+
+***************************2. HMMER start*************************************************
+
+
+
+
+***************************2. HMMER end***************************************************
+
+
+
+
+***************************3. dbCAN_sub start***************************************************
+
+
+ID count: 1778
+total time: 998.5161912441254
+
+
+***************************3. dbCAN_sub end***************************************************
+
+
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+No substrate for it
+*****************************CGC-Finder start************************************
+**************************************CGC-Finder start***********************************************
+**************************************CGC-Finder end***********************************************
+Waiting on signalP
+SignalP pos complete
+SignalP neg complete
+SignalP euk complete
+Preparing overview table from hmmer, dbCAN_sub and diamond output...
+overview table complete. Saved as output_dbcan4/overview.txt
