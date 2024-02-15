@@ -1,4 +1,4 @@
 ~/fna/
 *.fna
 *.gz
-*.tar
+*/fna.tar
