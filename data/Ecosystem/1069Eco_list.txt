@@ -7,17 +7,17 @@ Bioreactor
 Bioremediation
 Biotransformation
 Birds
-Built environment
+Built_environment
 Cnidaria
 Fungi
 Human
 Insecta
-Lab enrichment
-Lab synthesis
+Lab_enrichment
+Lab_synthesis
 Mammals
 Microbial
 Modeled
 Plants
-Solid waste
+Solid_waste
 Terrestrial
 Wastewater

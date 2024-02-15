@@ -6,7 +6,7 @@ library(dplyr)
 # paste <(cut -f1,15 $FILE | tr ";" "\t" | awk '{ if (NR != 1) print }' | sed 's/[a-z]__//g' | awk -F "\t" '{ print $2"\t"$3"\t"$4"\t"$5"\t"$6"\t"$8 }') <(awk -F "\t" '{if (NR != 1) print}' $FILE | cut --complement -d$'\t' -f15) 
 
 ## Read the file
-setwd(dir = '/home/chombo/Documents/SEGOVIA/data/')
+setwd(dir = '/home/chombo/Documents/SEGOVIA/CAZymes_PULs/data/')
 colnames.vec <- c("division","phylum","class","order","family","specie","genome_id","metagenome_id","genome_length","num_contigs","n50","num_16s","num_5s","num_23s","num_trna","completeness","contamination","quality_score","mimag_quality","otu_id","ecosystem_category","ecosystem_type","habitat","longitude","latitude")
 MAGS.df <- read.table('MAGs_test.tsv',sep = "\t",col.names = colnames.vec)
 
@@ -25,7 +25,7 @@ MAGS.filtered$order[MAGS.filtered$order == "Bacillales_A"] <- "Bacillales"
 
 ## Save the filtered file
 ## Output: 1069 MAGs
-# write.table(MAGS.filtered,file = "1069_MAGs_metadata.tsv",sep = "\t",row.names = FALSE)
+write.table(MAGS.filtered,file = "1069_MAGs_metadata.tsv",sep = "\t",row.names = FALSE)
 
 ## Filter diversity by ecosystem type, class, order and family
 ## Ecosystem
@@ -44,8 +44,8 @@ colnames(order.div) <- c("order","frequency")
 fam.div <- as.data.frame(table(MAGS.filtered$family))
 colnames(fam.div) <- c("family","frequency")
 
-write.table(MAGS.filtered$genome_id,file = "1069MAGS_list.txt",sep = "",row.names = FALSE,quote = FALSE,col.names = FALSE)
-write.table(eco.div$ecosystem,file = "1069Eco_list.txt",sep = "",row.names = FALSE,quote = FALSE,col.names = FALSE)
-write.table(class.div$class,file = "1069Class_list.txt",sep = "",row.names = FALSE,quote = FALSE,col.names = FALSE)
-write.table(order.div$order,file = "1069Order_list.txt",sep = "",row.names = FALSE,quote = FALSE,col.names = FALSE)
-write.table(fam.div$family,file = "1069Fam_list.txt",sep = "",row.names = FALSE,quote = FALSE,col.names = FALSE)
+# write.table(MAGS.filtered$genome_id,file = "1069MAGS_list.txt",sep = "",row.names = FALSE,quote = FALSE,col.names = FALSE)
+# write.table(eco.div$ecosystem,file = "1069Eco_list.txt",sep = "",row.names = FALSE,quote = FALSE,col.names = FALSE)
+# write.table(class.div$class,file = "1069Class_list.txt",sep = "",row.names = FALSE,quote = FALSE,col.names = FALSE)
+# write.table(order.div$order,file = "1069Order_list.txt",sep = "",row.names = FALSE,quote = FALSE,col.names = FALSE)
+# write.table(fam.div$family,file = "1069Fam_list.txt",sep = "",row.names = FALSE,quote = FALSE,col.names = FALSE)
