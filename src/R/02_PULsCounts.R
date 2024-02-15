@@ -57,12 +57,18 @@ class.arr <- MAGS.meta %>%
     distinct(class)
 class.arr <- class.arr[order(class.arr$class,decreasing = FALSE),]
 
+full.div.df <- data.frame()
 for (class in class.arr) {
     ## Extract all the MAGs annotated in each Class
     mags.arr.temp <- as.vector(MAGS.meta$genome_id[MAGS.meta$class == class])
     
     ## For each MAG, extract all the PUL counts
     PULSperMAG.temp <- PULSperMAG.df[is.element(PULSperMAG.df$MAGs,mags.arr.temp),]    
+    
+    ## Extract the complete diversity
+    class.div.df <- data.frame(class = c(class),
+                               frequency = sum(PULSperMAG.temp$PULs_Freq))
+    full.div.df <- rbind(full.div.df,class.div.df)
     
     ## Extract the PULs diversity
     rawPULs.temp <- PULS.df[is.element(PULS.df$MAG,mags.arr.temp),]
@@ -75,18 +81,25 @@ for (class in class.arr) {
     write.table(rawPULs.temp,file = paste("Taxa_Class/",class,"/",class,"_PULsDiversity.tsv",sep = ""),sep = "\t",quote = FALSE,row.names = FALSE,col.names = FALSE)
     write.table(pulscounts.temp,file = paste("Taxa_Class/",class,"/",class,"_PULsCounts.tsv",sep = ""),sep = "\t",quote = FALSE,row.names = FALSE,col.names = FALSE)
 }
+write.table(full.div.df,file = paste("Taxa_Class/","TaxaClassDiversity.tsv",sep = ""),sep = "\t",quote = FALSE,row.names = FALSE,col.names = FALSE)
 
 ## PULs per Order
 order.arr <- MAGS.meta %>%
     distinct(order)
 order.arr <- order.arr[order(order.arr$order,decreasing = FALSE),]
 
+full.div.df <- data.frame()
 for (ord in order.arr) {
     ## Extract all the MAGs annotated in each Order
     mags.arr.temp <- as.vector(MAGS.meta$genome_id[MAGS.meta$order == ord])
     
     ## For each MAG, extract all the PUL counts
     PULSperMAG.temp <- PULSperMAG.df[is.element(PULSperMAG.df$MAGs,mags.arr.temp),]    
+
+    ## Extract the complete diversity
+    order.div.df <- data.frame(order = c(ord),
+                               frequency = sum(PULSperMAG.temp$PULs_Freq))
+    full.div.df <- rbind(full.div.df,order.div.df)
     
     ## Extract the PULs diversity
     rawPULs.temp <- PULS.df[is.element(PULS.df$MAG,mags.arr.temp),]
@@ -99,18 +112,25 @@ for (ord in order.arr) {
     write.table(rawPULs.temp,file = paste("Taxa_Order/",ord,"/",ord,"_PULsDiversity.tsv",sep = ""),sep = "\t",quote = FALSE,row.names = FALSE,col.names = FALSE)
     write.table(pulscounts.temp,file = paste("Taxa_Order/",ord,"/",ord,"_PULsCounts.tsv",sep = ""),sep = "\t",quote = FALSE,row.names = FALSE,col.names = FALSE)
 }
+write.table(full.div.df,file = paste("Taxa_Order/","TaxaOrderDiversity.tsv",sep = ""),sep = "\t",quote = FALSE,row.names = FALSE,col.names = FALSE)
 
 ## PULs per Family
 fam.arr <- MAGS.meta %>%
     distinct(family)
 fam.arr <- fam.arr[order(fam.arr$family,decreasing = FALSE),]
 
+full.div.df <- data.frame()
 for (fam in fam.arr) {
     ## Extract all the MAGs annotated in each Family
     mags.arr.temp <- as.vector(MAGS.meta$genome_id[MAGS.meta$family == fam])
     
     ## For each MAG, extract all the PUL counts
     PULSperMAG.temp <- PULSperMAG.df[is.element(PULSperMAG.df$MAGs,mags.arr.temp),]    
+    
+    ## Extract the complete diversity
+    fam.div.df <- data.frame(family = c(fam),
+                               frequency = sum(PULSperMAG.temp$PULs_Freq))
+    full.div.df <- rbind(full.div.df,fam.div.df)
     
     ## Extract the PULs diversity
     rawPULs.temp <- PULS.df[is.element(PULS.df$MAG,mags.arr.temp),]
@@ -123,18 +143,25 @@ for (fam in fam.arr) {
     write.table(rawPULs.temp,file = paste("Taxa_Family/",fam,"/",fam,"_PULsDiversity.tsv",sep = ""),sep = "\t",quote = FALSE,row.names = FALSE,col.names = FALSE)
     write.table(pulscounts.temp,file = paste("Taxa_Family/",fam,"/",fam,"_PULsCounts.tsv",sep = ""),sep = "\t",quote = FALSE,row.names = FALSE,col.names = FALSE)
 }
+write.table(full.div.df,file = paste("Taxa_Family/","TaxaFamilyDiversity.tsv",sep = ""),sep = "\t",quote = FALSE,row.names = FALSE,col.names = FALSE)
 
 ## PULs per Ecosystem
 eco.arr <- MAGS.meta %>%
     distinct(ecosystem_category)
 eco.arr <- eco.arr[order(eco.arr$ecosystem_category,decreasing = FALSE),]
 
+full.div.df <- data.frame()
 for (eco in eco.arr) {
     ## Extract all the MAGs annotated in each Ecosystem
     mags.arr.temp <- as.vector(MAGS.meta$genome_id[MAGS.meta$ecosystem_category == eco])
     
     ## For each MAG, extract all the PUL counts
     PULSperMAG.temp <- PULSperMAG.df[is.element(PULSperMAG.df$MAGs,mags.arr.temp),]    
+    
+    ## Extract the complete diversity
+    eco.div.df <- data.frame(ecosystem = c(eco),
+                             frequency = sum(PULSperMAG.temp$PULs_Freq))
+    full.div.df <- rbind(full.div.df,eco.div.df)
     
     ## Extract the PULs diversity
     rawPULs.temp <- PULS.df[is.element(PULS.df$MAG,mags.arr.temp),]
@@ -147,3 +174,4 @@ for (eco in eco.arr) {
     write.table(rawPULs.temp,file = paste("Ecosystem/",eco,"/",eco,"_PULsDiversity.tsv",sep = ""),sep = "\t",quote = FALSE,row.names = FALSE,col.names = FALSE)
     write.table(pulscounts.temp,file = paste("Ecosystem/",eco,"/",eco,"_PULsCounts.tsv",sep = ""),sep = "\t",quote = FALSE,row.names = FALSE,col.names = FALSE)
 }
+write.table(full.div.df,file = paste("Ecosystem/","EcosystemDiversity.tsv",sep = ""),sep = "\t",quote = FALSE,row.names = FALSE,col.names = FALSE)
