@@ -28,6 +28,7 @@ for (mag in MAGS.arr) {
 }
 
 ## 36172 total PULs
+## 1363 different PULs
 ## 1064 final MAGs
 
 ## Get the summary
@@ -39,6 +40,10 @@ PULSperMAG.df <- rbind(PULSperMAG.df,excludedMAGS)
 
 ## Save the data
 write.table(PULSperMAG.df,file = "PULsperMAG.tsv",sep = "\t",quote = FALSE,row.names = FALSE,col.names = FALSE)
+
+## Get the PULs diversity
+puls.diversity <- as.data.frame(table(PULS.df$PULs))
+write.table(puls.diversity,file = "PULS.diversity.tsv",sep = "\t",quote = FALSE,row.names = FALSE,col.names = FALSE)
 
 
 ## PART 2
@@ -81,7 +86,7 @@ for (class in class.arr) {
     write.table(rawPULs.temp,file = paste("Taxa_Class/",class,"/",class,"_PULsDiversity.tsv",sep = ""),sep = "\t",quote = FALSE,row.names = FALSE,col.names = FALSE)
     write.table(pulscounts.temp,file = paste("Taxa_Class/",class,"/",class,"_PULsCounts.tsv",sep = ""),sep = "\t",quote = FALSE,row.names = FALSE,col.names = FALSE)
 }
-write.table(full.div.df,file = paste("Taxa_Class/","TaxaClassDiversity.tsv",sep = ""),sep = "\t",quote = FALSE,row.names = FALSE,col.names = FALSE)
+write.table(full.div.df,file = paste("Taxa_Class/","PULS.TaxaClassDiversity.tsv",sep = ""),sep = "\t",quote = FALSE,row.names = FALSE,col.names = FALSE)
 
 ## PULs per Order
 order.arr <- MAGS.meta %>%
@@ -112,7 +117,7 @@ for (ord in order.arr) {
     write.table(rawPULs.temp,file = paste("Taxa_Order/",ord,"/",ord,"_PULsDiversity.tsv",sep = ""),sep = "\t",quote = FALSE,row.names = FALSE,col.names = FALSE)
     write.table(pulscounts.temp,file = paste("Taxa_Order/",ord,"/",ord,"_PULsCounts.tsv",sep = ""),sep = "\t",quote = FALSE,row.names = FALSE,col.names = FALSE)
 }
-write.table(full.div.df,file = paste("Taxa_Order/","TaxaOrderDiversity.tsv",sep = ""),sep = "\t",quote = FALSE,row.names = FALSE,col.names = FALSE)
+write.table(full.div.df,file = paste("Taxa_Order/","PULS.TaxaOrderDiversity.tsv",sep = ""),sep = "\t",quote = FALSE,row.names = FALSE,col.names = FALSE)
 
 ## PULs per Family
 fam.arr <- MAGS.meta %>%
@@ -143,7 +148,7 @@ for (fam in fam.arr) {
     write.table(rawPULs.temp,file = paste("Taxa_Family/",fam,"/",fam,"_PULsDiversity.tsv",sep = ""),sep = "\t",quote = FALSE,row.names = FALSE,col.names = FALSE)
     write.table(pulscounts.temp,file = paste("Taxa_Family/",fam,"/",fam,"_PULsCounts.tsv",sep = ""),sep = "\t",quote = FALSE,row.names = FALSE,col.names = FALSE)
 }
-write.table(full.div.df,file = paste("Taxa_Family/","TaxaFamilyDiversity.tsv",sep = ""),sep = "\t",quote = FALSE,row.names = FALSE,col.names = FALSE)
+write.table(full.div.df,file = paste("Taxa_Family/","PULS.TaxaFamilyDiversity.tsv",sep = ""),sep = "\t",quote = FALSE,row.names = FALSE,col.names = FALSE)
 
 ## PULs per Ecosystem
 eco.arr <- MAGS.meta %>%
@@ -174,4 +179,4 @@ for (eco in eco.arr) {
     write.table(rawPULs.temp,file = paste("Ecosystem/",eco,"/",eco,"_PULsDiversity.tsv",sep = ""),sep = "\t",quote = FALSE,row.names = FALSE,col.names = FALSE)
     write.table(pulscounts.temp,file = paste("Ecosystem/",eco,"/",eco,"_PULsCounts.tsv",sep = ""),sep = "\t",quote = FALSE,row.names = FALSE,col.names = FALSE)
 }
-write.table(full.div.df,file = paste("Ecosystem/","EcosystemDiversity.tsv",sep = ""),sep = "\t",quote = FALSE,row.names = FALSE,col.names = FALSE)
+write.table(full.div.df,file = paste("Ecosystem/","PULS.EcosystemDiversity.tsv",sep = ""),sep = "\t",quote = FALSE,row.names = FALSE,col.names = FALSE)
