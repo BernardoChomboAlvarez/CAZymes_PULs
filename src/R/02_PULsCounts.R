@@ -86,7 +86,7 @@ for (class in class.arr) {
     write.table(rawPULs.temp,file = paste("Taxa_Class/",class,"/",class,"_PULsDiversity.tsv",sep = ""),sep = "\t",quote = FALSE,row.names = FALSE,col.names = FALSE)
     write.table(pulscounts.temp,file = paste("Taxa_Class/",class,"/",class,"_PULsCounts.tsv",sep = ""),sep = "\t",quote = FALSE,row.names = FALSE,col.names = FALSE)
 }
-write.table(full.div.df,file = paste("Taxa_Class/","PULS.TaxaClassDiversity.tsv",sep = ""),sep = "\t",quote = FALSE,row.names = FALSE,col.names = FALSE)
+write.table(full.div.df,file = paste("Taxa_Class/","PULS.ClassDiversity.tsv",sep = ""),sep = "\t",quote = FALSE,row.names = FALSE,col.names = FALSE)
 
 ## PULs per Order
 order.arr <- MAGS.meta %>%
@@ -117,7 +117,7 @@ for (ord in order.arr) {
     write.table(rawPULs.temp,file = paste("Taxa_Order/",ord,"/",ord,"_PULsDiversity.tsv",sep = ""),sep = "\t",quote = FALSE,row.names = FALSE,col.names = FALSE)
     write.table(pulscounts.temp,file = paste("Taxa_Order/",ord,"/",ord,"_PULsCounts.tsv",sep = ""),sep = "\t",quote = FALSE,row.names = FALSE,col.names = FALSE)
 }
-write.table(full.div.df,file = paste("Taxa_Order/","PULS.TaxaOrderDiversity.tsv",sep = ""),sep = "\t",quote = FALSE,row.names = FALSE,col.names = FALSE)
+write.table(full.div.df,file = paste("Taxa_Order/","PULS.OrderDiversity.tsv",sep = ""),sep = "\t",quote = FALSE,row.names = FALSE,col.names = FALSE)
 
 ## PULs per Family
 fam.arr <- MAGS.meta %>%
@@ -148,7 +148,7 @@ for (fam in fam.arr) {
     write.table(rawPULs.temp,file = paste("Taxa_Family/",fam,"/",fam,"_PULsDiversity.tsv",sep = ""),sep = "\t",quote = FALSE,row.names = FALSE,col.names = FALSE)
     write.table(pulscounts.temp,file = paste("Taxa_Family/",fam,"/",fam,"_PULsCounts.tsv",sep = ""),sep = "\t",quote = FALSE,row.names = FALSE,col.names = FALSE)
 }
-write.table(full.div.df,file = paste("Taxa_Family/","PULS.TaxaFamilyDiversity.tsv",sep = ""),sep = "\t",quote = FALSE,row.names = FALSE,col.names = FALSE)
+write.table(full.div.df,file = paste("Taxa_Family/","PULS.FamilyDiversity.tsv",sep = ""),sep = "\t",quote = FALSE,row.names = FALSE,col.names = FALSE)
 
 ## PULs per Ecosystem
 eco.arr <- MAGS.meta %>%

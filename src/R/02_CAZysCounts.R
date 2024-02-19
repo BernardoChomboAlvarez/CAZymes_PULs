@@ -127,7 +127,7 @@ for (class in class.arr) {
     write.table(rawCAZys.temp,file = paste("Taxa_Class/",class,"/",class,"_CAZysDiversity.tsv",sep = ""),sep = "\t",quote = FALSE,row.names = FALSE,col.names = FALSE)
     write.table(cazyscounts.temp,file = paste("Taxa_Class/",class,"/",class,"_CAZysCounts.tsv",sep = ""),sep = "\t",quote = FALSE,row.names = FALSE,col.names = FALSE)
 }
-write.table(full.div.df,file = paste("Taxa_Class/","CAZY.TaxaClassDiversity.tsv",sep = ""),sep = "\t",quote = FALSE,row.names = FALSE,col.names = FALSE)
+write.table(full.div.df,file = paste("Taxa_Class/","CAZY.ClassDiversity.tsv",sep = ""),sep = "\t",quote = FALSE,row.names = FALSE,col.names = FALSE)
 
 ## PULs per Order
 order.arr <- MAGS.meta %>%
@@ -158,7 +158,7 @@ for (ord in order.arr) {
     write.table(rawCAZys.temp,file = paste("Taxa_Order/",ord,"/",ord,"_CAZysDiversity.tsv",sep = ""),sep = "\t",quote = FALSE,row.names = FALSE,col.names = FALSE)
     write.table(cazyscounts.temp,file = paste("Taxa_Order/",ord,"/",ord,"_CAZysCounts.tsv",sep = ""),sep = "\t",quote = FALSE,row.names = FALSE,col.names = FALSE)
 }
-write.table(full.div.df,file = paste("Taxa_Order/","CAZY.TaxaOrderDiversity.tsv",sep = ""),sep = "\t",quote = FALSE,row.names = FALSE,col.names = FALSE)
+write.table(full.div.df,file = paste("Taxa_Order/","CAZY.OrderDiversity.tsv",sep = ""),sep = "\t",quote = FALSE,row.names = FALSE,col.names = FALSE)
 
 ## PULs per Family
 fam.arr <- MAGS.meta %>%
@@ -189,7 +189,7 @@ for (fam in fam.arr) {
     write.table(rawCAZys.temp,file = paste("Taxa_Family/",fam,"/",fam,"_CAZysDiversity.tsv",sep = ""),sep = "\t",quote = FALSE,row.names = FALSE,col.names = FALSE)
     write.table(cazyscounts.temp,file = paste("Taxa_Family/",fam,"/",fam,"_CAZysCounts.tsv",sep = ""),sep = "\t",quote = FALSE,row.names = FALSE,col.names = FALSE)
 }
-write.table(full.div.df,file = paste("Taxa_Family/","CAZY.TaxaFamilyDiversity.tsv",sep = ""),sep = "\t",quote = FALSE,row.names = FALSE,col.names = FALSE)
+write.table(full.div.df,file = paste("Taxa_Family/","CAZY.FamilyDiversity.tsv",sep = ""),sep = "\t",quote = FALSE,row.names = FALSE,col.names = FALSE)
 
 ## CAZys per Ecosystem
 eco.arr <- MAGS.meta %>%

@@ -1,3 +1,4 @@
+genome_id	metagenome_id	division	phylum	class	order	family	specie	genome_length	num_contigs	n50	num_16s	num_5s	num_23s	num_trna	completeness	contamination	quality_score	mimag_quality	otu_id	ecosystem_category	ecosystem_type	habitat	longitude	latitude	PULsFrequency	CAZysFrequency
 2199352035_5	2199352035	Bacteria	Bacteroidota	Bacteroidia	Chitinophagales	Chitinophagaceae		3243913	14	437687	0	2	0	39	100	0	100	MQ	OTU-8855	Solid waste	Composting	Decomposing wood	-65.75	18.3167	8	128
 3300000052_6	3300000052	Bacteria	Bdellovibrionota	Bdellovibrionia	Bdellovibrionales	Bdellovibrionaceae	GCA_002381805.1	3364908	50	133652	0	0	0	39	99.1	0	99.1	MQ	OTU-10776	Biotransformation	Microbial solubilization of coal	Hydrocarbon resource environments	-113.78	52.119	38	43
 3300000865_14	3300000865	Archaea	Crenarchaeota	Nitrososphaeria	Nitrososphaerales	UBA213		1431057	49	44699	1	1	1	41	99.03	0	99.03	HQ	OTU-12180	Aquatic	Thermal springs	Hot springs sediment	98.4408	25.4401	39	8

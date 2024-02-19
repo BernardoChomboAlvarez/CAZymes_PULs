@@ -123,10 +123,10 @@ MAGS.meta <- merge(MAGS.meta, CAZYSperMAG,
 MAGS.arr <- as.vector(read.table("1069MAGS_list.txt"))[[1]]
 
 
-## Extract the PULs that are present >= 25 MAGs
+## Extract the CAZys
 all.cazys <- data.frame()
 for (mag in MAGS.arr) {
-    ## Filter the 5 MAGs that do not have significant PULs associated with them
+    ## Filter the 5 MAGs that do not have significant CAZys associated with them
     if (mag == "3300007500_43" || mag == "3300011404_8" || mag == "3300012067_9" || mag == "3300012151_17" || mag == "3300012165_16" || mag == "3300007500_43") {
         next
     }
@@ -141,29 +141,30 @@ for (mag in MAGS.arr) {
     all.cazys <- rbind(all.cazys,df.temp)
 }
 
-
-## List of MAGs that have >= cazys than their mean
-mags.data <- as.data.frame(table(all.cazys$mag))
+## Extract the CAZys counts per MAG
+mags.data <- read.table(file = "CAZysperMAG.tsv",sep = "\t",header = FALSE)
+colnames(mags.data) <- c("mag","Freq")
 # summary(mags.data$Freq)
 # Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-# 1.00   17.00   26.00   32.28   43.00  108.00 
-mags.data.cut <- mags.data[mags.data$Freq >= 32,]
+# 0.00   27.00   48.00   57.67   73.00  273.00 
+mags.data.cut <- mags.data[mags.data$Freq >= 48,]
 # length(mags.data.cut$Var1)
-# [1] 453
-filtered.mags.vec <- as.vector(mags.data.cut$Var1)
+# [1] 539
+filtered.mags.vec <- as.vector(mags.data.cut$mag)
 
-## List of CAZys that are present >= their median
-cazys.data <- as.data.frame(table(all.cazys$cazy))
+## Extract CAZys diversity
+cazys.data <- read.table(file = "CAZYS.diversity.tsv",sep = "\t",header = FALSE)
+colnames(cazys.data) <- c("cazy","Freq")
 # summary(cazys.data$Freq)
 # Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-# 1.0     6.0    24.0    81.0    89.5  1041.0
-cazys.data.cut <- cazys.data[cazys.data$Freq >= 24,]
+# 1.0     6.0    27.0   145.4   108.2  5928.0 
+cazys.data.cut <- cazys.data[cazys.data$Freq >= 27,]
 # length(cazys.data.cut$Var1)
 # [1] 214
-filtered.cazys.vec <- as.vector(cazys.data.cut$Var1)
+filtered.cazys.vec <- as.vector(cazys.data.cut$cazy)
 
 # ===================================================================
-## At the end we will be working with a matrix 453 MAGs x 214 CAZys
+## At the end we will be working with a matrix 539 MAGs x 214 CAZys
 # ===================================================================
 
 
@@ -188,7 +189,7 @@ ECO.meta <- MAGS.meta[is.element(MAGS.meta$Row.names,filtered.mags.vec),]
 ECO.meta <- ECO.meta[order(ECO.meta$Ecosystem,decreasing = FALSE),]
 unique.df <- as.data.frame(unique(ECO.meta$Ecosystem))
 colnames(unique.df) <- c("Ecosystem")
-colvec<- c("#191970","#00FFFF","#088F8F","#1434A4","#CD7F32","#800020","#E97451","#6E260E","#8B0000","#C04000","#808000","#AAFF00","#228B22","#7CFC00","#008000","#32CD32") #,"#0FFF50","#FFBF00","#9370DB","#8A2BE2","#9932CC","#DA70D6","#FF69B4"
+colvec<- c("#191970","#00FFFF","#088F8F","#1434A4","#CD7F32","#800020","#E97451","#6E260E","#8B0000","#C04000","#808000","#AAFF00","#228B22","#7CFC00","#008000","#32CD32","#0FFF50","#FFBF00","#9370DB","#8A2BE2")#,"#9932CC","#DA70D6","#FF69B4"
 unique.df["Colvec"] <- colvec
 
 ## Merge both data frames
@@ -227,7 +228,7 @@ CLASS.meta <- MAGS.meta[is.element(MAGS.meta$Row.names,filtered.mags.vec),]
 CLASS.meta <- CLASS.meta[order(CLASS.meta$Class,decreasing = FALSE),]
 unique.df <- as.data.frame(unique(CLASS.meta$Class))
 colnames(unique.df) <- c("Class")
-colvec<- c("#191970", "#00FFFF", "#088F8F", "#1434A4", "#CD7F32", "#800020", "#E97451", "#6E260E", "#8B0000", "#C04000", "#808000", "#AAFF00", "#228B22", "#7CFC00") #, "#008000", "#32CD32", "#0FFF50", "#FFBF00", "#9370DB", "#8A2BE2", "#9932CC", "#DA70D6", "#FF69B4", "#FF4500", "#FFD700", "#00CED1", "#800080", "#FF00FF", "#FF6347", "#FF8C00", "#4169E1", "#7B68EE", "#D2691E", "#1E90FF", "#FF1493")
+colvec<- c("#191970", "#00FFFF", "#088F8F", "#1434A4", "#CD7F32", "#800020", "#E97451", "#6E260E", "#8B0000", "#C04000", "#808000", "#AAFF00", "#228B22", "#7CFC00", "#008000", "#32CD32", "#0FFF50", "#FFBF00", "#9370DB", "#8A2BE2")#, "#9932CC", "#DA70D6", "#FF69B4", "#FF4500", "#FFD700", "#00CED1", "#800080", "#FF00FF", "#FF6347", "#FF8C00", "#4169E1", "#7B68EE", "#D2691E", "#1E90FF", "#FF1493")
 unique.df["Colvec"] <- colvec
 
 ## Merge both data frames
@@ -266,7 +267,7 @@ ORDER.meta <- ORDER.meta[order(ORDER.meta$Order,decreasing = FALSE),]
 unique.df <- as.data.frame(unique(ORDER.meta$Order))
 colnames(unique.df) <- c("Order")
 #colvec <- c("#191970", "#00FFFF", "#088F8F", "#1434A4", "#CD7F32", "#800020", "#E97451", "#6E260E", "#8B0000", "#C04000", "#808000", "#AAFF00", "#228B22", "#7CFC00", "#008000", "#32CD32", "#0FFF50", "#FFBF00", "#9370DB", "#8A2BE2", "#9932CC", "#DA70D6", "#FF69B4", "#FF4500", "#FFD700", "#00CED1", "#800080", "#FF00FF", "#FF6347", "#FF8C00", "#4169E1", "#7B68EE", "#D2691E", "#1E90FF", "#FF1493", "#808080", "#A9A9A9", "#DC143C", "#00FF00", "#4169E1", "#FFFF00", "#00CED1", "#FF69B4", "#BDB76B", "#FF7F50", "#008080", "#DDA0DD", "#E6E6FA", "#ADFF2F", "#CD853F", "#00FFFF", "#FFD700", "#FF6347", "#C71585", "#000080", "#FF1493", "#0000FF", "#808080", "#FF4500", "#00FF00", "#008080", "#4682B4", "#2E8B57", "#FFFACD", "#FF69B4", "#FF4500", "#00FFFF", "#0000FF", "#FF1493", "#008080", "#808080", "#FFD700", "#00CED1", "#7B68EE", "#CD853F", "#ADFF2F", "#BDB76B", "#00FF00", "#808000", "#A9A9A9")
-colvec <- c("#191970", "#00FFFF", "#088F8F", "#1434A4", "#CD7F32", "#800020", "#E97451", "#6E260E", "#8B0000", "#C04000", "#808000", "#AAFF00", "#228B22", "#7CFC00", "#008000", "#32CD32", "#0FFF50", "#FFBF00", "#9370DB", "#8A2BE2", "#9932CC", "#DA70D6", "#FF69B4", "#FF4500", "#FFD700", "#00CED1", "#800080", "#FF00FF", "#FF6347", "#FF8C00", "#4169E1", "#7B68EE", "#D2691E", "#1E90FF", "#FF1493")#, "#808080", "#A9A9A9", "#DC143C", "#00FF00", "#4169E1", "#FFFF00", "#00CED1", "#FF69B4", "#BDB76B", "#FF7F50", "#008080", "#DDA0DD", "#E6E6FA", "#ADFF2F", "#CD853F", "#00FFFF", "#FFD700", "#FF6347", "#C71585", "#000080", "#FF1493", "#0000FF", "#808080", "#FF4500", "#00FF00", "#008080", "#4682B4", "#2E8B57", "#FFFACD", "#FF69B4", "#FF4500")
+colvec <- c("#191970", "#00FFFF", "#088F8F", "#1434A4", "#CD7F32", "#800020", "#E97451", "#6E260E", "#8B0000", "#C04000", "#808000", "#AAFF00", "#228B22", "#7CFC00", "#008000", "#32CD32", "#0FFF50", "#FFBF00", "#9370DB", "#8A2BE2", "#9932CC", "#DA70D6", "#FF69B4", "#FF4500", "#FFD700", "#00CED1", "#800080", "#FF00FF", "#FF6347", "#FF8C00", "#4169E1", "#7B68EE", "#D2691E", "#1E90FF", "#FF1493", "#808080", "#A9A9A9", "#DC143C", "#00FF00", "#4169E1", "#FFFF00", "#00CED1", "#FF69B4")#, "#BDB76B", "#FF7F50", "#008080", "#DDA0DD", "#E6E6FA", "#ADFF2F", "#CD853F", "#00FFFF", "#FFD700", "#FF6347", "#C71585", "#000080", "#FF1493", "#0000FF", "#808080", "#FF4500", "#00FF00", "#008080", "#4682B4", "#2E8B57", "#FFFACD", "#FF69B4", "#FF4500")
 unique.df["Colvec"] <- colvec
 
 ## Merge both data frames
@@ -305,7 +306,7 @@ FAM.meta <- FAM.meta[order(FAM.meta$Family,decreasing = FALSE),]
 unique.df <- as.data.frame(unique(FAM.meta$Family))
 colnames(unique.df) <- c("Family")
 #colvec <- c("#191970", "#00FFFF", "#088F8F", "#1434A4", "#CD7F32", "#800020", "#E97451", "#6E260E", "#8B0000", "#C04000", "#808000", "#AAFF00", "#228B22", "#7CFC00", "#008000", "#32CD32", "#0FFF50", "#FFBF00", "#9370DB", "#8A2BE2", "#9932CC", "#DA70D6", "#FF69B4", "#FF4500", "#FFD700", "#00CED1", "#800080", "#FF00FF", "#FF6347", "#FF8C00", "#4169E1", "#7B68EE", "#D2691E", "#1E90FF", "#FF1493", "#808080", "#A9A9A9", "#DC143C", "#00FF00", "#4169E1", "#FFFF00", "#00CED1", "#FF69B4", "#BDB76B", "#FF7F50", "#008080", "#DDA0DD", "#E6E6FA", "#ADFF2F", "#CD853F", "#00FFFF", "#FFD700", "#FF6347", "#C71585", "#000080", "#FF1493", "#0000FF", "#808080", "#FF4500", "#00FF00", "#008080", "#4682B4", "#2E8B57", "#FFFACD", "#FF69B4", "#FF4500", "#00FFFF", "#0000FF", "#FF1493", "#008080", "#808080", "#FFD700", "#00CED1", "#7B68EE", "#CD853F", "#ADFF2F", "#BDB76B", "#00FF00", "#808000", "#A9A9A9")
-colvec <- c("#191970", "#00FFFF", "#088F8F", "#1434A4", "#CD7F32", "#800020", "#E97451", "#6E260E", "#8B0000", "#C04000", "#808000", "#AAFF00", "#228B22", "#7CFC00", "#008000", "#32CD32", "#0FFF50", "#FFBF00", "#9370DB", "#8A2BE2", "#9932CC", "#DA70D6", "#FF69B4", "#FF4500", "#FFD700", "#00CED1", "#800080", "#FF00FF", "#FF6347", "#FF8C00", "#4169E1", "#7B68EE", "#D2691E", "#1E90FF", "#FF1493", "#808080", "#A9A9A9", "#DC143C", "#00FF00", "#4169E1", "#FFFF00", "#00CED1", "#FF69B4", "#BDB76B", "#FF7F50", "#008080", "#DDA0DD", "#E6E6FA", "#ADFF2F", "#CD853F", "#00FFFF", "#FFD700", "#FF6347", "#C71585", "#000080")#, "#FF1493", "#0000FF", "#808080", "#FF4500", "#00FF00", "#008080", "#4682B4", "#2E8B57", "#FFFACD", "#32CD32", "#0FFF50", "#FFBF00", "#9370DB", "#8A2BE2", "#9932CC", "#DA70D6", "#FF69B4", "#FF4500", "#FFD700", "#00CED1", "#800080", "#FF00FF", "#FF6347", "#FF8C00", "#4169E1", "#7B68EE", "#D2691E", "#1E90FF", "#FF1493", "#808080", "#A9A9A9", "#DC143C", "#00FF00", "#4169E1", "#FFFF00", "#00CED1", "#FF69B4", "#BDB76B", "#FF7F50", "#008080", "#DDA0DD", "#E6E6FA", "#ADFF2F", "#CD853F", "#FF6347", "#008B8B")
+colvec <- c("#191970", "#00FFFF", "#088F8F", "#1434A4", "#CD7F32", "#800020", "#E97451", "#6E260E", "#8B0000", "#C04000", "#808000", "#AAFF00", "#228B22", "#7CFC00", "#008000", "#32CD32", "#0FFF50", "#FFBF00", "#9370DB", "#8A2BE2", "#9932CC", "#DA70D6", "#FF69B4", "#FF4500", "#FFD700", "#00CED1", "#800080", "#FF00FF", "#FF6347", "#FF8C00", "#4169E1", "#7B68EE", "#D2691E", "#1E90FF", "#FF1493", "#808080", "#A9A9A9", "#DC143C", "#00FF00", "#4169E1", "#FFFF00", "#00CED1", "#FF69B4", "#BDB76B", "#FF7F50", "#008080", "#DDA0DD", "#E6E6FA", "#ADFF2F", "#CD853F", "#00FFFF", "#FFD700", "#FF6347", "#C71585", "#000080", "#FF1493", "#0000FF", "#808080", "#FF4500", "#00FF00", "#008080", "#4682B4", "#2E8B57", "#FFFACD", "#32CD32", "#0FFF50", "#FFBF00", "#9370DB", "#8A2BE2", "#9932CC", "#DA70D6", "#FF69B4")#, "#FF4500", "#FFD700", "#00CED1", "#800080", "#FF00FF", "#FF6347", "#FF8C00", "#4169E1", "#7B68EE", "#D2691E", "#1E90FF", "#FF1493", "#808080", "#A9A9A9", "#DC143C", "#00FF00", "#4169E1", "#FFFF00", "#00CED1", "#FF69B4", "#BDB76B", "#FF7F50", "#008080", "#DDA0DD", "#E6E6FA", "#ADFF2F", "#CD853F", "#FF6347", "#008B8B")
 unique.df["Colvec"] <- colvec
 
 ## Merge both data frames

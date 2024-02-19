@@ -24,5 +24,5 @@ MAGs.meta.df <- merge(MAGs.meta.df, CAZysperMAG.df,
                       by = 'genome_id', all = TRUE)
 
 ## Rewrite MAGs metadata
-write.table(MAGs.meta.df,file = "1069_MAGs_metadata.tsv",sep = "\t",quote = FALSE,row.names = FALSE,col.names = FALSE)
+write.table(MAGs.meta.df,file = "1069_MAGs_metadata.tsv",sep = "\t",quote = FALSE,row.names = FALSE,col.names = TRUE)
 
