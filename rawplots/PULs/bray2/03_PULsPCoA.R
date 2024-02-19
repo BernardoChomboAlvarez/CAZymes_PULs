@@ -16,12 +16,12 @@ plot.pcoa <- function(mtx,metadata,labels,component) {
         short.name <- component
     }
     
-    CAZys <- mtx
-    Bray=vegdist(CAZys,"bray")
-    CAZys_bray=capscale(Bray~-1)
-    CAZys_bray_eig = eigenvals(CAZys_bray)
-    percentage_variance_explained <- CAZys_bray_eig / sum(CAZys_bray_eig)
-    sum_percentage_variance_explained <- cumsum(CAZys_bray_eig / sum(CAZys_bray_eig))
+    PULs <- mtx
+    Bray=vegdist(PULs,"bray")
+    PULs_bray=capscale(Bray~-1)
+    PULs_bray_eig = eigenvals(PULs_bray)
+    percentage_variance_explained <- PULs_bray_eig / sum(PULs_bray_eig)
+    sum_percentage_variance_explained <- cumsum(PULs_bray_eig / sum(PULs_bray_eig))
     
     xlabel= as.numeric(format(round((percentage_variance_explained[1]*100), 2), nsmall = 2))
     xlabel= sprintf("%.2f %%", xlabel)
@@ -31,12 +31,12 @@ plot.pcoa <- function(mtx,metadata,labels,component) {
     ylabel= paste ("PCo2 (", ylabel, ")")
     
     gsites<- c(metadata[component])
-    Permanova_test <- adonis(formula = CAZys ~ gsites[[1]])
+    Permanova_test <- adonis(formula = PULs ~ gsites[[1]])
     pval <- Permanova_test$aov.tab$`Pr(>F)`[1]
-    H_CLustering=hclust(vegdist(CAZys,"bray"))
+    H_CLustering=hclust(vegdist(PULs,"bray"))
     
-    png(paste("bray_",short.name,"_CAZys_PCoA.png",sep = ""), width=3200, height=3200, res = 900)
-    plot(CAZys_bray,
+    png(paste("bray_",short.name,"_PULs_PCoA.png",sep = ""), width=3200, height=3200, res = 900)
+    plot(PULs_bray,
          family="Times",
          type="n",
          xlab="",
@@ -53,7 +53,7 @@ plot.pcoa <- function(mtx,metadata,labels,component) {
           cex.lab=0.4)
     title(xlab=xlabel,
           line=1.2, cex.lab=0.4)
-    title(main = paste("PCoA CAZys, ",component,sep = ""),
+    title(main = paste("PCoA PULs, ",component,sep = ""),
           cex.main = 0.7)
     abline(h=0,
            v=0,
@@ -68,13 +68,13 @@ plot.pcoa <- function(mtx,metadata,labels,component) {
     par(lty=2)
     
     # Adding the confidence intervals at two different levels (97.5% and 95%)
-    ordiellipse(CAZys_bray, groups = gsites[[1]],  kind = "sd",conf= 0.95, draw ="polygon", lwd = 0.5)
+    ordiellipse(PULs_bray, groups = gsites[[1]],  kind = "sd",conf= 0.95, draw ="polygon", lwd = 0.5)
     par(lty=2)
     # ordiellipse(PULs_bray, groups = gsites,  kind = "sd",conf= 0.95, draw ="polygon", col = "grey90", lwd = 0.5, lty=2)
     # par(lty=2)
     
-    ordicluster(CAZys_bray, H_CLustering, prune= 4, display = "sites", col = "grey", lwd = 0.5)
-    points(CAZys_bray, cex= 0.2, pch=21, col="black", bg= metadata$Colvec, lwd = 0.3)
+    ordicluster(PULs_bray, H_CLustering, prune= 4, display = "sites", col = "grey", lwd = 0.5)
+    points(PULs_bray, cex= 0.2, pch=21, col="black", bg= metadata$Colvec, lwd = 0.3)
     
     lgend.x=4.5
     legend.y=2.0
@@ -112,71 +112,70 @@ colnames(MAGS.meta) <- c("Class","Order","Family","Ecosystem")
 MAGS.meta$Ecosystem <- str_replace(MAGS.meta$Ecosystem," ","_")
 
 ## Read the PULs per MAG metadata
-CAZYSperMAG <- read.table(file = "CAZysperMAG.tsv",sep = "\t",header = FALSE,row.names = 1)
-colnames(CAZYSperMAG) <- c("CAZys")
+PULSperMAG <- read.table(file = "PULsperMAG.tsv",sep = "\t",header = FALSE,row.names = 1)
+colnames(PULSperMAG) <- c("PULs")
 
 ## Merge both data frames
-MAGS.meta <- merge(MAGS.meta, CAZYSperMAG,
+MAGS.meta <- merge(MAGS.meta, PULSperMAG,
                           by = 'row.names', all = TRUE)
 
 ## Import the data for a matrix
 MAGS.arr <- as.vector(read.table("1069MAGS_list.txt"))[[1]]
 
 
-## Extract the CAZys
-all.cazys <- data.frame()
+## Extract the PULs that are present >= 25 MAGs
+all.puls <- data.frame()
 for (mag in MAGS.arr) {
-    ## Filter the 5 MAGs that do not have significant CAZys associated with them
-    if (mag == "3300007500_43" || mag == "3300011404_8" || mag == "3300012067_9" || mag == "3300012151_17" || mag == "3300012165_16" || mag == "3300007500_43") {
+    ## Filter the 5 MAGs that do not have significant PULs associated with them
+    if (mag == "3300005326_35" || mag == "3300005370_1" || mag == "3300017650_9" || mag == "3300027284_65" || mag == "3300027607_50") {
         next
     }
     
-    df.temp <- read.table(file = paste(mag,"/output_dbcan4/",mag,".CAZyCounts.single.txt",sep = ""),sep = "\t",)
-    colnames(df.temp) <- c("cazy","frequency")
+    df.temp <- read.table(file = paste(mag,"/",mag,".matches_counts.out",sep = ""),sep = "\t",)
+    colnames(df.temp) <- c("pul","frequency")
     df.temp["mag"] <- mag
     df.temp <- df.temp %>%
-        select(mag,cazy,everything())
+        select(mag,pul,everything())
     
-    ## Create a dataframe with the nodes: mag = from, cazy = to, freq = value
-    all.cazys <- rbind(all.cazys,df.temp)
+    ## Create a dataframe with the nodes: mag = from, pul = to, freq = value
+    all.puls <- rbind(all.puls,df.temp)
 }
 
-## Extract the CAZys counts per MAG
-mags.data <- read.table(file = "CAZysperMAG.tsv",sep = "\t",header = FALSE)
-colnames(mags.data) <- c("mag","Freq")
+
+## List of MAGs that have >= puls than their mean
+mags.data <- as.data.frame(table(all.puls$mag))
 # summary(mags.data$Freq)
 # Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-# 0.00   27.00   48.00   57.67   73.00  273.00 
-mags.data.cut <- mags.data[mags.data$Freq >= 48,]
+# 2.00   14.00   25.00   29.65   39.25  173.00
+mags.data.cut <- mags.data[mags.data$Freq >= 30,]
 # length(mags.data.cut$Var1)
-# [1] 539
-filtered.mags.vec <- as.vector(mags.data.cut$mag)
+# [1] 445
+filtered.mags.vec <- as.vector(mags.data.cut$Var1)
 
-## Extract CAZys diversity
-cazys.data <- read.table(file = "CAZYS.diversity.tsv",sep = "\t",header = FALSE)
-colnames(cazys.data) <- c("cazy","Freq")
-# summary(cazys.data$Freq)
+## List of PULs that are present >= their mean
+puls.data <- as.data.frame(table(all.puls$pul))
+# summary(puls.data$Freq)
 # Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-# 1.0     6.0    27.0   145.4   108.2  5928.0 
-cazys.data.cut <- cazys.data[cazys.data$Freq >= 27,]
-# length(cazys.data.cut$Var1)
-# [1] 214
-filtered.cazys.vec <- as.vector(cazys.data.cut$cazy)
+# 1.00    2.00    6.00   23.15   18.00  695.00
+puls.data.cut <- puls.data[puls.data$Freq >= 23,]
+# length(puls.data.cut$Var1)
+# [1] 303
+filtered.puls.vec <- as.vector(puls.data.cut$Var1)
 
 # ===================================================================
-## At the end we will be working with a matrix 539 MAGs x 214 CAZys
+## At the end we will be working with a matrix 445 MAGs x 303 PULs
 # ===================================================================
 
 
 ## UNIVERSAL MATRIX GENERATION
 ## Use the current data
 ## Filter the original data by the filtered vectors
-matrix.data <- all.cazys[is.element(all.cazys$mag,filtered.mags.vec),]
-matrix.data <- matrix.data[is.element(matrix.data$cazy,filtered.cazys.vec),]
+matrix.data <- all.puls[is.element(all.puls$mag,filtered.mags.vec),]
+matrix.data <- matrix.data[is.element(matrix.data$pul,filtered.puls.vec),]
 
 ## Generate the matrix
 mtx <- matrix.data %>%
-    spread(cazy, frequency) %>%
+    spread(pul, frequency) %>%
     column_to_rownames('mag') %>%
     as.matrix() %>%
     replace(is.na(.), 0)
@@ -189,7 +188,7 @@ ECO.meta <- MAGS.meta[is.element(MAGS.meta$Row.names,filtered.mags.vec),]
 ECO.meta <- ECO.meta[order(ECO.meta$Ecosystem,decreasing = FALSE),]
 unique.df <- as.data.frame(unique(ECO.meta$Ecosystem))
 colnames(unique.df) <- c("Ecosystem")
-colvec<- c("#191970","#00FFFF","#088F8F","#1434A4","#CD7F32","#800020","#E97451","#6E260E","#8B0000","#C04000","#808000","#AAFF00","#228B22","#7CFC00","#008000","#32CD32","#0FFF50","#FFBF00","#9370DB","#8A2BE2")#,"#9932CC","#DA70D6","#FF69B4"
+colvec<- c("#191970","#00FFFF","#088F8F","#1434A4","#CD7F32","#800020","#E97451","#6E260E","#8B0000","#C04000","#808000","#AAFF00","#228B22","#7CFC00","#008000","#32CD32","#0FFF50","#FFBF00") #,"#9370DB","#8A2BE2","#9932CC","#DA70D6","#FF69B4"
 unique.df["Colvec"] <- colvec
 
 ## Merge both data frames
@@ -199,14 +198,14 @@ rownames(ECO.meta) <- ECO.meta$Row.names
 
 ## Order the matrix
 mags.sorted <- as.vector(ECO.meta$Row.names)
-CAZys <- mtx[match(mags.sorted,as.character(rownames(mtx))),]
-CAZys <- as.data.frame(CAZys)
-CAZys <- tibble::rownames_to_column(CAZys, "MAG")
-CAZys$MAG <- gsub("^X","",CAZys$MAG)
-CAZys2 <- CAZys[,-1]
-rownames(CAZys2) <- CAZys[,1]
-CAZys <- CAZys2
-CAZys <- CAZys %>%
+PULs <- mtx[match(mags.sorted,as.character(rownames(mtx))),]
+PULs <- as.data.frame(PULs)
+PULs <- tibble::rownames_to_column(PULs, "MAG")
+PULs$MAG <- gsub("^X","",PULs$MAG)
+PULs2 <- PULs[,-1]
+rownames(PULs2) <- PULs[,1]
+PULs <- PULs2
+PULs <- PULs %>%
     replace(is.na(.), 0)
 
 ## Define the labels
@@ -215,10 +214,9 @@ eco.labels <- ECO.meta %>%
     unname()
 eco.labels <- c(eco.labels)[[1]]
 eco.labels <- sort(eco.labels)
-eco.labels <- gsub("_"," ",eco.labels)
 
 ## Plot the PCoA
-plot.pcoa(mtx = CAZys,metadata = ECO.meta,labels = eco.labels,component = "Ecosystem")
+plot.pcoa(mtx = PULs,metadata = ECO.meta,labels = eco.labels,component = "Ecosystem")
 
 
 ## CLASS DATASET
@@ -228,7 +226,7 @@ CLASS.meta <- MAGS.meta[is.element(MAGS.meta$Row.names,filtered.mags.vec),]
 CLASS.meta <- CLASS.meta[order(CLASS.meta$Class,decreasing = FALSE),]
 unique.df <- as.data.frame(unique(CLASS.meta$Class))
 colnames(unique.df) <- c("Class")
-colvec<- c("#191970", "#00FFFF", "#088F8F", "#1434A4", "#CD7F32", "#800020", "#E97451", "#6E260E", "#8B0000", "#C04000", "#808000", "#AAFF00", "#228B22", "#7CFC00", "#008000", "#32CD32", "#0FFF50", "#FFBF00", "#9370DB", "#8A2BE2")#, "#9932CC", "#DA70D6", "#FF69B4", "#FF4500", "#FFD700", "#00CED1", "#800080", "#FF00FF", "#FF6347", "#FF8C00", "#4169E1", "#7B68EE", "#D2691E", "#1E90FF", "#FF1493")
+colvec<- c("#191970", "#00FFFF", "#088F8F", "#1434A4", "#CD7F32", "#800020", "#E97451", "#6E260E", "#8B0000", "#C04000", "#808000", "#AAFF00", "#228B22", "#7CFC00", "#008000", "#32CD32", "#0FFF50", "#FFBF00", "#9370DB", "#8A2BE2", "#9932CC", "#DA70D6", "#FF69B4", "#FF4500", "#FFD700", "#00CED1", "#800080", "#FF00FF", "#FF6347", "#FF8C00", "#4169E1", "#7B68EE", "#D2691E", "#1E90FF", "#FF1493")
 unique.df["Colvec"] <- colvec
 
 ## Merge both data frames
@@ -238,14 +236,14 @@ rownames(CLASS.meta) <- CLASS.meta$Row.names
 
 ## Order the matrix
 mags.sorted <- as.vector(CLASS.meta$Row.names)
-CAZys <- mtx[match(mags.sorted,as.character(rownames(mtx))),]
-CAZys <- as.data.frame(CAZys)
-CAZys <- tibble::rownames_to_column(CAZys, "MAG")
-CAZys$MAG <- gsub("^X","",CAZys$MAG)
-CAZys2 <- CAZys[,-1]
-rownames(CAZys2) <- CAZys[,1]
-CAZys <- CAZys2
-CAZys <- CAZys %>%
+PULs <- mtx[match(mags.sorted,as.character(rownames(mtx))),]
+PULs <- as.data.frame(PULs)
+PULs <- tibble::rownames_to_column(PULs, "MAG")
+PULs$MAG <- gsub("^X","",PULs$MAG)
+PULs2 <- PULs[,-1]
+rownames(PULs2) <- PULs[,1]
+PULs <- PULs2
+PULs <- PULs %>%
     replace(is.na(.), 0)
 
 ## Define the labels
@@ -256,7 +254,7 @@ class.labels <- c(class.labels)[[1]]
 class.labels <- sort(class.labels)
 
 ## Plot the PCoA
-plot.pcoa(mtx = CAZys,metadata = CLASS.meta,labels = class.labels,component = "Class")
+plot.pcoa(mtx = PULs,metadata = CLASS.meta,labels = class.labels,component = "Class")
 
 
 ## ORDER DATASET
@@ -267,7 +265,7 @@ ORDER.meta <- ORDER.meta[order(ORDER.meta$Order,decreasing = FALSE),]
 unique.df <- as.data.frame(unique(ORDER.meta$Order))
 colnames(unique.df) <- c("Order")
 #colvec <- c("#191970", "#00FFFF", "#088F8F", "#1434A4", "#CD7F32", "#800020", "#E97451", "#6E260E", "#8B0000", "#C04000", "#808000", "#AAFF00", "#228B22", "#7CFC00", "#008000", "#32CD32", "#0FFF50", "#FFBF00", "#9370DB", "#8A2BE2", "#9932CC", "#DA70D6", "#FF69B4", "#FF4500", "#FFD700", "#00CED1", "#800080", "#FF00FF", "#FF6347", "#FF8C00", "#4169E1", "#7B68EE", "#D2691E", "#1E90FF", "#FF1493", "#808080", "#A9A9A9", "#DC143C", "#00FF00", "#4169E1", "#FFFF00", "#00CED1", "#FF69B4", "#BDB76B", "#FF7F50", "#008080", "#DDA0DD", "#E6E6FA", "#ADFF2F", "#CD853F", "#00FFFF", "#FFD700", "#FF6347", "#C71585", "#000080", "#FF1493", "#0000FF", "#808080", "#FF4500", "#00FF00", "#008080", "#4682B4", "#2E8B57", "#FFFACD", "#FF69B4", "#FF4500", "#00FFFF", "#0000FF", "#FF1493", "#008080", "#808080", "#FFD700", "#00CED1", "#7B68EE", "#CD853F", "#ADFF2F", "#BDB76B", "#00FF00", "#808000", "#A9A9A9")
-colvec <- c("#191970", "#00FFFF", "#088F8F", "#1434A4", "#CD7F32", "#800020", "#E97451", "#6E260E", "#8B0000", "#C04000", "#808000", "#AAFF00", "#228B22", "#7CFC00", "#008000", "#32CD32", "#0FFF50", "#FFBF00", "#9370DB", "#8A2BE2", "#9932CC", "#DA70D6", "#FF69B4", "#FF4500", "#FFD700", "#00CED1", "#800080", "#FF00FF", "#FF6347", "#FF8C00", "#4169E1", "#7B68EE", "#D2691E", "#1E90FF", "#FF1493", "#808080", "#A9A9A9", "#DC143C", "#00FF00", "#4169E1", "#FFFF00", "#00CED1", "#FF69B4")#, "#BDB76B", "#FF7F50", "#008080", "#DDA0DD", "#E6E6FA", "#ADFF2F", "#CD853F", "#00FFFF", "#FFD700", "#FF6347", "#C71585", "#000080", "#FF1493", "#0000FF", "#808080", "#FF4500", "#00FF00", "#008080", "#4682B4", "#2E8B57", "#FFFACD", "#FF69B4", "#FF4500")
+colvec <- c("#191970", "#00FFFF", "#088F8F", "#1434A4", "#CD7F32", "#800020", "#E97451", "#6E260E", "#8B0000", "#C04000", "#808000", "#AAFF00", "#228B22", "#7CFC00", "#008000", "#32CD32", "#0FFF50", "#FFBF00", "#9370DB", "#8A2BE2", "#9932CC", "#DA70D6", "#FF69B4", "#FF4500", "#FFD700", "#00CED1", "#800080", "#FF00FF", "#FF6347", "#FF8C00", "#4169E1", "#7B68EE", "#D2691E", "#1E90FF", "#FF1493", "#808080", "#A9A9A9", "#DC143C", "#00FF00", "#4169E1", "#FFFF00", "#00CED1", "#FF69B4", "#BDB76B", "#FF7F50", "#008080", "#DDA0DD", "#E6E6FA", "#ADFF2F", "#CD853F", "#00FFFF", "#FFD700", "#FF6347", "#C71585", "#000080", "#FF1493", "#0000FF", "#808080", "#FF4500", "#00FF00", "#008080", "#4682B4", "#2E8B57", "#FFFACD", "#FF69B4", "#FF4500")
 unique.df["Colvec"] <- colvec
 
 ## Merge both data frames
@@ -277,14 +275,14 @@ rownames(ORDER.meta) <- ORDER.meta$Row.names
 
 ## Order the matrix
 mags.sorted <- as.vector(ORDER.meta$Row.names)
-CAZys <- mtx[match(mags.sorted,as.character(rownames(mtx))),]
-CAZys <- as.data.frame(CAZys)
-CAZys <- tibble::rownames_to_column(CAZys, "MAG")
-CAZys$MAG <- gsub("^X","",CAZys$MAG)
-CAZys2 <- CAZys[,-1]
-rownames(CAZys2) <- CAZys[,1]
-CAZys <- CAZys2
-CAZys <- CAZys %>%
+PULs <- mtx[match(mags.sorted,as.character(rownames(mtx))),]
+PULs <- as.data.frame(PULs)
+PULs <- tibble::rownames_to_column(PULs, "MAG")
+PULs$MAG <- gsub("^X","",PULs$MAG)
+PULs2 <- PULs[,-1]
+rownames(PULs2) <- PULs[,1]
+PULs <- PULs2
+PULs <- PULs %>%
     replace(is.na(.), 0)
 
 ## Define the labels
@@ -295,7 +293,7 @@ order.labels <- c(order.labels)[[1]]
 order.labels <- sort(order.labels)
 
 ## Plot the PCoA
-plot.pcoa(mtx = CAZys,metadata = ORDER.meta,labels = order.labels,component = "Order")
+plot.pcoa(mtx = PULs,metadata = ORDER.meta,labels = order.labels,component = "Order")
 
 
 ## FAMILY DATASET
@@ -306,7 +304,7 @@ FAM.meta <- FAM.meta[order(FAM.meta$Family,decreasing = FALSE),]
 unique.df <- as.data.frame(unique(FAM.meta$Family))
 colnames(unique.df) <- c("Family")
 #colvec <- c("#191970", "#00FFFF", "#088F8F", "#1434A4", "#CD7F32", "#800020", "#E97451", "#6E260E", "#8B0000", "#C04000", "#808000", "#AAFF00", "#228B22", "#7CFC00", "#008000", "#32CD32", "#0FFF50", "#FFBF00", "#9370DB", "#8A2BE2", "#9932CC", "#DA70D6", "#FF69B4", "#FF4500", "#FFD700", "#00CED1", "#800080", "#FF00FF", "#FF6347", "#FF8C00", "#4169E1", "#7B68EE", "#D2691E", "#1E90FF", "#FF1493", "#808080", "#A9A9A9", "#DC143C", "#00FF00", "#4169E1", "#FFFF00", "#00CED1", "#FF69B4", "#BDB76B", "#FF7F50", "#008080", "#DDA0DD", "#E6E6FA", "#ADFF2F", "#CD853F", "#00FFFF", "#FFD700", "#FF6347", "#C71585", "#000080", "#FF1493", "#0000FF", "#808080", "#FF4500", "#00FF00", "#008080", "#4682B4", "#2E8B57", "#FFFACD", "#FF69B4", "#FF4500", "#00FFFF", "#0000FF", "#FF1493", "#008080", "#808080", "#FFD700", "#00CED1", "#7B68EE", "#CD853F", "#ADFF2F", "#BDB76B", "#00FF00", "#808000", "#A9A9A9")
-colvec <- c("#191970", "#00FFFF", "#088F8F", "#1434A4", "#CD7F32", "#800020", "#E97451", "#6E260E", "#8B0000", "#C04000", "#808000", "#AAFF00", "#228B22", "#7CFC00", "#008000", "#32CD32", "#0FFF50", "#FFBF00", "#9370DB", "#8A2BE2", "#9932CC", "#DA70D6", "#FF69B4", "#FF4500", "#FFD700", "#00CED1", "#800080", "#FF00FF", "#FF6347", "#FF8C00", "#4169E1", "#7B68EE", "#D2691E", "#1E90FF", "#FF1493", "#808080", "#A9A9A9", "#DC143C", "#00FF00", "#4169E1", "#FFFF00", "#00CED1", "#FF69B4", "#BDB76B", "#FF7F50", "#008080", "#DDA0DD", "#E6E6FA", "#ADFF2F", "#CD853F", "#00FFFF", "#FFD700", "#FF6347", "#C71585", "#000080", "#FF1493", "#0000FF", "#808080", "#FF4500", "#00FF00", "#008080", "#4682B4", "#2E8B57", "#FFFACD", "#32CD32", "#0FFF50", "#FFBF00", "#9370DB", "#8A2BE2", "#9932CC", "#DA70D6", "#FF69B4")#, "#FF4500", "#FFD700", "#00CED1", "#800080", "#FF00FF", "#FF6347", "#FF8C00", "#4169E1", "#7B68EE", "#D2691E", "#1E90FF", "#FF1493", "#808080", "#A9A9A9", "#DC143C", "#00FF00", "#4169E1", "#FFFF00", "#00CED1", "#FF69B4", "#BDB76B", "#FF7F50", "#008080", "#DDA0DD", "#E6E6FA", "#ADFF2F", "#CD853F", "#FF6347", "#008B8B")
+colvec <- c("#191970", "#00FFFF", "#088F8F", "#1434A4", "#CD7F32", "#800020", "#E97451", "#6E260E", "#8B0000", "#C04000", "#808000", "#AAFF00", "#228B22", "#7CFC00", "#008000", "#32CD32", "#0FFF50", "#FFBF00", "#9370DB", "#8A2BE2", "#9932CC", "#DA70D6", "#FF69B4", "#FF4500", "#FFD700", "#00CED1", "#800080", "#FF00FF", "#FF6347", "#FF8C00", "#4169E1", "#7B68EE", "#D2691E", "#1E90FF", "#FF1493", "#808080", "#A9A9A9", "#DC143C", "#00FF00", "#4169E1", "#FFFF00", "#00CED1", "#FF69B4", "#BDB76B", "#FF7F50", "#008080", "#DDA0DD", "#E6E6FA", "#ADFF2F", "#CD853F", "#00FFFF", "#FFD700", "#FF6347", "#C71585", "#000080", "#FF1493", "#0000FF", "#808080", "#FF4500", "#00FF00", "#008080", "#4682B4", "#2E8B57", "#FFFACD", "#32CD32", "#0FFF50", "#FFBF00", "#9370DB", "#8A2BE2", "#9932CC", "#DA70D6", "#FF69B4", "#FF4500", "#FFD700", "#00CED1", "#800080", "#FF00FF", "#FF6347", "#FF8C00", "#4169E1", "#7B68EE", "#D2691E", "#1E90FF", "#FF1493", "#808080", "#A9A9A9", "#DC143C", "#00FF00", "#4169E1", "#FFFF00", "#00CED1", "#FF69B4", "#BDB76B", "#FF7F50", "#008080", "#DDA0DD", "#E6E6FA", "#ADFF2F", "#CD853F", "#FF6347", "#008B8B")
 unique.df["Colvec"] <- colvec
 
 ## Merge both data frames
@@ -316,14 +314,14 @@ rownames(FAM.meta) <- FAM.meta$Row.names
 
 ## Order the matrix
 mags.sorted <- as.vector(FAM.meta$Row.names)
-CAZys <- mtx[match(mags.sorted,as.character(rownames(mtx))),]
-CAZys <- as.data.frame(CAZys)
-CAZys <- tibble::rownames_to_column(CAZys, "MAG")
-CAZys$MAG <- gsub("^X","",CAZys$MAG)
-CAZys2 <- CAZys[,-1]
-rownames(CAZys2) <- CAZys[,1]
-CAZys <- CAZys2
-CAZys <- CAZys %>%
+PULs <- mtx[match(mags.sorted,as.character(rownames(mtx))),]
+PULs <- as.data.frame(PULs)
+PULs <- tibble::rownames_to_column(PULs, "MAG")
+PULs$MAG <- gsub("^X","",PULs$MAG)
+PULs2 <- PULs[,-1]
+rownames(PULs2) <- PULs[,1]
+PULs <- PULs2
+PULs <- PULs %>%
     replace(is.na(.), 0)
 
 ## Define the labels
@@ -334,7 +332,7 @@ family.labels <- c(family.labels)[[1]]
 family.labels <- sort(family.labels)
 
 ## Plot the PCoA
-plot.pcoa(mtx = CAZys,metadata = FAM.meta,labels = family.labels,component = "Family")
+plot.pcoa(mtx = PULs,metadata = FAM.meta,labels = family.labels,component = "Family")
 
 
 ## Create the heatmap
