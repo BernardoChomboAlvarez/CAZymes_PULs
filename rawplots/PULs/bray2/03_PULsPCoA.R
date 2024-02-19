@@ -142,27 +142,25 @@ for (mag in MAGS.arr) {
 }
 
 
-## Extract the PULs counts per MAG
-mags.data <- read.table(file = "PULsperMAG.tsv",sep = "\t",header = FALSE)
-colnames(mags.data) <- c("mag","Freq")
+## List of MAGs that have >= puls than their mean
+mags.data <- as.data.frame(table(all.puls$mag))
 # summary(mags.data$Freq)
 # Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-# 0.00   27.00   48.00   57.67   73.00  273.00 
-mags.data.cut <- mags.data[mags.data$Freq >= 48,]
-# length(mags.data.cut$mag)
-# [1] 240
-filtered.mags.vec <- as.vector(mags.data.cut$mag)
+# 2.00   14.00   25.00   29.65   39.25  173.00
+mags.data.cut <- mags.data[mags.data$Freq >= 30,]
+# length(mags.data.cut$Var1)
+# [1] 445
+filtered.mags.vec <- as.vector(mags.data.cut$Var1)
 
-## Extract PULs diversity
-puls.data <- read.table(file = "PULS.diversity.tsv",sep = "\t",header = FALSE)
-colnames(puls.data) <- c("puls","Freq")
+## List of PULs that are present >= their mean
+puls.data <- as.data.frame(table(all.puls$pul))
 # summary(puls.data$Freq)
 # Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-# 1.00    2.00    6.00   26.54   19.50  988.00 
-puls.data.cut <- puls.data[puls.data$Freq >= 27,]
-# length(puls.data.cut$puls)
-# [1] 285
-filtered.puls.vec <- as.vector(puls.data.cut$puls)
+# 1.00    2.00    6.00   23.15   18.00  695.00
+puls.data.cut <- puls.data[puls.data$Freq >= 23,]
+# length(puls.data.cut$Var1)
+# [1] 303
+filtered.puls.vec <- as.vector(puls.data.cut$Var1)
 
 # ===================================================================
 ## At the end we will be working with a matrix 445 MAGs x 303 PULs
@@ -190,7 +188,7 @@ ECO.meta <- MAGS.meta[is.element(MAGS.meta$Row.names,filtered.mags.vec),]
 ECO.meta <- ECO.meta[order(ECO.meta$Ecosystem,decreasing = FALSE),]
 unique.df <- as.data.frame(unique(ECO.meta$Ecosystem))
 colnames(unique.df) <- c("Ecosystem")
-colvec<- c("#191970","#00FFFF","#088F8F","#1434A4","#CD7F32","#800020","#E97451","#6E260E","#8B0000","#C04000","#808000","#AAFF00","#228B22","#7CFC00","#008000")#,"#32CD32","#0FFF50","#FFBF00") #,"#9370DB","#8A2BE2","#9932CC","#DA70D6","#FF69B4"
+colvec<- c("#191970","#00FFFF","#088F8F","#1434A4","#CD7F32","#800020","#E97451","#6E260E","#8B0000","#C04000","#808000","#AAFF00","#228B22","#7CFC00","#008000","#32CD32","#0FFF50","#FFBF00") #,"#9370DB","#8A2BE2","#9932CC","#DA70D6","#FF69B4"
 unique.df["Colvec"] <- colvec
 
 ## Merge both data frames
@@ -228,7 +226,7 @@ CLASS.meta <- MAGS.meta[is.element(MAGS.meta$Row.names,filtered.mags.vec),]
 CLASS.meta <- CLASS.meta[order(CLASS.meta$Class,decreasing = FALSE),]
 unique.df <- as.data.frame(unique(CLASS.meta$Class))
 colnames(unique.df) <- c("Class")
-colvec<- c("#191970", "#00FFFF", "#088F8F", "#1434A4", "#CD7F32", "#800020", "#E97451", "#6E260E", "#8B0000", "#C04000", "#808000", "#AAFF00", "#228B22", "#7CFC00", "#008000", "#32CD32", "#0FFF50", "#FFBF00", "#9370DB", "#8A2BE2", "#9932CC", "#DA70D6", "#FF69B4", "#FF4500", "#FFD700", "#00CED1", "#800080", "#FF00FF", "#FF6347", "#FF8C00", "#4169E1", "#7B68EE")#, "#D2691E", "#1E90FF", "#FF1493")
+colvec<- c("#191970", "#00FFFF", "#088F8F", "#1434A4", "#CD7F32", "#800020", "#E97451", "#6E260E", "#8B0000", "#C04000", "#808000", "#AAFF00", "#228B22", "#7CFC00", "#008000", "#32CD32", "#0FFF50", "#FFBF00", "#9370DB", "#8A2BE2", "#9932CC", "#DA70D6", "#FF69B4", "#FF4500", "#FFD700", "#00CED1", "#800080", "#FF00FF", "#FF6347", "#FF8C00", "#4169E1", "#7B68EE", "#D2691E", "#1E90FF", "#FF1493")
 unique.df["Colvec"] <- colvec
 
 ## Merge both data frames
@@ -267,7 +265,7 @@ ORDER.meta <- ORDER.meta[order(ORDER.meta$Order,decreasing = FALSE),]
 unique.df <- as.data.frame(unique(ORDER.meta$Order))
 colnames(unique.df) <- c("Order")
 #colvec <- c("#191970", "#00FFFF", "#088F8F", "#1434A4", "#CD7F32", "#800020", "#E97451", "#6E260E", "#8B0000", "#C04000", "#808000", "#AAFF00", "#228B22", "#7CFC00", "#008000", "#32CD32", "#0FFF50", "#FFBF00", "#9370DB", "#8A2BE2", "#9932CC", "#DA70D6", "#FF69B4", "#FF4500", "#FFD700", "#00CED1", "#800080", "#FF00FF", "#FF6347", "#FF8C00", "#4169E1", "#7B68EE", "#D2691E", "#1E90FF", "#FF1493", "#808080", "#A9A9A9", "#DC143C", "#00FF00", "#4169E1", "#FFFF00", "#00CED1", "#FF69B4", "#BDB76B", "#FF7F50", "#008080", "#DDA0DD", "#E6E6FA", "#ADFF2F", "#CD853F", "#00FFFF", "#FFD700", "#FF6347", "#C71585", "#000080", "#FF1493", "#0000FF", "#808080", "#FF4500", "#00FF00", "#008080", "#4682B4", "#2E8B57", "#FFFACD", "#FF69B4", "#FF4500", "#00FFFF", "#0000FF", "#FF1493", "#008080", "#808080", "#FFD700", "#00CED1", "#7B68EE", "#CD853F", "#ADFF2F", "#BDB76B", "#00FF00", "#808000", "#A9A9A9")
-colvec <- c("#191970", "#00FFFF", "#088F8F", "#1434A4", "#CD7F32", "#800020", "#E97451", "#6E260E", "#8B0000", "#C04000", "#808000", "#AAFF00", "#228B22", "#7CFC00", "#008000", "#32CD32", "#0FFF50", "#FFBF00", "#9370DB", "#8A2BE2", "#9932CC", "#DA70D6", "#FF69B4", "#FF4500", "#FFD700", "#00CED1", "#800080", "#FF00FF", "#FF6347", "#FF8C00", "#4169E1", "#7B68EE", "#D2691E", "#1E90FF", "#FF1493", "#808080", "#A9A9A9", "#DC143C", "#00FF00", "#4169E1", "#FFFF00", "#00CED1", "#FF69B4", "#BDB76B", "#FF7F50", "#008080", "#DDA0DD", "#E6E6FA", "#ADFF2F", "#CD853F", "#00FFFF", "#FFD700", "#FF6347", "#C71585", "#000080", "#FF1493", "#0000FF", "#808080")#, "#FF4500", "#00FF00", "#008080", "#4682B4", "#2E8B57", "#FFFACD", "#FF69B4", "#FF4500")
+colvec <- c("#191970", "#00FFFF", "#088F8F", "#1434A4", "#CD7F32", "#800020", "#E97451", "#6E260E", "#8B0000", "#C04000", "#808000", "#AAFF00", "#228B22", "#7CFC00", "#008000", "#32CD32", "#0FFF50", "#FFBF00", "#9370DB", "#8A2BE2", "#9932CC", "#DA70D6", "#FF69B4", "#FF4500", "#FFD700", "#00CED1", "#800080", "#FF00FF", "#FF6347", "#FF8C00", "#4169E1", "#7B68EE", "#D2691E", "#1E90FF", "#FF1493", "#808080", "#A9A9A9", "#DC143C", "#00FF00", "#4169E1", "#FFFF00", "#00CED1", "#FF69B4", "#BDB76B", "#FF7F50", "#008080", "#DDA0DD", "#E6E6FA", "#ADFF2F", "#CD853F", "#00FFFF", "#FFD700", "#FF6347", "#C71585", "#000080", "#FF1493", "#0000FF", "#808080", "#FF4500", "#00FF00", "#008080", "#4682B4", "#2E8B57", "#FFFACD", "#FF69B4", "#FF4500")
 unique.df["Colvec"] <- colvec
 
 ## Merge both data frames
@@ -306,7 +304,7 @@ FAM.meta <- FAM.meta[order(FAM.meta$Family,decreasing = FALSE),]
 unique.df <- as.data.frame(unique(FAM.meta$Family))
 colnames(unique.df) <- c("Family")
 #colvec <- c("#191970", "#00FFFF", "#088F8F", "#1434A4", "#CD7F32", "#800020", "#E97451", "#6E260E", "#8B0000", "#C04000", "#808000", "#AAFF00", "#228B22", "#7CFC00", "#008000", "#32CD32", "#0FFF50", "#FFBF00", "#9370DB", "#8A2BE2", "#9932CC", "#DA70D6", "#FF69B4", "#FF4500", "#FFD700", "#00CED1", "#800080", "#FF00FF", "#FF6347", "#FF8C00", "#4169E1", "#7B68EE", "#D2691E", "#1E90FF", "#FF1493", "#808080", "#A9A9A9", "#DC143C", "#00FF00", "#4169E1", "#FFFF00", "#00CED1", "#FF69B4", "#BDB76B", "#FF7F50", "#008080", "#DDA0DD", "#E6E6FA", "#ADFF2F", "#CD853F", "#00FFFF", "#FFD700", "#FF6347", "#C71585", "#000080", "#FF1493", "#0000FF", "#808080", "#FF4500", "#00FF00", "#008080", "#4682B4", "#2E8B57", "#FFFACD", "#FF69B4", "#FF4500", "#00FFFF", "#0000FF", "#FF1493", "#008080", "#808080", "#FFD700", "#00CED1", "#7B68EE", "#CD853F", "#ADFF2F", "#BDB76B", "#00FF00", "#808000", "#A9A9A9")
-colvec <- c("#191970", "#00FFFF", "#088F8F", "#1434A4", "#CD7F32", "#800020", "#E97451", "#6E260E", "#8B0000", "#C04000", "#808000", "#AAFF00", "#228B22", "#7CFC00", "#008000", "#32CD32", "#0FFF50", "#FFBF00", "#9370DB", "#8A2BE2", "#9932CC", "#DA70D6", "#FF69B4", "#FF4500", "#FFD700", "#00CED1", "#800080", "#FF00FF", "#FF6347", "#FF8C00", "#4169E1", "#7B68EE", "#D2691E", "#1E90FF", "#FF1493", "#808080", "#A9A9A9", "#DC143C", "#00FF00", "#4169E1", "#FFFF00", "#00CED1", "#FF69B4", "#BDB76B", "#FF7F50", "#008080", "#DDA0DD", "#E6E6FA", "#ADFF2F", "#CD853F", "#00FFFF", "#FFD700", "#FF6347", "#C71585", "#000080", "#FF1493", "#0000FF", "#808080", "#FF4500", "#00FF00", "#008080", "#4682B4", "#2E8B57", "#FFFACD", "#32CD32", "#0FFF50", "#FFBF00", "#9370DB", "#8A2BE2", "#9932CC", "#DA70D6", "#FF69B4", "#FF4500", "#FFD700", "#00CED1", "#800080", "#FF00FF", "#FF6347")#, "#FF8C00", "#4169E1", "#7B68EE", "#D2691E", "#1E90FF", "#FF1493", "#808080", "#A9A9A9", "#DC143C", "#00FF00", "#4169E1", "#FFFF00", "#00CED1", "#FF69B4", "#BDB76B", "#FF7F50", "#008080", "#DDA0DD", "#E6E6FA", "#ADFF2F", "#CD853F", "#FF6347", "#008B8B")
+colvec <- c("#191970", "#00FFFF", "#088F8F", "#1434A4", "#CD7F32", "#800020", "#E97451", "#6E260E", "#8B0000", "#C04000", "#808000", "#AAFF00", "#228B22", "#7CFC00", "#008000", "#32CD32", "#0FFF50", "#FFBF00", "#9370DB", "#8A2BE2", "#9932CC", "#DA70D6", "#FF69B4", "#FF4500", "#FFD700", "#00CED1", "#800080", "#FF00FF", "#FF6347", "#FF8C00", "#4169E1", "#7B68EE", "#D2691E", "#1E90FF", "#FF1493", "#808080", "#A9A9A9", "#DC143C", "#00FF00", "#4169E1", "#FFFF00", "#00CED1", "#FF69B4", "#BDB76B", "#FF7F50", "#008080", "#DDA0DD", "#E6E6FA", "#ADFF2F", "#CD853F", "#00FFFF", "#FFD700", "#FF6347", "#C71585", "#000080", "#FF1493", "#0000FF", "#808080", "#FF4500", "#00FF00", "#008080", "#4682B4", "#2E8B57", "#FFFACD", "#32CD32", "#0FFF50", "#FFBF00", "#9370DB", "#8A2BE2", "#9932CC", "#DA70D6", "#FF69B4", "#FF4500", "#FFD700", "#00CED1", "#800080", "#FF00FF", "#FF6347", "#FF8C00", "#4169E1", "#7B68EE", "#D2691E", "#1E90FF", "#FF1493", "#808080", "#A9A9A9", "#DC143C", "#00FF00", "#4169E1", "#FFFF00", "#00CED1", "#FF69B4", "#BDB76B", "#FF7F50", "#008080", "#DDA0DD", "#E6E6FA", "#ADFF2F", "#CD853F", "#FF6347", "#008B8B")
 unique.df["Colvec"] <- colvec
 
 ## Merge both data frames
