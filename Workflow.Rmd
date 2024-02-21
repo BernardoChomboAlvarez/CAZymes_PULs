@@ -1,0 +1,1107 @@
+---
+title: "Workflow: PULs diversity in the Pacific Ocean's sediment"
+author: "Bernardo Chombo-Álvarez"
+date: "02-21-2024"
+output:
+  html_document:
+    toc: true
+    code_fold: show
+header-includes:
+   - \usepackage{setspace}
+   - \singlespacing
+   - \usepackage{paralist}
+   - \let\itemsize\compactitem
+fontsize: 11pt
+mainfont: Calibri
+sansfont: Calibri
+monofont: Calibri
+indent: true
+---
+
+# Introduction
+
+
+# 1. Libraries and Workspace
+```{r libs, include=TRUE, echo=TRUE, warning=FALSE, message=FALSE, eval=TRUE, fig.align='center'}
+suppressPackageStartupMessages(library(dplyr))
+suppressPackageStartupMessages(library(dendextend))
+suppressPackageStartupMessages(library(tidyr))
+suppressPackageStartupMessages(library(textshape))
+suppressPackageStartupMessages(library(stringr))
+suppressPackageStartupMessages(library(vegan))
+suppressPackageStartupMessages(library(pracma))
+suppressPackageStartupMessages(library(ggplot2))
+suppressPackageStartupMessages(library(readxl))
+```
+
+```{r reproducibility, include=TRUE,warning=FALSE,message=FALSE,eval=FALSE,echo=TRUE}
+session_info()
+
+# ─ Session info ───────────────────────────────────────
+#  setting  value
+#  version  R version 4.3.2 (2023-10-31)
+#  os       Manjaro Linux
+#  system   x86_64, linux-gnu
+#  ui       RStudio
+#  language (EN)
+#  collate  en_US.UTF-8
+#  ctype    en_US.UTF-8
+#  tz       America/Mexico_City
+#  date     2024-02-21
+#  rstudio  2023.09.1+494 Desert Sunflower (desktop)
+#  pandoc   3.1.6 @ /usr/bin/ (via rmarkdown)
+# 
+# ─ Packages ───────────────────────────────────────────
+#  package       * version date (UTC) lib source
+#  ape             5.7-1   2023-03-13 [1] CRAN (R 4.3.2)
+#  cellranger      1.1.0   2016-07-27 [1] CRAN (R 4.3.2)
+#  circlize      * 0.4.16  2024-02-20 [1] CRAN (R 4.3.2)
+#  cli             3.6.2   2023-12-11 [1] CRAN (R 4.3.2)
+#  cluster         2.1.4   2022-08-22 [2] CRAN (R 4.3.2)
+#  colorspace      2.1-0   2023-01-23 [1] CRAN (R 4.3.1)
+#  data.table      1.15.0  2024-01-30 [1] CRAN (R 4.3.2)
+#  dendextend    * 1.17.1  2023-03-25 [1] CRAN (R 4.3.2)
+#  digest          0.6.34  2024-01-11 [1] CRAN (R 4.3.2)
+#  dplyr         * 1.1.4   2023-11-17 [1] CRAN (R 4.3.2)
+#  evaluate        0.23    2023-11-01 [1] CRAN (R 4.3.2)
+#  factoextra      1.0.7   2020-04-01 [1] CRAN (R 4.3.2)
+#  fansi           1.0.6   2023-12-08 [1] CRAN (R 4.3.2)
+#  fastmap         1.1.1   2023-02-24 [1] CRAN (R 4.3.2)
+#  generics        0.1.3   2022-07-05 [1] CRAN (R 4.3.2)
+#  ggplot2       * 3.4.4   2023-10-12 [1] CRAN (R 4.3.2)
+#  ggrepel         0.9.5   2024-01-10 [1] CRAN (R 4.3.2)
+#  GlobalOptions   0.1.2   2020-06-10 [1] CRAN (R 4.3.2)
+#  glue            1.7.0   2024-01-09 [1] CRAN (R 4.3.2)
+#  gridExtra       2.3     2017-09-09 [1] CRAN (R 4.3.2)
+#  gtable          0.3.4   2023-08-21 [1] CRAN (R 4.3.1)
+#  htmltools       0.5.7   2023-11-03 [1] CRAN (R 4.3.2)
+#  knitr           1.45    2023-10-30 [1] CRAN (R 4.3.2)
+#  lattice       * 0.21-9  2023-10-01 [2] CRAN (R 4.3.2)
+#  lifecycle       1.0.4   2023-11-07 [1] CRAN (R 4.3.2)
+#  magrittr        2.0.3   2022-03-30 [1] CRAN (R 4.3.1)
+#  MASS            7.3-60  2023-05-04 [2] CRAN (R 4.3.2)
+#  Matrix          1.6-1.1 2023-09-18 [2] CRAN (R 4.3.2)
+#  mgcv            1.9-0   2023-07-11 [2] CRAN (R 4.3.2)
+#  munsell         0.5.0   2018-06-12 [1] CRAN (R 4.3.1)
+#  nlme            3.1-163 2023-08-09 [2] CRAN (R 4.3.2)
+#  permute       * 0.9-7   2022-01-27 [1] CRAN (R 4.3.2)
+#  pheatmap      * 1.0.12  2019-01-04 [1] CRAN (R 4.3.2)
+#  pillar          1.9.0   2023-03-22 [1] CRAN (R 4.3.1)
+#  pkgconfig       2.0.3   2019-09-22 [1] CRAN (R 4.3.1)
+#  pracma        * 2.4.4   2023-11-10 [1] CRAN (R 4.3.2)
+#  purrr           1.0.2   2023-08-10 [1] CRAN (R 4.3.2)
+#  R6              2.5.1   2021-08-19 [1] CRAN (R 4.3.1)
+#  RColorBrewer    1.1-3   2022-04-03 [1] CRAN (R 4.3.1)
+#  Rcpp            1.0.12  2024-01-09 [1] CRAN (R 4.3.2)
+#  readxl        * 1.4.3   2023-07-06 [1] CRAN (R 4.3.2)
+#  rlang           1.1.3   2024-01-10 [1] CRAN (R 4.3.2)
+#  rmarkdown       2.25    2023-09-18 [1] CRAN (R 4.3.2)
+#  rsconnect       1.2.0   2023-12-15 [1] CRAN (R 4.3.2)
+#  rstudioapi      0.15.0  2023-07-07 [1] CRAN (R 4.3.2)
+#  scales          1.3.0   2023-11-28 [1] CRAN (R 4.3.2)
+#  sessioninfo   * 1.2.2   2021-12-06 [1] CRAN (R 4.3.2)
+#  shape           1.4.6   2021-05-19 [1] CRAN (R 4.3.2)
+#  stringi         1.8.3   2023-12-11 [1] CRAN (R 4.3.2)
+#  stringr       * 1.5.1   2023-11-14 [1] CRAN (R 4.3.2)
+#  textshape     * 1.7.3   2021-05-28 [1] CRAN (R 4.3.2)
+#  tibble          3.2.1   2023-03-20 [1] CRAN (R 4.3.1)
+#  tidyr         * 1.3.1   2024-01-24 [1] CRAN (R 4.3.2)
+#  tidyselect      1.2.0   2022-10-10 [1] CRAN (R 4.3.2)
+#  utf8            1.2.4   2023-10-22 [1] CRAN (R 4.3.1)
+#  vctrs           0.6.5   2023-12-01 [1] CRAN (R 4.3.2)
+#  vegan         * 2.6-4   2022-10-11 [1] CRAN (R 4.3.2)
+#  viridis         0.6.5   2024-01-29 [1] CRAN (R 4.3.2)
+#  viridisLite     0.4.2   2023-05-02 [1] CRAN (R 4.3.1)
+#  withr           3.0.0   2024-01-16 [1] CRAN (R 4.3.2)
+#  xfun            0.41    2023-11-01 [1] CRAN (R 4.3.2)
+#  yaml            2.3.8   2023-12-11 [1] CRAN (R 4.3.2)
+# 
+#  [1] /home/chombo/R/x86_64-pc-linux-gnu-library/4.3
+#  [2] /usr/lib/R/library
+```
+# 2. Data Preparation
+
+**BASH CLEANING**
+
+```{bash data_bash, eval=FALSE, echo=TRUE, fig.align='center', message=FALSE, warning=FALSE, include=TRUE}
+## First we cleaned the data from the 52514 MAGs from Nayfach project
+## Here we extracted the taxonomic classification column and split it into different columns
+## Then we merge the output with the complete Nayfach project metadata
+paste <(cut -f1,15 AllMAGs-genome_metadata.tsv | tr ";" "\t" | awk '{ if (NR != 1) print }' | sed 's/[a-z]__//g' | awk -F "\t" '{ print $2"\t"$3"\t"$4"\t"$5"\t"$6"\t"$8 }') <(awk -F "\t" '{if (NR != 1) print}' AllMAGs-genome_metadata.tsv | cut --complement -d$'\t' -f15) > MAGs_test.tsv
+```
+\hfill\break
+
+**R CLEANING**
+
+```{R data_R, eval=TRUE, echo=TRUE, fig.align='center', message=FALSE, warning=FALSE, include=TRUE}
+## THIS IS IN THE '01_MetadataCleaning.R'
+## Then we filtered the MAGs by the following parameters
+## Completness >= 99
+## Contamination <= 0.05
+
+## Read the file
+setwd(dir = '/home/chombo/Documents/SEGOVIA/CAZymes_PULs/data/')
+colnames.vec <- c("division","phylum","class","order","family","specie","genome_id","metagenome_id","genome_length","num_contigs","n50","num_16s","num_5s","num_23s","num_trna","completeness","contamination","quality_score","mimag_quality","otu_id","ecosystem_category","ecosystem_type","habitat","longitude","latitude")
+MAGS.df <- read.table('MAGs_test.tsv',sep = "\t",col.names = colnames.vec)
+
+## Filter the file
+## Completness >= 99%
+## Contamination <= 0.05%
+MAGS.filtered <- subset(MAGS.df,completeness >= 99 & contamination <= 0.05 & family != "")
+MAGS.filtered <- MAGS.filtered %>%
+    select(genome_id,metagenome_id,everything())
+MAGS.filtered <- MAGS.filtered[order(MAGS.filtered$genome_id),]
+
+## Rename specific cases
+MAGS.filtered$class[MAGS.filtered$class == "Bacilli_A"] <- "Bacilli"
+MAGS.filtered$class[MAGS.filtered$class == "Thermoplasmata_A"] <- "Thermoplasmata"
+MAGS.filtered$order[MAGS.filtered$order == "Bacillales_A"] <- "Bacillales"
+
+## Save the filtered file
+## Output: 1069 MAGs
+# write.table(MAGS.filtered,file = "1069_MAGs_metadata.tsv",sep = "\t",row.names = FALSE)
+
+## Filter diversity by ecosystem type, class, order and family
+## Ecosystem
+eco.div <- as.data.frame(table(MAGS.filtered$ecosystem_category))
+colnames(eco.div) <- c("ecosystem","frequency")
+
+## Class
+class.div <- as.data.frame(table(MAGS.filtered$class))
+colnames(class.div) <- c("class","frequency")
+
+## Order
+order.div <- as.data.frame(table(MAGS.filtered$order))
+colnames(order.div) <- c("order","frequency")
+
+## Family
+fam.div <- as.data.frame(table(MAGS.filtered$family))
+colnames(fam.div) <- c("family","frequency")
+
+# write.table(MAGS.filtered$genome_id,file = "1069MAGS_list.txt",sep = "",row.names = FALSE,quote = FALSE,col.names = FALSE)
+# write.table(eco.div$ecosystem,file = "1069Eco_list.txt",sep = "",row.names = FALSE,quote = FALSE,col.names = FALSE)
+# write.table(class.div$class,file = "1069Class_list.txt",sep = "",row.names = FALSE,quote = FALSE,col.names = FALSE)
+# write.table(order.div$order,file = "1069Order_list.txt",sep = "",row.names = FALSE,quote = FALSE,col.names = FALSE)
+# write.table(fam.div$family,file = "1069Fam_list.txt",sep = "",row.names = FALSE,quote = FALSE,col.names = FALSE)
+
+print(paste0("Total Filtered MAGs: ",length(unique(c(MAGS.filtered$genome_id)))))
+```
+
+# 3. Get PULs frequency and CAZymes frequency
+Here we are going to wotk with the 1069 filtered MAGs. DBcan4 had already been run and DIAMOND had also already been run for obtaining the PULs. These scripts are in the '/src/BASH/' folder inside the repo.
+
+## 3.1 PULs counts
+```{r puls_counts, include=TRUE, echo=TRUE, warning=FALSE, message=FALSE, eval=TRUE, fig.align='center'}
+## PULs Counts
+## Import MAGs list
+setwd(dir = '/home/chombo/Documents/SEGOVIA/CAZymes_PULs/data/')
+MAGS.arr <- as.vector(read.table("1069MAGS_list.txt"))[[1]]
+
+## Create a df with all the PUL counts according to each MAG
+PULS.df <- data.frame()
+for (mag in MAGS.arr) {
+    ## Filter the 5 MAGs that do not have significant PULs associated with them
+    if (mag == "3300005326_35" || mag == "3300005370_1" || mag == "3300017650_9" || mag == "3300027284_65" || mag == "3300027607_50") {
+        next
+    }
+    df.temp <- read.table(paste(mag,"/",mag,".matches_evalue.out",sep = ""))
+    colnames(df.temp) <- c("PULs","evalue")
+    df.temp["MAG"] <- mag
+    
+    ## Save the PULs frequency
+    freq <- as.data.frame(table(df.temp$PULs))
+    freq <- freq[order(freq$Freq,decreasing = TRUE),]
+    write.table(freq,file = paste(mag,"/",mag,".matches_counts.out",sep = ""),sep = "\t",quote = FALSE,col.names = FALSE,row.names = FALSE)
+    
+    ## Store them in a single df
+    PULS.df <- rbind(PULS.df,df.temp)
+}
+
+print(paste0(length(PULS.df$PULs)," total PULs"))
+print(paste0(length(unique(PULS.df$PULs))," different PULs"))
+print(paste0(length(unique(PULS.df$MAG))," final MAGs"))
+## 36172 total PULs
+## 1363 different PULs
+## 1064 final MAGs
+
+## Get the summary
+PULSperMAG.df <- as.data.frame(table(PULS.df$MAG))
+colnames(PULSperMAG.df) <- c("MAGs","PULs_Freq")
+excludedMAGS <- data.frame(MAGs = c("3300005326_35","3300005370_1","3300017650_9","3300027284_65","3300027607_50"),
+                           PULs_Freq = c(0,0,0,0,0))
+PULSperMAG.df <- rbind(PULSperMAG.df,excludedMAGS)
+
+## Get the PULs diversity
+puls.diversity <- as.data.frame(table(PULS.df$PULs))
+```
+
+### 3.1.1 PULs Ecosystem counts
+```{r puls_eco_counts, include=TRUE, echo=TRUE, warning=FALSE, message=FALSE, eval=TRUE, fig.align='center'}
+## Read the metadata and filter it
+setwd(dir = '/home/chombo/Documents/SEGOVIA/CAZymes_PULs/data/')
+MAGS.meta <- read.table(file = "1069_MAGs_metadata.tsv",sep = "\t",header = TRUE)
+MAGS.meta <- MAGS.meta %>%
+    select(genome_id,class,order,family,ecosystem_category)
+MAGS.meta$ecosystem_category <- gsub(" ","_",MAGS.meta$ecosystem_category)
+
+## Remove the excluded MAGs
+MAGS.meta <- MAGS.meta[!is.element(MAGS.meta$genome_id,c("3300005326_35","3300005370_1","3300017650_9","3300027284_65","3300027607_50")),]
+
+## PULs per Ecosystem
+eco.arr <- MAGS.meta %>%
+    distinct(ecosystem_category)
+eco.arr <- eco.arr[order(eco.arr$ecosystem_category,decreasing = FALSE),]
+
+full.div.df <- data.frame()
+for (eco in eco.arr) {
+    ## Extract all the MAGs annotated in each Ecosystem
+    mags.arr.temp <- as.vector(MAGS.meta$genome_id[MAGS.meta$ecosystem_category == eco])
+    
+    ## For each MAG, extract all the PUL counts
+    PULSperMAG.temp <- PULSperMAG.df[is.element(PULSperMAG.df$MAGs,mags.arr.temp),]    
+    
+    ## Extract the complete diversity
+    eco.div.df <- data.frame(ecosystem = c(eco),
+                             frequency = sum(PULSperMAG.temp$PULs_Freq))
+    full.div.df <- rbind(full.div.df,eco.div.df)
+    
+    ## Extract the PULs diversity
+    rawPULs.temp <- PULS.df[is.element(PULS.df$MAG,mags.arr.temp),]
+    pulscounts.temp <- as.data.frame(table(rawPULs.temp$PULs))
+    colnames(pulscounts.temp) <- c("PULs","frequency")
+    pulscounts.temp <- pulscounts.temp[order(pulscounts.temp$frequency,decreasing = TRUE),]
+}
+
+head(full.div.df,24L)
+print(paste0(sum(full.div.df$frequency)," total PULs"))
+```
+\hfill\break
+![](/home/chombo/Documents/SEGOVIA/CAZymes_PULs/rawplots/PULs/PULS_Ecosystem.boxplot.png)
+
+### 3.1.2 PULs Class counts
+```{r puls_class_counts, include=TRUE, echo=TRUE, warning=FALSE, message=FALSE, eval=TRUE, fig.align='center'}
+## Read the metadata and filter it
+setwd(dir = '/home/chombo/Documents/SEGOVIA/CAZymes_PULs/data/')
+
+## PULs per Class
+class.arr <- MAGS.meta %>%
+    distinct(class)
+class.arr <- class.arr[order(class.arr$class,decreasing = FALSE),]
+
+full.div.df <- data.frame()
+for (class in class.arr) {
+    ## Extract all the MAGs annotated in each Class
+    mags.arr.temp <- as.vector(MAGS.meta$genome_id[MAGS.meta$class == class])
+    
+    ## For each MAG, extract all the PUL counts
+    PULSperMAG.temp <- PULSperMAG.df[is.element(PULSperMAG.df$MAGs,mags.arr.temp),]    
+    
+    ## Extract the complete diversity
+    class.div.df <- data.frame(class = c(class),
+                               frequency = sum(PULSperMAG.temp$PULs_Freq))
+    full.div.df <- rbind(full.div.df,class.div.df)
+    
+    ## Extract the PULs diversity
+    rawPULs.temp <- PULS.df[is.element(PULS.df$MAG,mags.arr.temp),]
+    pulscounts.temp <- as.data.frame(table(rawPULs.temp$PULs))
+    colnames(pulscounts.temp) <- c("PULs","frequency")
+    pulscounts.temp <- pulscounts.temp[order(pulscounts.temp$frequency,decreasing = TRUE),]
+}
+
+head(full.div.df,39L)
+print(paste0(sum(full.div.df$frequency)," total PULs"))
+```
+\hfill\break
+![](/home/chombo/Documents/SEGOVIA/CAZymes_PULs/rawplots/PULs/PULS_Class.boxplot.png)
+
+### 3.1.3 PULs Order counts
+```{r puls_order_counts, include=TRUE, echo=TRUE, warning=FALSE, message=FALSE, eval=TRUE, fig.align='center'}
+## Read the metadata and filter it
+setwd(dir = '/home/chombo/Documents/SEGOVIA/CAZymes_PULs/data/')
+
+## PULs per Order
+order.arr <- MAGS.meta %>%
+    distinct(order)
+order.arr <- order.arr[order(order.arr$order,decreasing = FALSE),]
+
+full.div.df <- data.frame()
+for (ord in order.arr) {
+    ## Extract all the MAGs annotated in each Order
+    mags.arr.temp <- as.vector(MAGS.meta$genome_id[MAGS.meta$order == ord])
+    
+    ## For each MAG, extract all the PUL counts
+    PULSperMAG.temp <- PULSperMAG.df[is.element(PULSperMAG.df$MAGs,mags.arr.temp),]    
+
+    ## Extract the complete diversity
+    order.div.df <- data.frame(order = c(ord),
+                               frequency = sum(PULSperMAG.temp$PULs_Freq))
+    full.div.df <- rbind(full.div.df,order.div.df)
+    
+    ## Extract the PULs diversity
+    rawPULs.temp <- PULS.df[is.element(PULS.df$MAG,mags.arr.temp),]
+    pulscounts.temp <- as.data.frame(table(rawPULs.temp$PULs))
+    colnames(pulscounts.temp) <- c("PULs","frequency")
+    pulscounts.temp <- pulscounts.temp[order(pulscounts.temp$frequency,decreasing = TRUE),]
+}
+
+head(full.div.df,81L)
+print(paste0(sum(full.div.df$frequency)," total PULs"))
+```
+\hfill\break
+![](/home/chombo/Documents/SEGOVIA/CAZymes_PULs/rawplots/PULs/PULS_Order.boxplot.png)
+
+### 3.1.4 PULs Family counts
+```{r puls_family_counts, include=TRUE, echo=TRUE, warning=FALSE, message=FALSE, eval=TRUE, fig.align='center'}
+## Read the metadata and filter it
+setwd(dir = '/home/chombo/Documents/SEGOVIA/CAZymes_PULs/data/')
+
+## PULs per Family
+fam.arr <- MAGS.meta %>%
+    distinct(family)
+fam.arr <- fam.arr[order(fam.arr$family,decreasing = FALSE),]
+
+full.div.df <- data.frame()
+for (fam in fam.arr) {
+    ## Extract all the MAGs annotated in each Family
+    mags.arr.temp <- as.vector(MAGS.meta$genome_id[MAGS.meta$family == fam])
+    
+    ## For each MAG, extract all the PUL counts
+    PULSperMAG.temp <- PULSperMAG.df[is.element(PULSperMAG.df$MAGs,mags.arr.temp),]    
+    
+    ## Extract the complete diversity
+    fam.div.df <- data.frame(family = c(fam),
+                               frequency = sum(PULSperMAG.temp$PULs_Freq))
+    full.div.df <- rbind(full.div.df,fam.div.df)
+    
+    ## Extract the PULs diversity
+    rawPULs.temp <- PULS.df[is.element(PULS.df$MAG,mags.arr.temp),]
+    pulscounts.temp <- as.data.frame(table(rawPULs.temp$PULs))
+    colnames(pulscounts.temp) <- c("PULs","frequency")
+    pulscounts.temp <- pulscounts.temp[order(pulscounts.temp$frequency,decreasing = TRUE),]
+}
+
+head(full.div.df,139L)
+print(paste0(sum(full.div.df$frequency)," total PULs"))
+```
+\hfill\break
+![](/home/chombo/Documents/SEGOVIA/CAZymes_PULs/rawplots/PULs/PULS_Family.boxplot.png)
+
+## 3.2 CAZymes counts
+```{r cazys_counts, include=TRUE, echo=TRUE, warning=FALSE, message=FALSE, eval=TRUE, fig.align='center'}
+## CAZYMES COUNTS
+## Filter the DBcan4 output
+## e-value <= 1e-18
+## coverage >= 0.8
+
+setwd(dir = '/home/chombo/Documents/SEGOVIA/CAZymes_PULs/data/')
+
+## Create a df with all the CAZy counts according to each MAG
+CAZYS.df <- data.frame()
+for (mag in MAGS.arr) {
+    ## Filter the 5 MAGs that do not have significant CAZys associated with them
+    if (mag == "3300007500_43") {
+        next
+    }
+    
+    ## Read the HMMER output for those matches with an evalue <= 1e-18 and a coverage >= 0.8
+    df.temp <- read.table(file = paste(mag,"/output_dbcan4/hmmer.out",sep = ""),sep = "\t",skip = 1)
+    colnames(df.temp) <- c("CAZy","length","geneID","genelength","evalue","start","end","genestart","geneend","coverage")
+    df.temp <- df.temp %>%
+        filter(evalue <= 1e-18,coverage >= 0.8) %>%
+        select(CAZy,geneID,evalue,coverage)
+    
+    ## Extract the gene ID
+    ids <- as.vector(df.temp$geneID)
+    
+    ## Read the overview.txt file to compare it with the hmmer.txt file
+    df.temp <- read.table(paste(mag,"/output_dbcan4/overview.txt",sep = ""),header = FALSE,skip = 1)
+    colnames(df.temp) <- c("geneID","EC","HMMER","dbCAN_sub","DIAMOND","Signalp","Tools")
+    df.temp["MAG"] <- mag
+    df.temp <- df.temp[is.element(df.temp$geneID,ids),]
+    df.temp <- df.temp %>%
+        filter(Tools >= 2) %>%
+        select(MAG,HMMER,Signalp)
+    df.temp$HMMER <- gsub("\\(.*?\\)", "", df.temp$HMMER)
+    df.temp$Signalp <- gsub("\\(.*\\)", "",df.temp$Signalp)
+    df.temp <- df.temp[df.temp$HMMER != "-",]
+    
+    ## Save the CAZYs frequency
+    freq <- as.data.frame(table(df.temp$HMMER))
+    freq <- freq[order(freq$Freq,decreasing = TRUE),]
+    # write.table(freq,file = paste(mag,"/output_dbcan4/",mag,".CAZyCounts.txt",sep = ""),sep = "\t",quote = FALSE,col.names = FALSE,row.names = FALSE)
+    
+    ## Clean the CAZys and do another df
+    df.temp$HMMER <- gsub("\\+.*", "", df.temp$HMMER)
+    
+    ## Save the CAZYs frequency
+    freq <- as.data.frame(table(df.temp$HMMER))
+    # freq <- freq[order(freq$Freq,decreasing = TRUE),]
+    # write.table(freq,file = paste(mag,"/output_dbcan4/",mag,".CAZyCounts.single.txt",sep = ""),sep = "\t",quote = FALSE,col.names = FALSE,row.names = FALSE)
+    
+    if (length(df.temp) == 0) {
+        print(mag)
+    }
+    
+    ## Store them in a single df
+    CAZYS.df <- rbind(CAZYS.df,df.temp)
+}
+colnames(CAZYS.df) <- c("MAG","CAZys","Signalp")
+
+print(paste0(length(CAZYS.df$CAZys)," total CAZys"))
+print(paste0(length(unique(CAZYS.df$CAZys))," different CAZys"))
+print(paste0(length(unique(CAZYS.df$MAG))," final MAGs"))
+## 61654 total CAZys
+## 424 different CAZys
+## 1064 final MAGs
+
+## Get the summary
+CAZysperMAG.df <- as.data.frame(table(CAZYS.df$MAG))
+colnames(CAZysperMAG.df) <- c("MAGs","CAZys_Freq")
+excludedMAGS <- data.frame(MAGs = c("3300007500_43","3300011404_8","3300012067_9","3300012151_17","3300012165_16"),
+                           CAZys_Freq = c(0,0,0,0,0))
+CAZysperMAG.df <- rbind(CAZysperMAG.df,excludedMAGS)
+
+## Search for MAGs without CAZys
+# setdiff(MAGS.arr,c(CAZysperMAG.df$MAGs))
+# [1] "3300011404_8"  "3300012067_9"  "3300012151_17"
+# [4] "3300012165_16"
+```
+
+### 3.2.1 CAZy Ecosystem counts
+```{r cazys_eco_counts, include=TRUE, echo=TRUE, warning=FALSE, message=FALSE, eval=TRUE, fig.align='center'}
+## Read the metadata and filter it
+setwd(dir = '/home/chombo/Documents/SEGOVIA/CAZymes_PULs/data/')
+
+## Read the MAGs metadata
+MAGS.meta <- read.table(file = "1069_MAGs_metadata.tsv",sep = "\t",header = TRUE)
+MAGS.meta <- MAGS.meta %>%
+    select(genome_id,class,order,family,ecosystem_category)
+MAGS.meta$ecosystem_category <- gsub(" ","_",MAGS.meta$ecosystem_category)
+
+## Remove the excluded MAGs
+MAGS.meta <- MAGS.meta[!is.element(MAGS.meta$genome_id,c("3300007500_43","3300011404_8","3300012067_9","3300012151_17","3300012165_16")),]
+
+## CAZys per Ecosystem
+eco.arr <- MAGS.meta %>%
+    distinct(ecosystem_category)
+eco.arr <- eco.arr[order(eco.arr$ecosystem_category,decreasing = FALSE),]
+
+full.div.df <- data.frame()
+for (eco in eco.arr) {
+    ## Extract all the MAGs annotated in each Class
+    mags.arr.temp <- as.vector(MAGS.meta$genome_id[MAGS.meta$ecosystem_category == eco])
+    
+    ## For each MAG, extract all the PUL counts
+    CAZYsperMAG.temp <- CAZysperMAG.df[is.element(CAZysperMAG.df$MAGs,mags.arr.temp),]    
+    
+    ## Extract the complete diversity
+    eco.div.df <- data.frame(order = c(eco),
+                                frequency = sum(CAZYsperMAG.temp$CAZys_Freq))
+    full.div.df <- rbind(full.div.df,eco.div.df)
+    
+    ## Extract the PULs diversity
+    rawCAZys.temp <- CAZYS.df[is.element(CAZYS.df$MAG,mags.arr.temp),]
+    cazyscounts.temp <- as.data.frame(table(rawCAZys.temp$CAZys))
+    colnames(cazyscounts.temp) <- c("CAZys","frequency")
+    cazyscounts.temp <- cazyscounts.temp[order(cazyscounts.temp$frequency,decreasing = TRUE),]
+}
+
+head(full.div.df,139L)
+print(paste0(sum(full.div.df$frequency)," total CAZymes"))
+```
+\hfill\break
+![](/home/chombo/Documents/SEGOVIA/CAZymes_PULs/rawplots/CAZymes/CAZY_Ecosystem.boxplot.png)
+
+### 3.2.2 CAZy Class counts
+```{r cazys_class_counts, include=TRUE, echo=TRUE, warning=FALSE, message=FALSE, eval=TRUE, fig.align='center'}
+## Read the metadata and filter it
+setwd(dir = '/home/chombo/Documents/SEGOVIA/CAZymes_PULs/data/')
+
+## CAZys per Class
+class.arr <- MAGS.meta %>%
+    distinct(class)
+class.arr <- class.arr[order(class.arr$class,decreasing = FALSE),]
+
+full.div.df <- data.frame()
+for (class in class.arr) {
+    ## Extract all the MAGs annotated in each Class
+    mags.arr.temp <- as.vector(MAGS.meta$genome_id[MAGS.meta$class == class])
+    
+    ## For each MAG, extract all the PUL counts
+    CAZYsperMAG.temp <- CAZysperMAG.df[is.element(CAZysperMAG.df$MAGs,mags.arr.temp),]    
+    
+    ## Extract the complete diversity
+    class.div.df <- data.frame(class = c(class),
+                               frequency = sum(CAZYsperMAG.temp$CAZys_Freq))
+    full.div.df <- rbind(full.div.df,class.div.df)
+    
+    ## Extract the PULs diversity
+    rawCAZys.temp <- CAZYS.df[is.element(CAZYS.df$MAG,mags.arr.temp),]
+    cazyscounts.temp <- as.data.frame(table(rawCAZys.temp$CAZys))
+    colnames(cazyscounts.temp) <- c("CAZys","frequency")
+    cazyscounts.temp <- cazyscounts.temp[order(cazyscounts.temp$frequency,decreasing = TRUE),]
+}
+
+head(full.div.df,139L)
+print(paste0(sum(full.div.df$frequency)," total CAZymes"))
+```
+\hfill\break
+![](/home/chombo/Documents/SEGOVIA/CAZymes_PULs/rawplots/CAZymes/CAZY_Class.boxplot.png)
+
+### 3.2.3 CAZy Order counts
+```{r cazys_order_counts, include=TRUE, echo=TRUE, warning=FALSE, message=FALSE, eval=TRUE, fig.align='center'}
+## Read the metadata and filter it
+setwd(dir = '/home/chombo/Documents/SEGOVIA/CAZymes_PULs/data/')
+
+## CAZys per Order
+order.arr <- MAGS.meta %>%
+    distinct(order)
+order.arr <- order.arr[order(order.arr$order,decreasing = FALSE),]
+
+full.div.df <- data.frame()
+for (ord in order.arr) {
+    ## Corresponds to the MAG without counts
+    if (ord == "Mycoplasmatales") {
+        next
+    }
+  
+    ## Extract all the MAGs annotated in each Class
+    mags.arr.temp <- as.vector(MAGS.meta$genome_id[MAGS.meta$order == ord])
+    
+    ## For each MAG, extract all the CAZy counts
+    CAZYsperMAG.temp <- CAZysperMAG.df[is.element(CAZysperMAG.df$MAGs,mags.arr.temp),]    
+    
+    ## Extract the complete diversity
+    order.div.df <- data.frame(order = c(ord),
+                               frequency = sum(CAZYsperMAG.temp$CAZys_Freq))
+    full.div.df <- rbind(full.div.df,order.div.df)
+    
+    ## Extract the CAZys diversity
+    rawCAZys.temp <- CAZYS.df[is.element(CAZYS.df$MAG,mags.arr.temp),]
+    cazyscounts.temp <- as.data.frame(table(rawCAZys.temp$CAZys))
+    colnames(cazyscounts.temp) <- c("CAZys","frequency")
+    cazyscounts.temp <- cazyscounts.temp[order(cazyscounts.temp$frequency,decreasing = TRUE),]
+}
+
+head(full.div.df,139L)
+print(paste0(sum(full.div.df$frequency)," total CAZymes"))
+```
+\hfill\break
+![](/home/chombo/Documents/SEGOVIA/CAZymes_PULs/rawplots/CAZymes/CAZY_Order.boxplot.png)
+
+### 3.2.4 CAZy Family counts
+```{r cazys_family_counts, include=TRUE, echo=TRUE, warning=FALSE, message=FALSE, eval=TRUE, fig.align='center'}
+## Read the metadata and filter it
+setwd(dir = '/home/chombo/Documents/SEGOVIA/CAZymes_PULs/data/')
+
+## CAZys per Family
+fam.arr <- MAGS.meta %>%
+    distinct(family)
+fam.arr <- fam.arr[order(fam.arr$family,decreasing = FALSE),]
+
+full.div.df <- data.frame()
+for (fam in fam.arr) {
+    ## Extract all the MAGs annotated in each Class
+    mags.arr.temp <- as.vector(MAGS.meta$genome_id[MAGS.meta$family == fam])
+    
+    ## For each MAG, extract all the PUL counts
+    CAZYsperMAG.temp <- CAZysperMAG.df[is.element(CAZysperMAG.df$MAGs,mags.arr.temp),]    
+    
+    ## Extract the complete diversity
+    family.div.df <- data.frame(order = c(fam),
+                               frequency = sum(CAZYsperMAG.temp$CAZys_Freq))
+    full.div.df <- rbind(full.div.df,family.div.df)
+    
+    ## Extract the PULs diversity
+    rawCAZys.temp <- CAZYS.df[is.element(CAZYS.df$MAG,mags.arr.temp),]
+    cazyscounts.temp <- as.data.frame(table(rawCAZys.temp$CAZys))
+    colnames(cazyscounts.temp) <- c("CAZys","frequency")
+    cazyscounts.temp <- cazyscounts.temp[order(cazyscounts.temp$frequency,decreasing = TRUE),]
+}
+
+head(full.div.df,139L)
+print(paste0(sum(full.div.df$frequency)," total CAZymes"))
+```
+\hfill\break
+![](/home/chombo/Documents/SEGOVIA/CAZymes_PULs/rawplots/CAZymes/CAZY_Family.boxplot.png)
+
+```{r clean_workspace,echo=FALSE,eval=TRUE,include=FALSE,warning=FALSE,message=FALSE}
+rm(list = ls())
+```
+
+
+# 4. Principal Coordinates Analysis (PCoA)
+The approach was create a data frame with the PULs diversity per MAG (IMPORTANT: diversity is DIFFERENT from frequency) because we wanted to see which MAGs had the most variety of PULs. This was also made with the CAZymes and first. Doing the filtering, we obtained a reduced matrix and obtained their distances with the ```vegdist(mtx,"bray")``` function from the **vegan** package. Finally, we plot the PCoA by their Ecosystem, Class, Order and Family for PULs and CAZymes.
+\hfill\break
+
+**PULs code**
+
+```{r pcoa_puls_code, include=TRUE, echo=TRUE, warning=FALSE, message=FALSE, eval=FALSE, fig.align='center'}
+## DATA PREPARATION
+## Extracting all the metadata for the subsecuent analysis
+## There are no other metadata dataframes than the extracted here
+## Set working directory
+setwd("/home/chombo/Documents/SEGOVIA/CAZymes_PULs/data/")
+
+## Read the MAGs metadata and extract the columns: class, order, family, ecosystem
+MAGS.meta <- read.table(file = "1069_MAGs_metadata.tsv",sep = "\t",header = TRUE,row.names = 1)
+MAGS.meta <- MAGS.meta %>%
+    select(class,order,family,ecosystem_category)
+colnames(MAGS.meta) <- c("Class","Order","Family","Ecosystem")
+MAGS.meta$Ecosystem <- str_replace(MAGS.meta$Ecosystem," ","_")
+
+## Read the PULs per MAG metadata
+PULSperMAG <- read.table(file = "PULsperMAG.tsv",sep = "\t",header = FALSE,row.names = 1)
+colnames(PULSperMAG) <- c("PULs")
+
+## Merge both data frames
+MAGS.meta <- merge(MAGS.meta, PULSperMAG,
+                          by = 'row.names', all = TRUE)
+
+## Import the data for a matrix
+MAGS.arr <- as.vector(read.table("1069MAGS_list.txt"))[[1]]
+
+
+## Extract the PULs that are present >= 25 MAGs
+all.puls <- data.frame()
+for (mag in MAGS.arr) {
+    ## Filter the 5 MAGs that do not have significant PULs associated with them
+    if (mag == "3300005326_35" || mag == "3300005370_1" || mag == "3300017650_9" || mag == "3300027284_65" || mag == "3300027607_50") {
+        next
+    }
+    
+    df.temp <- read.table(file = paste(mag,"/",mag,".matches_counts.out",sep = ""),sep = "\t",)
+    colnames(df.temp) <- c("pul","frequency")
+    df.temp["mag"] <- mag
+    df.temp <- df.temp %>%
+        select(mag,pul,everything())
+    
+    ## Create a dataframe with the nodes: mag = from, pul = to, freq = value
+    all.puls <- rbind(all.puls,df.temp)
+}
+
+
+## Extract the PULs counts per MAG
+mags.data <- read.table(file = "PULsperMAG.tsv",sep = "\t",header = FALSE)
+colnames(mags.data) <- c("mag","Freq")
+# summary(mags.data$Freq)
+# Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+# 0.00   27.00   48.00   57.67   73.00  273.00 
+mags.data.cut <- mags.data[mags.data$Freq >= 48,]
+# length(mags.data.cut$mag)
+# [1] 240
+filtered.mags.vec <- as.vector(mags.data.cut$mag)
+
+## Extract PULs diversity
+puls.data <- read.table(file = "PULS.diversity.tsv",sep = "\t",header = FALSE)
+colnames(puls.data) <- c("puls","Freq")
+# summary(puls.data$Freq)
+# Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+# 1.00    2.00    6.00   26.54   19.50  988.00 
+puls.data.cut <- puls.data[puls.data$Freq >= 27,]
+# length(puls.data.cut$puls)
+# [1] 285
+filtered.puls.vec <- as.vector(puls.data.cut$puls)
+
+# ===================================================================
+## At the end we will be working with a matrix 445 MAGs x 303 PULs
+# ===================================================================
+
+
+## UNIVERSAL MATRIX GENERATION
+## Use the current data
+## Filter the original data by the filtered vectors
+matrix.data <- all.puls[is.element(all.puls$mag,filtered.mags.vec),]
+matrix.data <- matrix.data[is.element(matrix.data$pul,filtered.puls.vec),]
+
+## Generate the matrix
+mtx <- matrix.data %>%
+    spread(pul, frequency) %>%
+    column_to_rownames('mag') %>%
+    as.matrix() %>%
+    replace(is.na(.), 0)
+```
+\hfill\break
+
+**CAZymes code**
+
+```{r pcoa_cazys_code, include=TRUE, echo=TRUE, warning=FALSE, message=FALSE, eval=FALSE, fig.align='center'}
+## DATA PREPARATION
+## Extracting all the metadata for the subsecuent analysis
+## There are no other metadata dataframes than the extracted here
+## Set working directory
+setwd("/home/chombo/Documents/SEGOVIA/CAZymes_PULs/data/")
+
+## Read the MAGs metadata and extract the columns: class, order, family, ecosystem
+MAGS.meta <- read.table(file = "1069_MAGs_metadata.tsv",sep = "\t",header = TRUE,row.names = 1)
+MAGS.meta <- MAGS.meta %>%
+    select(class,order,family,ecosystem_category)
+colnames(MAGS.meta) <- c("Class","Order","Family","Ecosystem")
+MAGS.meta$Ecosystem <- str_replace(MAGS.meta$Ecosystem," ","_")
+
+## Read the PULs per MAG metadata
+CAZYSperMAG <- read.table(file = "CAZysperMAG.tsv",sep = "\t",header = FALSE,row.names = 1)
+colnames(CAZYSperMAG) <- c("CAZys")
+
+## Merge both data frames
+MAGS.meta <- merge(MAGS.meta, CAZYSperMAG,
+                          by = 'row.names', all = TRUE)
+
+## Import the data for a matrix
+MAGS.arr <- as.vector(read.table("1069MAGS_list.txt"))[[1]]
+
+
+## Extract the CAZys
+all.cazys <- data.frame()
+for (mag in MAGS.arr) {
+    ## Filter the 5 MAGs that do not have significant CAZys associated with them
+    if (mag == "3300007500_43" || mag == "3300011404_8" || mag == "3300012067_9" || mag == "3300012151_17" || mag == "3300012165_16" || mag == "3300007500_43") {
+        next
+    }
+    
+    df.temp <- read.table(file = paste(mag,"/output_dbcan4/",mag,".CAZyCounts.single.txt",sep = ""),sep = "\t",)
+    colnames(df.temp) <- c("cazy","frequency")
+    df.temp["mag"] <- mag
+    df.temp <- df.temp %>%
+        select(mag,cazy,everything())
+    
+    ## Create a dataframe with the nodes: mag = from, cazy = to, freq = value
+    all.cazys <- rbind(all.cazys,df.temp)
+}
+
+## Extract the CAZys counts per MAG
+mags.data <- read.table(file = "CAZysperMAG.tsv",sep = "\t",header = FALSE)
+colnames(mags.data) <- c("mag","Freq")
+# summary(mags.data$Freq)
+# Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+# 0.00   27.00   48.00   57.67   73.00  273.00 
+mags.data.cut <- mags.data[mags.data$Freq >= 48,]
+# length(mags.data.cut$Var1)
+# [1] 539
+filtered.mags.vec <- as.vector(mags.data.cut$mag)
+
+## Extract CAZys diversity
+cazys.data <- read.table(file = "CAZYS.diversity.tsv",sep = "\t",header = FALSE)
+colnames(cazys.data) <- c("cazy","Freq")
+# summary(cazys.data$Freq)
+# Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+# 1.0     6.0    27.0   145.4   108.2  5928.0 
+cazys.data.cut <- cazys.data[cazys.data$Freq >= 27,]
+# length(cazys.data.cut$Var1)
+# [1] 214
+filtered.cazys.vec <- as.vector(cazys.data.cut$cazy)
+
+# ===================================================================
+## At the end we will be working with a matrix 539 MAGs x 214 CAZys
+# ===================================================================
+
+
+## UNIVERSAL MATRIX GENERATION
+## Use the current data
+## Filter the original data by the filtered vectors
+matrix.data <- all.cazys[is.element(all.cazys$mag,filtered.mags.vec),]
+matrix.data <- matrix.data[is.element(matrix.data$cazy,filtered.cazys.vec),]
+
+## Generate the matrix
+mtx <- matrix.data %>%
+    spread(cazy, frequency) %>%
+    column_to_rownames('mag') %>%
+    as.matrix() %>%
+    replace(is.na(.), 0)
+```
+
+## 4.1 Filtering
+After analyzing the obtained clusters, we decided to trim the data, staying only with the most significant clusters. This was only made with the PULs (since the PULs is our object of study) and the suggested approach is that the PULs cutoff PCoA distribution will be similar in the CAZymes with the same MAGs. Here is the code where we trim by 'Class', 'Order' and 'Family'. It is important to remark that the 'Ecosystem' distribution was poorly well distributed. **At the end, there were only 343 MAGs left. And those are the ones we will be working with from now on.**
+
+### 4.1.1 PULs
+#### 4.1.1.1 Ecosystem
+
+**Ecosystem before filtering**
+
+![](/home/chombo/Documents/SEGOVIA/CAZymes_PULs/rawplots/PULs/bray_Ecosystem_PULs_PCoA.png)
+
+**Ecosystem after filtering**
+
+![](/home/chombo/Documents/SEGOVIA/CAZymes_PULs/filteredplots/PULs/wCluster/bray_Ecosystem_PULs_PCoA.png)
+
+#### 4.1.1.2 Class
+
+**Class before filtering**
+
+![](/home/chombo/Documents/SEGOVIA/CAZymes_PULs/rawplots/PULs/bray_Class_PULs_PCoA.png)
+
+**Class after filtering**
+
+![](/home/chombo/Documents/SEGOVIA/CAZymes_PULs/filteredplots/PULs/wCluster/bray_Class_PULs_PCoA.png)
+
+#### 4.1.1.3 Order
+
+**Order before filtering**
+
+![](/home/chombo/Documents/SEGOVIA/CAZymes_PULs/rawplots/PULs/bray_Order_PULs_PCoA.png)
+
+**Order after filtering**
+
+![](/home/chombo/Documents/SEGOVIA/CAZymes_PULs/filteredplots/PULs/wCluster/bray_Order_PULs_PCoA.png)
+
+#### 4.1.1.4 Family
+
+**Family before filtering**
+
+![](/home/chombo/Documents/SEGOVIA/CAZymes_PULs/rawplots/PULs/bray_Family_PULs_PCoA.png)
+
+**Family after filtering**
+
+![](/home/chombo/Documents/SEGOVIA/CAZymes_PULs/filteredplots/PULs/wCluster/bray_Family_PULs_PCoA.png)
+
+
+### 4.1.2 CAZymes
+#### 4.1.2.1 Ecosystem
+
+**Ecosystem before filtering**
+
+![](/home/chombo/Documents/SEGOVIA/CAZymes_PULs/rawplots/CAZymes/bray_Ecosystem_CAZys_PCoA.png)
+
+**Ecosystem after filtering**
+
+![](/home/chombo/Documents/SEGOVIA/CAZymes_PULs/filteredplots/CAZymes/wCluster/bray_Ecosystem_CAZys_PCoA.png)
+
+#### 4.1.2.2 Class
+
+**Class before filtering**
+
+![](/home/chombo/Documents/SEGOVIA/CAZymes_PULs/rawplots/CAZymes/bray_Class_CAZys_PCoA.png)
+
+**Class after filtering**
+
+![](/home/chombo/Documents/SEGOVIA/CAZymes_PULs/filteredplots/CAZymes/wCluster/bray_Class_CAZys_PCoA.png)
+
+#### 4.1.2.3 Order
+
+**Order before filtering**
+
+![](/home/chombo/Documents/SEGOVIA/CAZymes_PULs/rawplots/CAZymes/bray_Order_CAZys_PCoA.png)
+
+**Order after filtering**
+
+![](/home/chombo/Documents/SEGOVIA/CAZymes_PULs/filteredplots/CAZymes/wCluster/bray_Order_CAZys_PCoA.png)
+
+#### 4.1.2.4 Family
+
+**Family before filtering**
+
+![](/home/chombo/Documents/SEGOVIA/CAZymes_PULs/rawplots/CAZymes/bray_Family_CAZys_PCoA.png)
+
+**Family after filtering**
+
+![](/home/chombo/Documents/SEGOVIA/CAZymes_PULs/filteredplots/CAZymes/wCluster/bray_Family_CAZys_PCoA.png)
+
+# 5. Distribution
+After the final filtering. The 343 MAGs were stored in a matrix against the PULs and the CAZymes to see how were they distributed. For that, ```hclust()``` function was used as well as the ```vegdist(mtx,"bray")``` function for obtaining the distances. Here are the obtained distributions.
+\hfill\break
+
+```{R dendograms,include=TRUE, echo=TRUE, warning=FALSE, message=FALSE, eval=FALSE, fig.align='center'}
+## Libraries
+suppressPackageStartupMessages(library(dplyr))
+suppressPackageStartupMessages(library(pheatmap))
+suppressPackageStartupMessages(library(tidyr))
+suppressPackageStartupMessages(library(textshape))
+suppressPackageStartupMessages(library(stringr))
+suppressPackageStartupMessages(library(ggplot2))
+suppressPackageStartupMessages(library(vegan))
+suppressPackageStartupMessages(library(dendextend))
+suppressPackageStartupMessages(library(circlize))
+
+## FUNCTIONS
+## EXTRACT CAZYMES
+get.cazymes <- function(mags) {
+    all.cazys <- data.frame()
+    for (mag in mags) {
+        ## Filter the 5 MAGs that do not have significant PULs associated with them
+        if (mag == "3300007500_43" || mag == "3300011404_8" || mag == "3300012067_9" || mag == "3300012151_17" || mag == "3300012165_16" || mag == "3300007500_43") {
+            next
+        }
+        
+        df.temp <- read.table(file = paste(mag,"/output_dbcan4/",mag,".CAZyCounts.single.txt",sep = ""),sep = "\t",)
+        colnames(df.temp) <- c("cazy","frequency")
+        df.temp["mag"] <- mag
+        df.temp <- df.temp %>%
+            select(mag,cazy,everything())
+        
+        ## Create a dataframe with the nodes: mag = from, cazy = to, freq = value
+        all.cazys <- rbind(all.cazys,df.temp)
+    }
+    return(all.cazys)
+}
+
+## EXTRACT PULS
+get.puls <- function(mags) {
+    all.puls <- data.frame()
+    for (mag in mags) {
+        # ## Filter the 5 MAGs that do not have significant PULs associated with them
+        if (mag == "3300005326_35" || mag == "3300005370_1" || mag == "3300017650_9" || mag == "3300027284_65" || mag == "3300027607_50") {
+            next
+        }
+        
+        df.temp <- read.table(file = paste(mag,"/",mag,".matches_counts.out",sep = ""),sep = "\t",)
+        colnames(df.temp) <- c("pul","frequency")
+        df.temp["mag"] <- mag
+        df.temp <- df.temp %>%
+            select(mag,pul,everything())
+        
+        ## Create a dataframe with the nodes: mag = from, pul = to, freq = value
+        all.puls <- rbind(all.puls,df.temp)
+    }
+    return(all.puls)
+}
+
+## DATA PREPARATION
+## Extracting all the metadata for the subsecuent analysis
+## There are no other metadata dataframes than the extracted here
+## Set working directory
+setwd("/home/chombo/Documents/SEGOVIA/CAZymes_PULs/data/")
+
+## Read the MAGs metadata and extract the columns: class, order, family, ecosystem
+MAGS.meta <- read.table(file = "1069_MAGs_metadata.tsv",sep = "\t",header = TRUE,row.names = 1)
+MAGS.meta <- MAGS.meta %>%
+    select(PULsFrequency,CAZysFrequency,class,order,family,specie,ecosystem_category)
+colnames(MAGS.meta) <- c("PULS","CAZYS","Class","Order","Family","Specie","Ecosystem")
+MAGS.meta$Ecosystem <- str_replace(MAGS.meta$Ecosystem," ","_")
+MAGS.meta["mag"] <- rownames(MAGS.meta)
+
+## Read the 343 MAGs new list
+MAGS.arr <- as.vector(read.table("343_MAGslist.txt"))[[1]]
+
+## Filter metadata
+MAGS.meta <- MAGS.meta[is.element(MAGS.meta$mag,MAGS.arr),]
+
+## Extract the counts
+all.cazys <- get.cazymes(mags = MAGS.arr)
+
+## Create the matrix
+mtx <- all.cazys %>%
+    spread(cazy, frequency) %>%
+    column_to_rownames('mag') %>%
+    as.matrix() %>%
+    replace(is.na(.), 0)
+
+#mtx <- vegdist(mtx,"bray")
+dend <- as.dendrogram(hclust(vegdist(mtx,"bray")))
+
+## Colors
+dend <- dend %>%
+    color_branches(k = 19) %>%
+    raise.dendrogram (15) %>%
+    hang.dendrogram()
+
+## Control quality plot
+ggplot(dend, labels = FALSE) + scale_y_reverse(expand = c(0.2, 0)) + coord_polar(theta="x")
+png(filename = "CAZy_dend_test.png",width = 4000,height = 2000,res = 100)
+factoextra::fviz_dend(dend, cex = 0.5, k = 20, 
+          color_labels_by_k = TRUE, rect = TRUE)
+dev.off()
+
+## Write the tree
+phy <- ape::as.phylo(hclust(vegdist(mtx,"bray")))
+ape::write.tree(phy = phy,file='CAZy343_ward_Class.tree') 
+
+## Repeat the whole process with PULs
+all.puls <- get.puls(mags = MAGS.arr)
+
+## Create the matrix
+mtx <- all.puls %>%
+    spread(pul, frequency) %>%
+    column_to_rownames('mag') %>%
+    as.matrix() %>%
+    replace(is.na(.), 0)
+
+#mtx <- vegdist(mtx,"bray")
+dend <- as.dendrogram(hclust(vegdist(mtx,"bray")))
+
+## Colors
+dend <- dend %>%
+    color_branches(k = 19) %>%
+    raise.dendrogram (15) %>%
+    hang.dendrogram()
+
+## Control quality plot
+ggplot(dend, labels = FALSE) + scale_y_reverse(expand = c(0.2, 0)) + coord_polar(theta="x")
+png(filename = "PULs_dend_test.png",width = 4000,height = 2000,res = 100)
+factoextra::fviz_dend(dend, cex = 0.5, k = 20, 
+                      color_labels_by_k = TRUE, rect = TRUE)
+dev.off()
+
+## Write the tree
+phy <- ape::as.phylo(hclust(vegdist(mtx,"bray")))
+ape::write.tree(phy = phy,file='PULs343_ward_Class.tree') 
+```
+\hfill\break
+
+- purple: Gammaproteobacteria
+- violet: Clostridia
+- red: Bacteroidia
+- yellow: Negativicutes
+- green: Deinococci
+- blue: Bacilli
+
+\hfill\break
+
+**PULs**
+
+![](/home/chombo/Documents/SEGOVIA/CAZymes_PULs/filteredplots/PULs/PULs_Class_Tree.png)
+
+**CAZymes**
+
+![](/home/chombo/Documents/SEGOVIA/CAZymes_PULs/filteredplots/CAZymes/CAZys_Class_Tree.png)
+
+## 5.1 CAZyme families per Family
+The distribution fo CAZyme families per Family.
+\hfill\break
+
+![](/home/chombo/Documents/SEGOVIA/CAZymes_PULs/filteredplots/CAZymes/CAZyFamilies_FamilyDiversity.png)
+
+# 6. Substrates
+Here are the substrates per Family identified for the PULs. The cutoff for the substrates was >= 100 counts from total. (A cutoff by the median was also evaluated. There is no meaningful difference between the cutoff by 100 and by the median).
+
+- PULs substrate got from: https://bcb.unl.edu/static/DBCAN-PUL/dbCAN-PUL_v5_05-10-2023.xlsx
+- CAZymes substrate got from: https://bcb.unl.edu/dbCAN_sub/data/fam-substrate-mapping-08252022.tsv
+
+\hfill\break
+
+![](/home/chombo/Documents/SEGOVIA/CAZymes_PULs/filteredplots/PULs/Substrate/SubstrateperFamily100/PULs_Acidaminococcaceae_SubstrateDiversity.png)
+
+![](/home/chombo/Documents/SEGOVIA/CAZymes_PULs/filteredplots/PULs/Substrate/SubstrateperFamily100/PULs_Bacteroidaceae_SubstrateDiversity.png)
+
+![](/home/chombo/Documents/SEGOVIA/CAZymes_PULs/filteredplots/PULs/Substrate/SubstrateperFamily100/PULs_Burkholderiaceae_SubstrateDiversity.png)
+
+![](/home/chombo/Documents/SEGOVIA/CAZymes_PULs/filteredplots/PULs/Substrate/SubstrateperFamily100/PULs_Chitinophagaceae_SubstrateDiversity.png)
+
+![](/home/chombo/Documents/SEGOVIA/CAZymes_PULs/filteredplots/PULs/Substrate/SubstrateperFamily100/PULs_Enterobacteriaceae_SubstrateDiversity.png)
+
+![](/home/chombo/Documents/SEGOVIA/CAZymes_PULs/filteredplots/PULs/Substrate/SubstrateperFamily100/PULs_Enterococcaceae_SubstrateDiversity.png)
+
+![](/home/chombo/Documents/SEGOVIA/CAZymes_PULs/filteredplots/PULs/Substrate/SubstrateperFamily100/PULs_Erysipelatoclostridiaceae_SubstrateDiversity.png)
+
+![](/home/chombo/Documents/SEGOVIA/CAZymes_PULs/filteredplots/PULs/Substrate/SubstrateperFamily100/PULs_Flavobacteriaceae_SubstrateDiversity.png)
+
+![](/home/chombo/Documents/SEGOVIA/CAZymes_PULs/filteredplots/PULs/Substrate/SubstrateperFamily100/PULs_Hahellaceae_SubstrateDiversity.png)
+
+![](/home/chombo/Documents/SEGOVIA/CAZymes_PULs/filteredplots/PULs/Substrate/SubstrateperFamily100/PULs_Lachnospiraceae_SubstrateDiversity.png)
+
+![](/home/chombo/Documents/SEGOVIA/CAZymes_PULs/filteredplots/PULs/Substrate/SubstrateperFamily100/PULs_Lactobacillaceae_SubstrateDiversity.png)
+
+![](/home/chombo/Documents/SEGOVIA/CAZymes_PULs/filteredplots/PULs/Substrate/SubstrateperFamily100/PULs_Megasphaeraceae_SubstrateDiversity.png)
+
+![](/home/chombo/Documents/SEGOVIA/CAZymes_PULs/filteredplots/PULs/Substrate/SubstrateperFamily100/PULs_Moraxellaceae_SubstrateDiversity.png)
+
+![](/home/chombo/Documents/SEGOVIA/CAZymes_PULs/filteredplots/PULs/Substrate/SubstrateperFamily100/PULs_Paludibacteraceae_SubstrateDiversity.png)
+
+![](/home/chombo/Documents/SEGOVIA/CAZymes_PULs/filteredplots/PULs/Substrate/SubstrateperFamily100/PULs_Rikenellaceae_SubstrateDiversity.png)
+
+![](/home/chombo/Documents/SEGOVIA/CAZymes_PULs/filteredplots/PULs/Substrate/SubstrateperFamily100/PULs_Ruminococcaceae_SubstrateDiversity.png)
+
+![](/home/chombo/Documents/SEGOVIA/CAZymes_PULs/filteredplots/PULs/Substrate/SubstrateperFamily100/PULs_Thermaceae_SubstrateDiversity.png)
+
+![](/home/chombo/Documents/SEGOVIA/CAZymes_PULs/filteredplots/PULs/Substrate/SubstrateperFamily100/PULs_Veillonellaceae_SubstrateDiversity.png)
+
+![](/home/chombo/Documents/SEGOVIA/CAZymes_PULs/filteredplots/PULs/Substrate/SubstrateperFamily100/PULs_Weeksellaceae_SubstrateDiversity.png)
