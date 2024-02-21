@@ -1,0 +1,120 @@
+---
+title: "PULs diversity in the Pacific Ocean's sediment"
+author: "Bernardo Chombo-Álvarez and Rafael Sánchez"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    toc: true
+    code_fold: show
+header-includes:
+   - \usepackage{setspace}
+   - \singlespacing
+   - \usepackage{paralist}
+   - \let\itemsize\compactitem
+fontsize: 11pt
+mainfont: Calibri
+sansfont: Calibri
+monofont: Calibri
+indent: true
+---
+
+# About the project
+This project aims to compare the diversity of PULs (polysaccharide utilization loci) and the diversity of CAZymes (Carbohydrate Active EnZymes) along the Pacific's Ocean sediment samples obtained from the CSV of the MAGs from the [Nayfach project](https://pubmed.ncbi.nlm.nih.gov/27803195/). This anaylsis took place inside the Institute of Biotechnology of the National Autonomous University of Mexico (UNAM).
+
+**Access to the workflow by clicking [here](https://bernardochomboalvarez.github.io/CAZymes_PULs/Workflow.html)**
+
+# Data
+
+- **MAGs**: got from the [Nayfach project](https://pubmed.ncbi.nlm.nih.gov/27803195/)
+- **PULs substrate**: got from [DBcanSub](https://bcb.unl.edu/static/DBCAN-PUL/dbCAN-PUL_v5_05-10-2023.xlsx)
+- **CAZymes substrate**: got from [DBcanPUL](https://bcb.unl.edu/dbCAN_sub/data/fam-substrate-mapping-08252022.tsv)
+
+# Reproducibility
+```{r reproducibility, include=TRUE,warning=FALSE,message=FALSE,eval=FALSE,echo=TRUE}
+session_info()
+
+# ─ Session info ───────────────────────────────────────
+#  setting  value
+#  version  R version 4.3.2 (2023-10-31)
+#  os       Manjaro Linux
+#  system   x86_64, linux-gnu
+#  ui       RStudio
+#  language (EN)
+#  collate  en_US.UTF-8
+#  ctype    en_US.UTF-8
+#  tz       America/Mexico_City
+#  date     2024-02-21
+#  rstudio  2023.09.1+494 Desert Sunflower (desktop)
+#  pandoc   3.1.6 @ /usr/bin/ (via rmarkdown)
+# 
+# ─ Packages ───────────────────────────────────────────
+#  package       * version date (UTC) lib source
+#  ape             5.7-1   2023-03-13 [1] CRAN (R 4.3.2)
+#  cellranger      1.1.0   2016-07-27 [1] CRAN (R 4.3.2)
+#  circlize      * 0.4.16  2024-02-20 [1] CRAN (R 4.3.2)
+#  cli             3.6.2   2023-12-11 [1] CRAN (R 4.3.2)
+#  cluster         2.1.4   2022-08-22 [2] CRAN (R 4.3.2)
+#  colorspace      2.1-0   2023-01-23 [1] CRAN (R 4.3.1)
+#  data.table      1.15.0  2024-01-30 [1] CRAN (R 4.3.2)
+#  dendextend    * 1.17.1  2023-03-25 [1] CRAN (R 4.3.2)
+#  digest          0.6.34  2024-01-11 [1] CRAN (R 4.3.2)
+#  dplyr         * 1.1.4   2023-11-17 [1] CRAN (R 4.3.2)
+#  evaluate        0.23    2023-11-01 [1] CRAN (R 4.3.2)
+#  factoextra      1.0.7   2020-04-01 [1] CRAN (R 4.3.2)
+#  fansi           1.0.6   2023-12-08 [1] CRAN (R 4.3.2)
+#  fastmap         1.1.1   2023-02-24 [1] CRAN (R 4.3.2)
+#  generics        0.1.3   2022-07-05 [1] CRAN (R 4.3.2)
+#  ggplot2       * 3.4.4   2023-10-12 [1] CRAN (R 4.3.2)
+#  ggrepel         0.9.5   2024-01-10 [1] CRAN (R 4.3.2)
+#  GlobalOptions   0.1.2   2020-06-10 [1] CRAN (R 4.3.2)
+#  glue            1.7.0   2024-01-09 [1] CRAN (R 4.3.2)
+#  gridExtra       2.3     2017-09-09 [1] CRAN (R 4.3.2)
+#  gtable          0.3.4   2023-08-21 [1] CRAN (R 4.3.1)
+#  htmltools       0.5.7   2023-11-03 [1] CRAN (R 4.3.2)
+#  knitr           1.45    2023-10-30 [1] CRAN (R 4.3.2)
+#  lattice       * 0.21-9  2023-10-01 [2] CRAN (R 4.3.2)
+#  lifecycle       1.0.4   2023-11-07 [1] CRAN (R 4.3.2)
+#  magrittr        2.0.3   2022-03-30 [1] CRAN (R 4.3.1)
+#  MASS            7.3-60  2023-05-04 [2] CRAN (R 4.3.2)
+#  Matrix          1.6-1.1 2023-09-18 [2] CRAN (R 4.3.2)
+#  mgcv            1.9-0   2023-07-11 [2] CRAN (R 4.3.2)
+#  munsell         0.5.0   2018-06-12 [1] CRAN (R 4.3.1)
+#  nlme            3.1-163 2023-08-09 [2] CRAN (R 4.3.2)
+#  permute       * 0.9-7   2022-01-27 [1] CRAN (R 4.3.2)
+#  pheatmap      * 1.0.12  2019-01-04 [1] CRAN (R 4.3.2)
+#  pillar          1.9.0   2023-03-22 [1] CRAN (R 4.3.1)
+#  pkgconfig       2.0.3   2019-09-22 [1] CRAN (R 4.3.1)
+#  pracma        * 2.4.4   2023-11-10 [1] CRAN (R 4.3.2)
+#  purrr           1.0.2   2023-08-10 [1] CRAN (R 4.3.2)
+#  R6              2.5.1   2021-08-19 [1] CRAN (R 4.3.1)
+#  RColorBrewer    1.1-3   2022-04-03 [1] CRAN (R 4.3.1)
+#  Rcpp            1.0.12  2024-01-09 [1] CRAN (R 4.3.2)
+#  readxl        * 1.4.3   2023-07-06 [1] CRAN (R 4.3.2)
+#  rlang           1.1.3   2024-01-10 [1] CRAN (R 4.3.2)
+#  rmarkdown       2.25    2023-09-18 [1] CRAN (R 4.3.2)
+#  rsconnect       1.2.0   2023-12-15 [1] CRAN (R 4.3.2)
+#  rstudioapi      0.15.0  2023-07-07 [1] CRAN (R 4.3.2)
+#  scales          1.3.0   2023-11-28 [1] CRAN (R 4.3.2)
+#  sessioninfo   * 1.2.2   2021-12-06 [1] CRAN (R 4.3.2)
+#  shape           1.4.6   2021-05-19 [1] CRAN (R 4.3.2)
+#  stringi         1.8.3   2023-12-11 [1] CRAN (R 4.3.2)
+#  stringr       * 1.5.1   2023-11-14 [1] CRAN (R 4.3.2)
+#  textshape     * 1.7.3   2021-05-28 [1] CRAN (R 4.3.2)
+#  tibble          3.2.1   2023-03-20 [1] CRAN (R 4.3.1)
+#  tidyr         * 1.3.1   2024-01-24 [1] CRAN (R 4.3.2)
+#  tidyselect      1.2.0   2022-10-10 [1] CRAN (R 4.3.2)
+#  utf8            1.2.4   2023-10-22 [1] CRAN (R 4.3.1)
+#  vctrs           0.6.5   2023-12-01 [1] CRAN (R 4.3.2)
+#  vegan         * 2.6-4   2022-10-11 [1] CRAN (R 4.3.2)
+#  viridis         0.6.5   2024-01-29 [1] CRAN (R 4.3.2)
+#  viridisLite     0.4.2   2023-05-02 [1] CRAN (R 4.3.1)
+#  withr           3.0.0   2024-01-16 [1] CRAN (R 4.3.2)
+#  xfun            0.41    2023-11-01 [1] CRAN (R 4.3.2)
+#  yaml            2.3.8   2023-12-11 [1] CRAN (R 4.3.2)
+# 
+#  [1] /home/chombo/R/x86_64-pc-linux-gnu-library/4.3
+#  [2] /usr/lib/R/library
+```
+
+# References
+1. Nayfach S, Rodriguez-Mueller B, Garud N, Pollard KS. An integrated metagenomics pipeline for strain profiling reveals novel patterns of bacterial transmission and biogeography. Genome Res. 2016 Nov;26(11):1612-1625. doi: 10.1101/gr.201863.115. Epub 2016 Oct 18. PMID: 27803195; PMCID: PMC5088602.

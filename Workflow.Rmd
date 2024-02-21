@@ -1,7 +1,7 @@
 ---
 title: "Workflow: PULs diversity in the Pacific Ocean's sediment"
 author: "Bernardo Chombo-Álvarez"
-date: "02-21-2024"
+date: "`r Sys.Date()`"
 output:
   html_document:
     toc: true
@@ -119,6 +119,7 @@ session_info()
 #  [1] /home/chombo/R/x86_64-pc-linux-gnu-library/4.3
 #  [2] /usr/lib/R/library
 ```
+
 # 2. Data Preparation
 
 **BASH CLEANING**
