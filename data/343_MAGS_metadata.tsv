@@ -1,0 +1,344 @@
+PULS	CAZYS	Class	Order	Family	Specie	Ecosystem	mag
+3300005326_19	28	34	Gammaproteobacteria	Betaproteobacteriales	Burkholderiaceae		Bioremediation	3300005326_19
+3300006250_9	36	36	Bacteroidia	Flavobacteriales	Flavobacteriaceae	Capnocytophaga gingivalis	Human	3300006250_9
+3300006307_14	34	28	Negativicutes	Veillonellales	Veillonellaceae	Veillonella parvula	Human	3300006307_14
+3300006312_13	52	22	Negativicutes	Acidaminococcales	Acidaminococcaceae	Acidaminococcus intestini	Human	3300006312_13
+3300006476_10	30	66	Clostridia	Lachnospirales	Lachnospiraceae	Agathobacter rectalis	Human	3300006476_10
+3300006487_4	62	18	Gammaproteobacteria	Betaproteobacteriales	Burkholderiaceae	Sutterella wadsworthensis	Human	3300006487_4
+3300006488_1	40	39	Bacteroidia	Flavobacteriales	Flavobacteriaceae	Capnocytophaga gingivalis	Human	3300006488_1
+3300006510_1	41	43	Bacilli	Lactobacillales	Lactobacillaceae	Lactobacillus gasseri	Human	3300006510_1
+3300007043_6	51	70	Clostridia	Lachnospirales	Lachnospiraceae	Agathobacter rectalis	Human	3300007043_6
+3300007135_8	86	21	Negativicutes	Veillonellales	Veillonellaceae	Veillonella parvula	Human	3300007135_8
+3300007313_3	40	72	Clostridia	Lachnospirales	Lachnospiraceae	GCF_001517625.2	Human	3300007313_3
+3300007360_8	58	21	Gammaproteobacteria	Betaproteobacteriales	Burkholderiaceae	Sutterella wadsworthensis	Human	3300007360_8
+3300007796_19	64	23	Negativicutes	Acidaminococcales	Acidaminococcaceae	Acidaminococcus intestini	Human	3300007796_19
+3300007874_1	37	39	Bacilli	Lactobacillales	Lactobacillaceae	Lactobacillus gasseri	Human	3300007874_1
+3300007921_9	26	42	Clostridia	Lachnospirales	Lachnospiraceae	Coprococcus sp1	Human	3300007921_9
+3300008060_4	29	171	Bacteroidia	Bacteroidales	Bacteroidaceae	Paraprevotella clara	Human	3300008060_4
+3300008073_10	36	22	Negativicutes	Veillonellales	Veillonellaceae	Veillonella parvula	Human	3300008073_10
+3300008102_6	68	30	Bacteroidia	Flavobacteriales	Weeksellaceae		Human	3300008102_6
+3300008134_16	35	30	Bacteroidia	Flavobacteriales	Weeksellaceae		Human	3300008134_16
+3300008136_4	50	80	Bacteroidia	Bacteroidales	Bacteroidaceae	Prevotella shahii	Human	3300008136_4
+3300008405_8	41	31	Bacteroidia	Flavobacteriales	Weeksellaceae		Human	3300008405_8
+3300008485_3	34	23	Negativicutes	Veillonellales	Veillonellaceae	Veillonella parvula	Human	3300008485_3
+3300008515_8	28	38	Bacteroidia	Flavobacteriales	Flavobacteriaceae	Capnocytophaga gingivalis	Human	3300008515_8
+3300008518_4	31	66	Bacteroidia	Flavobacteriales	Flavobacteriaceae		Human	3300008518_4
+3300008638_6	29	66	Bacteroidia	Flavobacteriales	Flavobacteriaceae		Human	3300008638_6
+3300008734_6	34	81	Bacteroidia	Bacteroidales	Bacteroidaceae	Prevotella shahii	Human	3300008734_6
+3300010262_6	93	134	Bacilli	Erysipelotrichales	Erysipelatoclostridiaceae	Erysipelatoclostridium ramosum	Animal	3300010262_6
+3300010266_9	94	65	Bacilli	Lactobacillales	Enterococcaceae	Enterococcus_B hirae	Animal	3300010266_9
+3300010279_4	58	119	Clostridia	Oscillospirales	Ruminococcaceae		Animal	3300010279_4
+3300010280_19	61	54	Clostridia	Lachnospirales	Lachnospiraceae		Animal	3300010280_19
+3300011134_3	39	52	Bacteroidia	Flavobacteriales	Weeksellaceae	Empedobacter falsenii	Built_environment	3300011134_3
+3300011151_2	50	55	Bacteroidia	Flavobacteriales	Weeksellaceae	Empedobacter falsenii	Built_environment	3300011151_2
+3300011360_1	60	100	Bacteroidia	Flavobacteriales	Weeksellaceae	GCA_002297505.1	Built_environment	3300011360_1
+3300011386_4	45	40	Gammaproteobacteria	Pseudomonadales	Moraxellaceae	Acinetobacter nosocomialis	Built_environment	3300011386_4
+3300011452_2	46	39	Gammaproteobacteria	Pseudomonadales	Moraxellaceae	Acinetobacter nosocomialis	Built_environment	3300011452_2
+3300011548_2	42	38	Gammaproteobacteria	Pseudomonadales	Moraxellaceae	Acinetobacter nosocomialis	Built_environment	3300011548_2
+3300011571_4	73	56	Bacteroidia	Flavobacteriales	Weeksellaceae	GCA_002294105.1	Built_environment	3300011571_4
+3300011575_5	63	22	Gammaproteobacteria	Pseudomonadales	Moraxellaceae	Enhydrobacter aerosaccus	Built_environment	3300011575_5
+3300011593_3	61	39	Gammaproteobacteria	Pseudomonadales	Moraxellaceae	Acinetobacter nosocomialis	Built_environment	3300011593_3
+3300011596_5	27	20	Gammaproteobacteria	Pseudomonadales	Moraxellaceae	Enhydrobacter aerosaccus	Built_environment	3300011596_5
+3300011609_3	82	52	Bacteroidia	Flavobacteriales	Weeksellaceae	Empedobacter falsenii	Built_environment	3300011609_3
+3300011631_3	52	39	Gammaproteobacteria	Pseudomonadales	Moraxellaceae	Acinetobacter nosocomialis	Built_environment	3300011631_3
+3300011656_2	38	44	Bacilli	Lactobacillales	Lactobacillaceae	Leuconostoc citreum	Built_environment	3300011656_2
+3300011668_4	48	49	Bacteroidia	Flavobacteriales	Weeksellaceae	Empedobacter falsenii	Built_environment	3300011668_4
+3300011692_3	65	57	Bacteroidia	Flavobacteriales	Weeksellaceae	Empedobacter falsenii	Built_environment	3300011692_3
+3300011724_4	38	39	Gammaproteobacteria	Pseudomonadales	Moraxellaceae	Acinetobacter nosocomialis	Built_environment	3300011724_4
+3300011744_3	63	24	Gammaproteobacteria	Pseudomonadales	Moraxellaceae	Enhydrobacter aerosaccus	Built_environment	3300011744_3
+3300011747_4	55	40	Gammaproteobacteria	Pseudomonadales	Moraxellaceae	Acinetobacter nosocomialis	Built_environment	3300011747_4
+3300011759_3	34	67	Bacteroidia	Flavobacteriales	Weeksellaceae		Built_environment	3300011759_3
+3300011778_5	33	32	Gammaproteobacteria	Pseudomonadales	Moraxellaceae	Acinetobacter schindleri	Built_environment	3300011778_5
+3300011783_5	71	50	Bacteroidia	Flavobacteriales	Weeksellaceae	Empedobacter falsenii	Built_environment	3300011783_5
+3300011799_3	105	109	Bacteroidia	Flavobacteriales	Weeksellaceae	GCA_002434285.1	Built_environment	3300011799_3
+3300011822_4	47	88	Bacteroidia	Flavobacteriales	Weeksellaceae		Built_environment	3300011822_4
+3300011827_5	72	69	Bacteroidia	Flavobacteriales	Weeksellaceae	Empedobacter falsenii	Built_environment	3300011827_5
+3300011834_5	30	73	Bacteroidia	Flavobacteriales	Weeksellaceae	GCA_002484105.1	Built_environment	3300011834_5
+3300011866_4	89	49	Bacteroidia	Flavobacteriales	Weeksellaceae	Empedobacter falsenii	Built_environment	3300011866_4
+3300011869_5	56	50	Bacteroidia	Flavobacteriales	Weeksellaceae	Empedobacter falsenii	Built_environment	3300011869_5
+3300011886_5	54	50	Bacteroidia	Flavobacteriales	Weeksellaceae	Empedobacter falsenii	Built_environment	3300011886_5
+3300011931_1	72	23	Gammaproteobacteria	Pseudomonadales	Moraxellaceae	GCF_000213615.1	Built_environment	3300011931_1
+3300011953_5	40	50	Bacteroidia	Flavobacteriales	Weeksellaceae	Empedobacter falsenii	Built_environment	3300011953_5
+3300011954_2	44	38	Gammaproteobacteria	Pseudomonadales	Moraxellaceae	Acinetobacter nosocomialis	Built_environment	3300011954_2
+3300011956_3	52	50	Bacteroidia	Flavobacteriales	Weeksellaceae	Empedobacter falsenii	Built_environment	3300011956_3
+3300011958_3	36	51	Bacteroidia	Flavobacteriales	Weeksellaceae	Empedobacter falsenii	Built_environment	3300011958_3
+3300012259_1	64	81	Gammaproteobacteria	Enterobacterales	Enterobacteriaceae	Citrobacter freundii	Built_environment	3300012259_1
+3300012283_6	55	55	Bacteroidia	Flavobacteriales	Weeksellaceae	Empedobacter falsenii	Built_environment	3300012283_6
+3300012816_5	71	154	Bacteroidia	Chitinophagales	Chitinophagaceae		Terrestrial	3300012816_5
+3300012820_3	68	40	Gammaproteobacteria	Betaproteobacteriales	Burkholderiaceae		Insecta	3300012820_3
+3300012826_6	58	126	Bacteroidia	Chitinophagales	Chitinophagaceae		Terrestrial	3300012826_6
+3300012829_13	29	43	Bacteroidia	Chitinophagales	Chitinophagaceae		Insecta	3300012829_13
+3300012842_6	62	153	Bacteroidia	Chitinophagales	Chitinophagaceae		Terrestrial	3300012842_6
+3300012846_11	33	43	Bacteroidia	Chitinophagales	Chitinophagaceae		Insecta	3300012846_11
+3300013094_16	46	109	Bacteroidia	Chitinophagales	Chitinophagaceae		Aquatic	3300013094_16
+3300013667_2	47	98	Gammaproteobacteria	Enterobacterales	Enterobacteriaceae	Enterobacter steigerwaltii	Built_environment	3300013667_2
+3300013703_1	40	43	Gammaproteobacteria	Pseudomonadales	Moraxellaceae	Acinetobacter nosocomialis	Built_environment	3300013703_1
+3300013723_1	40	122	Gammaproteobacteria	Betaproteobacteriales	Burkholderiaceae	Massilia timonae	Built_environment	3300013723_1
+3300013921_3	72	51	Bacteroidia	Flavobacteriales	Weeksellaceae	Empedobacter falsenii	Built_environment	3300013921_3
+3300014014_1	76	39	Gammaproteobacteria	Pseudomonadales	Moraxellaceae	Acinetobacter nosocomialis	Built_environment	3300014014_1
+3300014062_2	94	41	Gammaproteobacteria	Pseudomonadales	Moraxellaceae	Acinetobacter nosocomialis	Built_environment	3300014062_2
+3300014070_3	52	43	Gammaproteobacteria	Pseudomonadales	Moraxellaceae	Acinetobacter nosocomialis	Built_environment	3300014070_3
+3300014094_4	54	36	Gammaproteobacteria	Pseudomonadales	Moraxellaceae	Acinetobacter nosocomialis	Built_environment	3300014094_4
+3300014095_7	32	83	Bacteroidia	Flavobacteriales	Weeksellaceae	GCA_002484105.1	Built_environment	3300014095_7
+3300014131_2	35	23	Negativicutes	Veillonellales	Veillonellaceae	Veillonella parvula	Human	3300014131_2
+3300014497_10	43	97	Bacteroidia	Flavobacteriales	Weeksellaceae	Chryseobacterium indoltheticum	Plants	3300014497_10
+3300014514_2	36	248	Bacteroidia	Bacteroidales	Bacteroidaceae	Bacteroides_B vulgatus	Human	3300014514_2
+3300014514_3	65	78	Gammaproteobacteria	Enterobacterales	Enterobacteriaceae	Escherichia coli	Human	3300014514_3
+3300014520_4	67	80	Gammaproteobacteria	Enterobacterales	Enterobacteriaceae	Escherichia coli	Human	3300014520_4
+3300014524_4	70	40	Gammaproteobacteria	Pseudomonadales	Moraxellaceae	Acinetobacter nosocomialis	Built_environment	3300014524_4
+3300014527_5	53	76	Bacilli	Lactobacillales	Lactobacillaceae	Lactobacillus_C rhamnosus	Human	3300014527_5
+3300014529_2	35	74	Gammaproteobacteria	Enterobacterales	Enterobacteriaceae	Escherichia coli	Human	3300014529_2
+3300014541_6	40	23	Negativicutes	Acidaminococcales	Acidaminococcaceae	Acidaminococcus intestini	Human	3300014541_6
+3300014543_9	75	60	Clostridia	Lachnospirales	Lachnospiraceae	GCA_000436535.1	Human	3300014543_9
+3300014558_5	36	56	Clostridia	Oscillospirales	Ruminococcaceae	Faecalibacterium prausnitzii_A	Human	3300014558_5
+3300014561_6	47	68	Bacteroidia	Bacteroidales	Rikenellaceae	Alistipes_A ihumii	Human	3300014561_6
+3300014597_2	43	76	Gammaproteobacteria	Enterobacterales	Enterobacteriaceae	Escherichia coli	Human	3300014597_2
+3300014602_2	60	41	Gammaproteobacteria	Pseudomonadales	Moraxellaceae	Acinetobacter nosocomialis	Built_environment	3300014602_2
+3300014616_2	68	41	Bacilli	Lactobacillales	Enterococcaceae	Enterococcus_G italicus	Built_environment	3300014616_2
+3300014620_1	65	78	Gammaproteobacteria	Enterobacterales	Enterobacteriaceae	Escherichia coli	Human	3300014620_1
+3300014622_2	32	43	Gammaproteobacteria	Betaproteobacteriales	Burkholderiaceae	GCF_001424265.1	Built_environment	3300014622_2
+3300014645_1	45	123	Gammaproteobacteria	Betaproteobacteriales	Burkholderiaceae	Massilia timonae	Built_environment	3300014645_1
+3300014678_2	35	120	Gammaproteobacteria	Betaproteobacteriales	Burkholderiaceae		Built_environment	3300014678_2
+3300014700_6	34	83	Bacteroidia	Flavobacteriales	Weeksellaceae	GCA_002484105.1	Built_environment	3300014700_6
+3300014728_1	41	75	Bacteroidia	Flavobacteriales	Weeksellaceae	Chryseobacterium arthrosphaerae	Built_environment	3300014728_1
+3300014749_6	60	63	Bacilli	Lactobacillales	Lactobacillaceae	Lactobacillus_C paracasei	Human	3300014749_6
+3300014755_12	48	23	Negativicutes	Acidaminococcales	Acidaminococcaceae	Acidaminococcus intestini	Human	3300014755_12
+3300014778_10	45	69	Clostridia	Lachnospirales	Lachnospiraceae	Agathobacter rectalis	Human	3300014778_10
+3300014780_5	138	81	Bacilli	Erysipelotrichales	Erysipelatoclostridiaceae	GCF_000752095.2	Human	3300014780_5
+3300014783_10	88	18	Gammaproteobacteria	Betaproteobacteriales	Burkholderiaceae	GCA_000980495.1	Human	3300014783_10
+3300014803_14	76	17	Gammaproteobacteria	Betaproteobacteriales	Burkholderiaceae	GCA_000980495.1	Human	3300014803_14
+3300014901_2	54	38	Gammaproteobacteria	Pseudomonadales	Moraxellaceae	Acinetobacter nosocomialis	Built_environment	3300014901_2
+3300014921_5	47	92	Clostridia	Lachnospirales	Lachnospiraceae	Ruminococcus_B gnavus	Human	3300014921_5
+3300014951_5	50	80	Gammaproteobacteria	Enterobacterales	Enterobacteriaceae	Escherichia coli	Human	3300014951_5
+3300014953_8	48	65	Bacilli	Lactobacillales	Enterococcaceae	Enterococcus faecalis	Human	3300014953_8
+3300014956_10	66	55	Clostridia	Lachnospirales	Lachnospiraceae	Agathobacter rectalis	Human	3300014956_10
+3300014970_5	72	75	Clostridia	Lachnospirales	Lachnospiraceae	Blautia_A wexlerae	Human	3300014970_5
+3300014970_8	41	70	Bacilli	Lactobacillales	Enterococcaceae	Enterococcus faecalis	Human	3300014970_8
+3300014972_2	67	77	Gammaproteobacteria	Enterobacterales	Enterobacteriaceae	Escherichia coli	Human	3300014972_2
+3300017560_9	47	129	Bacteroidia	Chitinophagales	Chitinophagaceae		Terrestrial	3300017560_9
+3300018426_34	95	26	Deinococci	Deinococcales	Thermaceae	Thermus thermophilus	Aquatic	3300018426_34
+3300019371_8	70	64	Clostridia	Lachnospirales	Lachnospiraceae	Clostridium_M clostridioformis	Mammals	3300019371_8
+3300019373_10	80	64	Clostridia	Lachnospirales	Lachnospiraceae	Clostridium_M clostridioformis	Mammals	3300019373_10
+3300020051_21	47	26	Deinococci	Deinococcales	Thermaceae	Thermus thermophilus	Aquatic	3300020051_21
+3300020052_28	39	26	Deinococci	Deinococcales	Thermaceae	Thermus thermophilus	Aquatic	3300020052_28
+3300020055_21	47	26	Deinococci	Deinococcales	Thermaceae	Thermus thermophilus	Aquatic	3300020055_21
+3300020056_35	48	26	Deinococci	Deinococcales	Thermaceae	Thermus thermophilus	Aquatic	3300020056_35
+3300020168_29	70	25	Deinococci	Deinococcales	Thermaceae	Thermus thermophilus	Aquatic	3300020168_29
+3300020176_29	38	26	Deinococci	Deinococcales	Thermaceae	Thermus thermophilus	Aquatic	3300020176_29
+3300020189_33	43	25	Deinococci	Deinococcales	Thermaceae	Thermus thermophilus	Aquatic	3300020189_33
+3300020601_30	35	26	Deinococci	Deinococcales	Thermaceae	Thermus thermophilus	Aquatic	3300020601_30
+3300021310_13	27	118	Bacteroidia	Bacteroidales	Paludibacteraceae		Mammals	3300021310_13
+3300021318_9	42	112	Bacteroidia	Bacteroidales	Paludibacteraceae		Mammals	3300021318_9
+3300021400_59	53	88	Clostridia	Oscillospirales	Ruminococcaceae	Ruminococcus sp1	Mammals	3300021400_59
+3300021400_61	31	34	Negativicutes	Veillonellales	Megasphaeraceae	Caecibacter massiliensis	Mammals	3300021400_61
+3300022137_9	42	46	Bacilli	Lactobacillales	Lactobacillaceae		Bioreactor	3300022137_9
+3300022849_3	90	162	Bacteroidia	Bacteroidales	Paludibacteraceae		Terrestrial	3300022849_3
+3300022861_4	68	161	Bacteroidia	Bacteroidales	Paludibacteraceae		Terrestrial	3300022861_4
+3300023228_3	76	159	Bacteroidia	Bacteroidales	Paludibacteraceae		Terrestrial	3300023228_3
+3300024040_10	39	37	Gammaproteobacteria	Betaproteobacteriales	Burkholderiaceae		Arthropoda	3300024040_10
+3300024043_10	38	37	Gammaproteobacteria	Betaproteobacteriales	Burkholderiaceae		Arthropoda	3300024043_10
+3300024276_2	32	26	Deinococci	Deinococcales	Thermaceae	Thermus thermophilus	Aquatic	3300024276_2
+3300024277_5	35	26	Deinococci	Deinococcales	Thermaceae	Thermus thermophilus	Aquatic	3300024277_5
+3300024280_5	37	25	Deinococci	Deinococcales	Thermaceae	Thermus thermophilus	Aquatic	3300024280_5
+3300024282_5	42	26	Deinococci	Deinococcales	Thermaceae	Thermus thermophilus	Aquatic	3300024282_5
+3300024285_4	45	26	Deinococci	Deinococcales	Thermaceae	Thermus thermophilus	Aquatic	3300024285_4
+3300024298_3	33	26	Deinococci	Deinococcales	Thermaceae	Thermus thermophilus	Aquatic	3300024298_3
+3300024311_6	42	26	Deinococci	Deinococcales	Thermaceae	Thermus thermophilus	Aquatic	3300024311_6
+3300024312_7	82	26	Deinococci	Deinococcales	Thermaceae	Thermus thermophilus	Aquatic	3300024312_7
+3300024320_11	48	26	Deinococci	Deinococcales	Thermaceae	Thermus thermophilus	Aquatic	3300024320_11
+3300024326_13	38	26	Deinococci	Deinococcales	Thermaceae	Thermus thermophilus	Aquatic	3300024326_13
+3300024328_14	37	26	Deinococci	Deinococcales	Thermaceae	Thermus thermophilus	Aquatic	3300024328_14
+3300024350_5	33	26	Deinococci	Deinococcales	Thermaceae	Thermus thermophilus	Aquatic	3300024350_5
+3300024351_2	30	26	Deinococci	Deinococcales	Thermaceae	Thermus thermophilus	Aquatic	3300024351_2
+3300024354_4	36	26	Deinococci	Deinococcales	Thermaceae	Thermus thermophilus	Aquatic	3300024354_4
+3300024356_4	39	26	Deinococci	Deinococcales	Thermaceae	Thermus thermophilus	Aquatic	3300024356_4
+3300024357_5	35	26	Deinococci	Deinococcales	Thermaceae	Thermus thermophilus	Aquatic	3300024357_5
+3300024358_3	34	26	Deinococci	Deinococcales	Thermaceae	Thermus thermophilus	Aquatic	3300024358_3
+3300024359_9	36	26	Deinococci	Deinococcales	Thermaceae	Thermus thermophilus	Aquatic	3300024359_9
+3300024490_1	26	26	Deinococci	Deinococcales	Thermaceae	Thermus thermophilus	Aquatic	3300024490_1
+3300024491_1	28	26	Deinococci	Deinococcales	Thermaceae	Thermus thermophilus	Aquatic	3300024491_1
+3300024492_1	33	26	Deinococci	Deinococcales	Thermaceae	Thermus thermophilus	Aquatic	3300024492_1
+3300024494_3	41	26	Deinococci	Deinococcales	Thermaceae	Thermus thermophilus	Aquatic	3300024494_3
+3300024498_1	29	26	Deinococci	Deinococcales	Thermaceae	Thermus thermophilus	Aquatic	3300024498_1
+3300024499_3	29	26	Deinococci	Deinococcales	Thermaceae	Thermus thermophilus	Aquatic	3300024499_3
+3300024501_4	37	26	Deinococci	Deinococcales	Thermaceae	Thermus thermophilus	Aquatic	3300024501_4
+3300024502_6	29	26	Deinococci	Deinococcales	Thermaceae	Thermus thermophilus	Aquatic	3300024502_6
+3300024504_3	26	26	Deinococci	Deinococcales	Thermaceae	Thermus thermophilus	Aquatic	3300024504_3
+3300024506_5	34	26	Deinococci	Deinococcales	Thermaceae	Thermus thermophilus	Aquatic	3300024506_5
+3300024507_5	37	26	Deinococci	Deinococcales	Thermaceae	Thermus thermophilus	Aquatic	3300024507_5
+3300024509_6	35	26	Deinococci	Deinococcales	Thermaceae	Thermus thermophilus	Aquatic	3300024509_6
+3300024510_1	31	26	Deinococci	Deinococcales	Thermaceae	Thermus thermophilus	Aquatic	3300024510_1
+3300024511_2	32	26	Deinococci	Deinococcales	Thermaceae	Thermus thermophilus	Aquatic	3300024511_2
+3300024512_1	32	26	Deinococci	Deinococcales	Thermaceae	Thermus thermophilus	Aquatic	3300024512_1
+3300024514_4	31	26	Deinococci	Deinococcales	Thermaceae	Thermus thermophilus	Aquatic	3300024514_4
+3300024515_6	36	26	Deinococci	Deinococcales	Thermaceae	Thermus thermophilus	Aquatic	3300024515_6
+3300025061_11	38	21	Gammaproteobacteria	Pseudomonadales	Moraxellaceae	GCF_000016885.1	Aquatic	3300025061_11
+3300025248_7	34	51	Bacteroidia	Flavobacteriales	Flavobacteriaceae		Aquatic	3300025248_7
+3300025280_2	76	81	Bacteroidia	Flavobacteriales	Flavobacteriaceae		Aquatic	3300025280_2
+3300025291_6	44	100	Bacteroidia	Flavobacteriales	Weeksellaceae	GCF_000799375.1	Plants	3300025291_6
+3300025296_6	31	61	Gammaproteobacteria	Pseudomonadales	Hahellaceae	Marinobacter adhaerens	Aquatic	3300025296_6
+3300025528_13	37	126	Bacteroidia	Chitinophagales	Chitinophagaceae		Lab_enrichment	3300025528_13
+3300025530_17	30	123	Bacteroidia	Chitinophagales	Chitinophagaceae		Lab_enrichment	3300025530_17
+3300025542_2	83	49	Bacteroidia	Flavobacteriales	Weeksellaceae	Empedobacter falsenii	Lab_enrichment	3300025542_2
+3300025624_1	46	51	Bacteroidia	Flavobacteriales	Weeksellaceae	Empedobacter falsenii	Lab_enrichment	3300025624_1
+3300025651_4	55	51	Bacteroidia	Flavobacteriales	Weeksellaceae	Empedobacter falsenii	Lab_enrichment	3300025651_4
+3300025846_9	100	139	Bacteroidia	Bacteroidales	Paludibacteraceae		Terrestrial	3300025846_9
+3300026096_2	51	72	Gammaproteobacteria	Enterobacterales	Enterobacteriaceae	Escherichia coli	Aquatic	3300026096_2
+3300026288_11	29	153	Bacteroidia	Chitinophagales	Chitinophagaceae		Wastewater	3300026288_11
+3300026459_7	44	26	Deinococci	Deinococcales	Thermaceae	Thermus thermophilus	Aquatic	3300026459_7
+3300026473_6	35	26	Deinococci	Deinococcales	Thermaceae	Thermus thermophilus	Aquatic	3300026473_6
+3300026907_2	119	57	Gammaproteobacteria	Betaproteobacteriales	Burkholderiaceae		Lab_synthesis	3300026907_2
+3300027079_7	28	26	Deinococci	Deinococcales	Thermaceae	Thermus thermophilus	Aquatic	3300027079_7
+3300027157_5	29	26	Deinococci	Deinococcales	Thermaceae	Thermus thermophilus	Aquatic	3300027157_5
+3300027160_3	33	26	Deinococci	Deinococcales	Thermaceae	Thermus thermophilus	Aquatic	3300027160_3
+3300027162_7	37	26	Deinococci	Deinococcales	Thermaceae	Thermus thermophilus	Aquatic	3300027162_7
+3300027306_8	38	26	Deinococci	Deinococcales	Thermaceae	Thermus thermophilus	Aquatic	3300027306_8
+3300027339_2	63	36	Gammaproteobacteria	Betaproteobacteriales	Burkholderiaceae		Aquatic	3300027339_2
+3300027339_7	34	26	Deinococci	Deinococcales	Thermaceae	Thermus thermophilus	Aquatic	3300027339_7
+3300027503_17	34	26	Deinococci	Deinococcales	Thermaceae	Thermus thermophilus	Aquatic	3300027503_17
+3300027863_91	98	107	Bacteroidia	Bacteroidales	Paludibacteraceae		Aquatic	3300027863_91
+3300028066_2	36	26	Deinococci	Deinococcales	Thermaceae	Thermus thermophilus	Aquatic	3300028066_2
+3300028067_2	31	26	Deinococci	Deinococcales	Thermaceae	Thermus thermophilus	Aquatic	3300028067_2
+3300028070_3	158	157	Bacteroidia	Bacteroidales	Paludibacteraceae		Terrestrial	3300028070_3
+3300028073_7	42	26	Deinococci	Deinococcales	Thermaceae	Thermus thermophilus	Aquatic	3300028073_7
+3300028083_2	32	26	Deinococci	Deinococcales	Thermaceae	Thermus thermophilus	Aquatic	3300028083_2
+3300028084_3	104	155	Bacteroidia	Bacteroidales	Paludibacteraceae		Terrestrial	3300028084_3
+3300028086_1	34	26	Deinococci	Deinococcales	Thermaceae	Thermus thermophilus	Aquatic	3300028086_1
+3300028087_3	126	151	Bacteroidia	Bacteroidales	Paludibacteraceae		Terrestrial	3300028087_3
+3300028091_6	38	26	Deinococci	Deinococcales	Thermaceae	Thermus thermophilus	Aquatic	3300028091_6
+3300028103_5	31	26	Deinococci	Deinococcales	Thermaceae	Thermus thermophilus	Aquatic	3300028103_5
+3300028129_12	34	26	Deinococci	Deinococcales	Thermaceae	Thermus thermophilus	Aquatic	3300028129_12
+3300028258_5	43	26	Deinococci	Deinococcales	Thermaceae	Thermus thermophilus	Aquatic	3300028258_5
+3300028265_1	30	26	Deinococci	Deinococcales	Thermaceae	Thermus thermophilus	Aquatic	3300028265_1
+3300028269_1	44	26	Deinococci	Deinococcales	Thermaceae	Thermus thermophilus	Aquatic	3300028269_1
+3300028275_6	36	26	Deinococci	Deinococcales	Thermaceae	Thermus thermophilus	Aquatic	3300028275_6
+3300028418_10	33	26	Deinococci	Deinococcales	Thermaceae	Thermus thermophilus	Aquatic	3300028418_10
+3300028912_1	38	81	Gammaproteobacteria	Enterobacterales	Enterobacteriaceae	Escherichia coli	Human	3300028912_1
+3300028954_2	31	70	Bacilli	Lactobacillales	Enterococcaceae	Enterococcus faecalis	Human	3300028954_2
+3300028963_1	35	81	Gammaproteobacteria	Enterobacterales	Enterobacteriaceae	Escherichia coli	Human	3300028963_1
+3300028963_4	29	51	Clostridia	Lachnospirales	Lachnospiraceae	Ruminococcus_B faecis	Human	3300028963_4
+3300028965_5	48	57	Bacilli	Lactobacillales	Lactobacillaceae	Lactobacillus_C paracasei	Human	3300028965_5
+3300028969_6	30	71	Bacilli	Lactobacillales	Enterococcaceae	Enterococcus faecalis	Human	3300028969_6
+3300028975_5	26	23	Negativicutes	Veillonellales	Veillonellaceae	Veillonella parvula	Human	3300028975_5
+3300028989_5	93	84	Clostridia	Lachnospirales	Lachnospiraceae	Ruminococcus_B gnavus	Human	3300028989_5
+3300028992_5	81	67	Clostridia	Lachnospirales	Lachnospiraceae	Blautia_A wexlerae	Human	3300028992_5
+3300028994_3	137	126	Bacilli	Erysipelotrichales	Erysipelatoclostridiaceae	Erysipelatoclostridium ramosum	Human	3300028994_3
+3300029032_2	65	80	Gammaproteobacteria	Enterobacterales	Enterobacteriaceae	Escherichia coli	Human	3300029032_2
+3300029044_11	51	23	Negativicutes	Acidaminococcales	Acidaminococcaceae	Acidaminococcus intestini	Human	3300029044_11
+3300029044_14	64	43	Bacilli	Lactobacillales	Lactobacillaceae	Lactobacillus_B ruminis	Human	3300029044_14
+3300029051_9	165	64	Bacilli	Erysipelotrichales	Erysipelatoclostridiaceae	GCF_001078315.1	Human	3300029051_9
+3300029065_1	29	188	Bacteroidia	Bacteroidales	Bacteroidaceae	Bacteroides fragilis	Human	3300029065_1
+3300029065_2	78	69	Bacilli	Lactobacillales	Enterococcaceae	Enterococcus_B faecium	Human	3300029065_2
+3300029066_3	40	69	Bacilli	Lactobacillales	Enterococcaceae	Enterococcus faecalis	Human	3300029066_3
+3300029068_5	64	67	Bacilli	Lactobacillales	Enterococcaceae	Enterococcus faecalis	Human	3300029068_5
+3300029071_3	58	139	Bacilli	Erysipelotrichales	Erysipelatoclostridiaceae	Erysipelatoclostridium ramosum	Human	3300029071_3
+3300029073_4	34	67	Clostridia	Lachnospirales	Lachnospiraceae	Ruminococcus_B gnavus	Human	3300029073_4
+3300029074_5	83	148	Bacilli	Erysipelotrichales	Erysipelatoclostridiaceae	Erysipelatoclostridium ramosum	Human	3300029074_5
+3300029080_10	62	40	Clostridia	Oscillospirales	Ruminococcaceae	Faecalibacterium prausnitzii_B	Human	3300029080_10
+3300029081_3	70	85	Clostridia	Lachnospirales	Lachnospiraceae		Human	3300029081_3
+3300029084_4	51	70	Clostridia	Lachnospirales	Lachnospiraceae	Ruminococcus_B gnavus	Human	3300029084_4
+3300029086_7	67	67	Clostridia	Lachnospirales	Lachnospiraceae	Ruminococcus_B gnavus	Human	3300029086_7
+3300029088_6	57	64	Bacilli	Lactobacillales	Lactobacillaceae	Lactobacillus_C paracasei	Human	3300029088_6
+3300029103_8	46	64	Clostridia	Lachnospirales	Lachnospiraceae	Coprococcus eutactus_A	Human	3300029103_8
+3300029111_10	55	18	Gammaproteobacteria	Betaproteobacteriales	Burkholderiaceae	Sutterella wadsworthensis	Human	3300029111_10
+3300029117_11	39	29	Negativicutes	Veillonellales	Megasphaeraceae	Megasphaera sp2	Human	3300029117_11
+3300029121_11	86	17	Gammaproteobacteria	Betaproteobacteriales	Burkholderiaceae		Human	3300029121_11
+3300029128_17	76	18	Gammaproteobacteria	Betaproteobacteriales	Burkholderiaceae	GCA_000980495.1	Human	3300029128_17
+3300029187_9	73	18	Gammaproteobacteria	Betaproteobacteriales	Burkholderiaceae	GCA_000980495.1	Human	3300029187_9
+3300029190_10	37	32	Clostridia	Lachnospirales	Lachnospiraceae	GCA_000435655.1	Human	3300029190_10
+3300029190_11	85	19	Gammaproteobacteria	Betaproteobacteriales	Burkholderiaceae	GCA_000980495.1	Human	3300029190_11
+3300029191_5	54	79	Gammaproteobacteria	Enterobacterales	Enterobacteriaceae	Escherichia coli	Human	3300029191_5
+3300029236_16	45	23	Negativicutes	Acidaminococcales	Acidaminococcaceae	Acidaminococcus intestini	Human	3300029236_16
+3300029237_9	31	60	Clostridia	Lachnospirales	Lachnospiraceae	Agathobacter rectalis	Human	3300029237_9
+3300029241_10	42	57	Clostridia	Lachnospirales	Lachnospiraceae	Coprococcus eutactus_A	Human	3300029241_10
+3300029243_16	47	41	Negativicutes	Veillonellales	Megasphaeraceae	Megasphaera elsdenii	Human	3300029243_16
+3300029245_22	36	36	Negativicutes	Veillonellales	Megasphaeraceae	Megasphaera elsdenii	Human	3300029245_22
+3300029246_13	30	36	Negativicutes	Veillonellales	Megasphaeraceae	Megasphaera elsdenii	Human	3300029246_13
+3300029254_6	30	64	Clostridia	Lachnospirales	Lachnospiraceae	Coprococcus eutactus	Human	3300029254_6
+3300029315_12	31	29	Negativicutes	Veillonellales	Megasphaeraceae	GCF_001546855.1	Human	3300029315_12
+3300029323_5	115	20	Clostridia	Lachnospirales	Lachnospiraceae	GCA_900066785.1	Human	3300029323_5
+3300029325_13	48	23	Negativicutes	Acidaminococcales	Acidaminococcaceae	Acidaminococcus intestini	Human	3300029325_13
+3300029326_12	35	35	Clostridia	Lachnospirales	Lachnospiraceae	GCA_000433075.1	Human	3300029326_12
+3300029328_12	47	23	Negativicutes	Acidaminococcales	Acidaminococcaceae	Acidaminococcus intestini	Human	3300029328_12
+3300029329_11	65	114	Bacilli	Erysipelotrichales	Erysipelatoclostridiaceae	Erysipelatoclostridium ramosum	Human	3300029329_11
+3300029331_18	57	23	Negativicutes	Acidaminococcales	Acidaminococcaceae	Acidaminococcus intestini	Human	3300029331_18
+3300029333_17	38	32	Negativicutes	Veillonellales	Megasphaeraceae	Megasphaera elsdenii	Human	3300029333_17
+3300029334_16	41	29	Negativicutes	Acidaminococcales	Acidaminococcaceae	Acidaminococcus fermentans	Human	3300029334_16
+3300029335_17	34	32	Negativicutes	Veillonellales	Megasphaeraceae	Megasphaera elsdenii	Human	3300029335_17
+3300029337_24	56	19	Negativicutes	Veillonellales	Veillonellaceae	Veillonella parvula	Human	3300029337_24
+3300029339_25	50	22	Negativicutes	Acidaminococcales	Acidaminococcaceae	Acidaminococcus intestini	Human	3300029339_25
+3300029340_14	36	90	Clostridia	Oscillospirales	Ruminococcaceae	Ruminococcus_F champanellensis	Human	3300029340_14
+3300029340_27	57	41	Bacilli	Lactobacillales	Lactobacillaceae	Lactobacillus_B ruminis	Human	3300029340_27
+3300029354_20	42	23	Negativicutes	Acidaminococcales	Acidaminococcaceae	Acidaminococcus intestini	Human	3300029354_20
+3300029359_14	40	34	Negativicutes	Veillonellales	Megasphaeraceae	Megasphaera sp2	Human	3300029359_14
+3300029366_3	52	131	Bacilli	Erysipelotrichales	Erysipelatoclostridiaceae	Erysipelatoclostridium ramosum	Human	3300029366_3
+3300029368_11	51	48	Clostridia	Lachnospirales	Lachnospiraceae	Lachnospira rogosae	Human	3300029368_11
+3300029373_16	33	29	Negativicutes	Veillonellales	Megasphaeraceae	GCF_001546855.1	Human	3300029373_16
+3300029379_13	37	85	Clostridia	Oscillospirales	Ruminococcaceae		Human	3300029379_13
+3300029383_5	54	130	Bacilli	Erysipelotrichales	Erysipelatoclostridiaceae	Erysipelatoclostridium ramosum	Human	3300029383_5
+3300029384_13	33	84	Clostridia	Oscillospirales	Ruminococcaceae		Human	3300029384_13
+3300029385_12	33	83	Clostridia	Oscillospirales	Ruminococcaceae		Human	3300029385_12
+3300029388_19	38	23	Negativicutes	Acidaminococcales	Acidaminococcaceae	Acidaminococcus intestini	Human	3300029388_19
+3300029390_9	38	68	Clostridia	Lachnospirales	Lachnospiraceae	Agathobacter rectalis	Human	3300029390_9
+3300029391_16	36	32	Negativicutes	Veillonellales	Megasphaeraceae		Human	3300029391_16
+3300029394_26	40	23	Negativicutes	Acidaminococcales	Acidaminococcaceae	Acidaminococcus intestini	Human	3300029394_26
+3300029396_10	31	119	Bacilli	Erysipelotrichales	Erysipelatoclostridiaceae	Erysipelatoclostridium ramosum	Human	3300029396_10
+3300029400_14	58	23	Negativicutes	Acidaminococcales	Acidaminococcaceae	Acidaminococcus intestini	Human	3300029400_14
+3300029404_20	39	23	Negativicutes	Acidaminococcales	Acidaminococcaceae	Acidaminococcus intestini	Human	3300029404_20
+3300029410_15	32	29	Negativicutes	Veillonellales	Megasphaeraceae	GCF_001546855.1	Human	3300029410_15
+3300029412_18	46	23	Negativicutes	Acidaminococcales	Acidaminococcaceae	Acidaminococcus intestini	Human	3300029412_18
+3300029419_16	32	29	Negativicutes	Veillonellales	Megasphaeraceae	GCF_001546855.1	Human	3300029419_16
+3300029423_16	29	21	Negativicutes	Acidaminococcales	Acidaminococcaceae	Acidaminococcus intestini	Human	3300029423_16
+3300029431_13	37	32	Negativicutes	Veillonellales	Megasphaeraceae	Megasphaera elsdenii	Human	3300029431_13
+3300029433_13	41	32	Negativicutes	Veillonellales	Megasphaeraceae	Megasphaera elsdenii	Human	3300029433_13
+3300029437_20	46	21	Negativicutes	Acidaminococcales	Acidaminococcaceae	Acidaminococcus intestini	Human	3300029437_20
+3300029467_16	77	23	Negativicutes	Acidaminococcales	Acidaminococcaceae		Human	3300029467_16
+3300029469_11	62	19	Gammaproteobacteria	Betaproteobacteriales	Burkholderiaceae	GCA_000980495.1	Human	3300029469_11
+3300029475_16	69	23	Negativicutes	Acidaminococcales	Acidaminococcaceae		Human	3300029475_16
+3300029487_10	31	64	Clostridia	Lachnospirales	Lachnospiraceae	Agathobacter rectalis	Human	3300029487_10
+3300029504_9	54	17	Gammaproteobacteria	Betaproteobacteriales	Burkholderiaceae	GCA_000980495.1	Human	3300029504_9
+3300029507_13	95	18	Gammaproteobacteria	Betaproteobacteriales	Burkholderiaceae	GCA_000980495.1	Human	3300029507_13
+3300029508_9	64	93	Bacilli	Erysipelotrichales	Erysipelatoclostridiaceae	GCF_000752095.2	Human	3300029508_9
+3300029510_10	33	49	Clostridia	Oscillospirales	Ruminococcaceae	Faecalibacterium prausnitzii_D	Human	3300029510_10
+3300029512_12	66	18	Gammaproteobacteria	Betaproteobacteriales	Burkholderiaceae	GCA_000980495.1	Human	3300029512_12
+3300029514_11	68	30	Negativicutes	Veillonellales	Megasphaeraceae	Megasphaera sp2	Human	3300029514_11
+3300029518_9	83	17	Gammaproteobacteria	Betaproteobacteriales	Burkholderiaceae	GCA_000980495.1	Human	3300029518_9
+3300029533_8	45	29	Negativicutes	Veillonellales	Megasphaeraceae	Megasphaera sp2	Human	3300029533_8
+3300029546_11	29	66	Clostridia	Lachnospirales	Lachnospiraceae	GCA_000437735.1	Human	3300029546_11
+3300029562_5	53	70	Gammaproteobacteria	Enterobacterales	Enterobacteriaceae	Escherichia coli	Human	3300029562_5
+3300029571_15	67	18	Gammaproteobacteria	Betaproteobacteriales	Burkholderiaceae	GCA_000980495.1	Human	3300029571_15
+3300029577_21	76	17	Gammaproteobacteria	Betaproteobacteriales	Burkholderiaceae	GCA_000980495.1	Human	3300029577_21
+3300029581_8	28	63	Clostridia	Lachnospirales	Lachnospiraceae	Coprococcus eutactus_A	Human	3300029581_8
+3300029584_19	85	18	Gammaproteobacteria	Betaproteobacteriales	Burkholderiaceae	GCA_000980495.1	Human	3300029584_19
+3300029594_5	64	75	Gammaproteobacteria	Enterobacterales	Enterobacteriaceae		Human	3300029594_5
+3300029613_23	84	17	Gammaproteobacteria	Betaproteobacteriales	Burkholderiaceae	GCA_000980495.1	Human	3300029613_23
+3300029615_15	38	24	Bacteroidia	Bacteroidales	Rikenellaceae	Tidjanibacter massiliensis	Human	3300029615_15
+3300029634_9	37	127	Bacilli	Erysipelotrichales	Erysipelatoclostridiaceae	Erysipelatoclostridium ramosum	Human	3300029634_9
+3300029653_10	39	23	Negativicutes	Acidaminococcales	Acidaminococcaceae	Acidaminococcus intestini	Human	3300029653_10
+3300029656_6	44	75	Gammaproteobacteria	Enterobacterales	Enterobacteriaceae		Human	3300029656_6
+3300029664_12	59	23	Negativicutes	Acidaminococcales	Acidaminococcaceae	Acidaminococcus intestini	Human	3300029664_12
+3300029682_12	73	18	Gammaproteobacteria	Betaproteobacteriales	Burkholderiaceae	GCA_000980495.1	Human	3300029682_12
+3300029686_16	39	67	Clostridia	Lachnospirales	Lachnospiraceae	Agathobacter rectalis	Human	3300029686_16
+3300029686_5	35	71	Gammaproteobacteria	Enterobacterales	Enterobacteriaceae	Escherichia coli	Human	3300029686_5
+3300029710_15	35	20	Gammaproteobacteria	Betaproteobacteriales	Burkholderiaceae	Sutterella wadsworthensis	Human	3300029710_15
+3300029714_15	34	21	Gammaproteobacteria	Betaproteobacteriales	Burkholderiaceae	Sutterella wadsworthensis	Human	3300029714_15
+3300029719_10	43	74	Gammaproteobacteria	Enterobacterales	Enterobacteriaceae	Escherichia coli	Human	3300029719_10
+3300029724_10	29	73	Clostridia	Lachnospirales	Lachnospiraceae	Agathobacter rectalis	Human	3300029724_10
+3300029724_17	71	17	Gammaproteobacteria	Betaproteobacteriales	Burkholderiaceae	GCA_000980495.1	Human	3300029724_17
+3300029731_11	48	78	Bacilli	Erysipelotrichales	Erysipelatoclostridiaceae	GCF_000752095.2	Human	3300029731_11
+3300029745_9	46	78	Gammaproteobacteria	Enterobacterales	Enterobacteriaceae	Escherichia coli	Human	3300029745_9
+3300029750_12	36	29	Negativicutes	Veillonellales	Megasphaeraceae	GCF_001546855.1	Human	3300029750_12
+3300029754_18	57	23	Negativicutes	Acidaminococcales	Acidaminococcaceae	Acidaminococcus intestini	Human	3300029754_18
+3300029759_17	32	29	Negativicutes	Veillonellales	Megasphaeraceae	GCF_001546855.1	Human	3300029759_17
+3300029764_14	35	29	Negativicutes	Veillonellales	Megasphaeraceae	GCF_001546855.1	Human	3300029764_14
+3300029765_16	55	29	Negativicutes	Veillonellales	Megasphaeraceae	GCF_001546855.1	Human	3300029765_16
+3300029771_22	27	22	Negativicutes	Acidaminococcales	Acidaminococcaceae	Acidaminococcus intestini	Human	3300029771_22
+3300029776_12	38	32	Negativicutes	Veillonellales	Megasphaeraceae	Megasphaera elsdenii	Human	3300029776_12
+3300029814_12	75	19	Gammaproteobacteria	Betaproteobacteriales	Burkholderiaceae	GCA_000980495.1	Human	3300029814_12
+3300029816_17	42	34	Negativicutes	Veillonellales	Megasphaeraceae	Megasphaera sp2	Human	3300029816_17
+3300029839_14	100	62	Bacilli	Erysipelotrichales	Erysipelatoclostridiaceae	GCA_000437715.1	Human	3300029839_14
+3300029841_7	88	83	Gammaproteobacteria	Enterobacterales	Enterobacteriaceae	Escherichia coli	Human	3300029841_7
+3300029862_7	65	78	Gammaproteobacteria	Enterobacterales	Enterobacteriaceae	Escherichia coli	Human	3300029862_7
+3300029875_13	40	76	Clostridia	Oscillospirales	Ruminococcaceae		Human	3300029875_13
+3300029888_3	27	82	Gammaproteobacteria	Enterobacterales	Enterobacteriaceae	Escherichia coli	Human	3300029888_3
+3300029934_8	39	63	Clostridia	Lachnospirales	Lachnospiraceae	Agathobacter rectalis	Human	3300029934_8
