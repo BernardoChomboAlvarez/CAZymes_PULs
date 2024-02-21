@@ -1,6 +1,6 @@
 ---
 title: "PULs diversity in the Pacific Ocean's sediment"
-author: "Bernardo Chombo-Álvarez and Rafael Sánchez"
+author: "Bernardo Chombo-Álvarez and Rafael López-Sánchez"
 date: "`r Sys.Date()`"
 output:
   html_document:
