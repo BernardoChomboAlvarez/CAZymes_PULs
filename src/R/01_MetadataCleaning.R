@@ -11,7 +11,7 @@ colnames.vec <- c("division","phylum","class","order","family","specie","genome_
 MAGS.df <- read.table('MAGs_test.tsv',sep = "\t",col.names = colnames.vec)
 
 ## Filter the file
-## Completness >= 99%
+## Completeness >= 99%
 ## Contamination <= 0.05%
 MAGS.filtered <- subset(MAGS.df,completeness >= 99 & contamination <= 0.05 & family != "")
 MAGS.filtered <- MAGS.filtered %>%

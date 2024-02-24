@@ -21,7 +21,7 @@ indent: true
 # Introduction
 
 
-# 1. Libraries and Workspace
+# **1. Libraries and Workspace**
 ```{r libs, include=TRUE, echo=TRUE, warning=FALSE, message=FALSE, eval=TRUE, fig.align='center'}
 suppressPackageStartupMessages(library(dplyr))
 suppressPackageStartupMessages(library(dendextend))
@@ -120,7 +120,7 @@ session_info()
 #  [2] /usr/lib/R/library
 ```
 
-# 2. Data Preparation
+# **2. Data Preparation**
 
 **BASH CLEANING**
 
@@ -188,7 +188,7 @@ colnames(fam.div) <- c("family","frequency")
 print(paste0("Total Filtered MAGs: ",length(unique(c(MAGS.filtered$genome_id)))))
 ```
 
-# 3. Get PULs frequency and CAZymes frequency
+# **3. Get PULs frequency and CAZymes frequency**
 Here we are going to wotk with the 1069 filtered MAGs. DBcan4 had already been run and DIAMOND had also already been run for obtaining the PULs. These scripts are in the '/src/BASH/' folder inside the repo.
 
 ## 3.1 PULs counts
@@ -631,7 +631,7 @@ rm(list = ls())
 ```
 
 
-# 4. Principal Coordinates Analysis (PCoA)
+# **4. Principal Coordinates Analysis (PCoA)**
 The approach was create a data frame with the PULs diversity per MAG (IMPORTANT: diversity is DIFFERENT from frequency) because we wanted to see which MAGs had the most variety of PULs. This was also made with the CAZymes and first. Doing the filtering, we obtained a reduced matrix and obtained their distances with the ```vegdist(mtx,"bray")``` function from the **vegan** package. Finally, we plot the PCoA by their Ecosystem, Class, Order and Family for PULs and CAZymes.
 \hfill\break
 
@@ -897,7 +897,7 @@ After analyzing the obtained clusters, we decided to trim the data, staying only
 
 ![](/home/chombo/Documents/SEGOVIA/CAZymes_PULs/filteredplots/CAZymes/wCluster/bray_Family_CAZys_PCoA.png)
 
-# 5. Distribution
+# **5. Distribution**
 After the final filtering. The 343 MAGs were stored in a matrix against the PULs and the CAZymes to see how were they distributed. For that, ```hclust()``` function was used as well as the ```vegdist(mtx,"bray")``` function for obtaining the distances. Here are the obtained distributions.
 \hfill\break
 
@@ -1061,48 +1061,208 @@ The distribution fo CAZyme families per Family.
 
 ![](/home/chombo/Documents/SEGOVIA/CAZymes_PULs/filteredplots/CAZymes/CAZyFamilies_FamilyDiversity.png)
 
-# 6. Substrates
+# **6. Substrates**
 Here are the substrates per Family identified for the PULs. The cutoff for the substrates was >= 100 counts from total. (A cutoff by the median was also evaluated. There is no meaningful difference between the cutoff by 100 and by the median).
 
 - PULs substrate got from: https://bcb.unl.edu/static/DBCAN-PUL/dbCAN-PUL_v5_05-10-2023.xlsx
 - CAZymes substrate got from: https://bcb.unl.edu/dbCAN_sub/data/fam-substrate-mapping-08252022.tsv
 
+## 6.1 Code
+```{R substrate,include=TRUE, echo=TRUE, warning=FALSE, message=FALSE, eval=FALSE, fig.align='center'}
+## SUBSTRATES
+## PULS
+## Load the PULs substrate dataset
+puls.substrate <- read_excel("PULSUB_05102023.xlsx")
+puls.substrate <- puls.substrate %>%
+    select(PULID,substrate_final,cazymes_predicted_dbcan)
+colnames(puls.substrate) <- c("pul","substrate","predictedCAZY")
+
+## CLEAN MAGS BY THEIR SUBSTRATE
+all.puls <- merge(all.puls,puls.substrate, by = "pul",all.x = TRUE) %>%
+    select(!c("predictedCAZY"))
+all.puls$substrate <- replace_na(all.puls$substrate,"Unknown")
+all.puls <- all.puls %>%
+    filter(substrate != "Unknown")
+
+# ================================================================================
+## Unknown PULs = 7812
+## Left PULs = 7938
+## MAGs = 343
+## Substrates = 143 w/Unknown
+# ================================================================================
+
+substrates.unique <- all.puls %>%
+    filter(substrate != "Unknown") %>%
+    group_by(substrate) %>%
+    summarize(counts = sum(frequency))
+## summary(substrates.unique$counts)
+# Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+# 1.00    7.00   24.50   66.92   74.75  651.00
+
+substrates.unique <- substrates.unique %>%
+    filter(counts >= 24)
+substrates.arr <- c(substrates.unique$substrate)
+all.puls <- all.puls[is.element(all.puls$substrate,substrates.arr),]
+
+
+## CAZYMES
+## Working with CAZymes is a little bit different because they have their own substrate binding module
+## i.e., they are associated with an specific substrate. That is why the approach will be to group in
+## a list all the possible substrates and substrate binding modules by each of the 175 available CAZymes
+## in the 343 MAGs
+## Load the CAZymes substrate dataset
+cazymes.substrate <- read.table("CAZYSUB_08252022.tsv", sep = "\t", header = TRUE)
+cazymes.substrate <- cazymes.substrate %>%
+    select(Family,Substrate_high_level,Name)
+colnames(cazymes.substrate) <- c("cazy","substrate","enzyme")
+
+## CLEAN MAGS BY THEIR SUBSTRATE
+## Create an array with te unique CAZymes of the 343 MAGs
+all.cazys.copy <- all.cazys
+all.cazys.copy$cazy <- gsub("_\\d+","",all.cazys.copy$cazy)
+
+## Remove the GTs
+all.cazys.copy <- all.cazys.copy %>%
+    filter(!grepl("GT",cazy))
+unique.cazys <- c(sort(unique(all.cazys.copy$cazy)))
+
+## Create a list with the metadata of all the unique CAZymes
+cazys.sub.list <- list()
+cazy.sub.unknown <- c()
+for (i in unique.cazys) {
+    df.temp <- subset(cazymes.substrate,is.element(cazymes.substrate$cazy,i))
+    cazys.sub.list[[i]] <- df.temp
+    
+    ## Store the CAZymes with unknown substrates for further analysis
+    if (length(row.names(df.temp)) == 0) {
+        cazy.sub.unknown <- c(cazy.sub.unknown,i)
+    }
+}
+## Some CAZymes were not found in the substrate dataset 
+## They were searched manually
+cazys.sub.list[["PL27"]] <- data.frame(cazy = c("PL27","PL27"),
+                                   substrate = c("L-rhamnose","D-gluconarate"),
+                                   enzyme = c("L-rhamnose-α-1","4-D-glucuronate lyase"))
+cazys.sub.list[["PL35"]] <- data.frame(cazy = c("PL35"),
+                                   substrate = c("chondroitin"),
+                                   enzyme = c("Chondroitin lyase"))
+cazys.sub.list[["PL40"]] <- data.frame(cazy = c("PL40"),
+                                   substrate = c("ulvan"),
+                                   enzyme = c("Ulvan lyase"))
+
+## Merge the CAZymes with the substrates
+## Extract the substrates from each cazy data frame and merge them so they can be incorporated to the all.cazys data frame
+trans.cazys.sub <- data.frame()
+for (cazy in unique.cazys) {
+    sub.vec <- sort(unique(cazys.sub.list[[cazy]]$substrate))
+    sub.str <- paste(sub.vec,collapse = ",")
+    trans.cazys.sub <- rbind(trans.cazys.sub,data.frame(cazy = cazy,substrate = sub.str))
+}
+
+## Merge the substrates with the all.cazys data frame
+all.cazys.copy <- merge(all.cazys.copy,trans.cazys.sub,
+                        by = "cazy",all.x = TRUE)
+
+# ================================================================================
+## GT CAZymes = 6647
+## Left CAZymes = 11547
+## MAGs = 343
+## Substrates = 87
+# ================================================================================
+
+## Filter the substrates by their median
+substrates.unique <- all.cazys.copy %>%
+    group_by(substrate) %>%
+    summarize(counts = sum(frequency))
+# summary(substrates.unique$counts)
+# Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+# 1.0     9.5    54.0   132.7   137.0  1036.0
+
+substrates.unique <- substrates.unique %>%
+    filter(counts >= 54)
+substrates.arr <- c(substrates.unique$substrate)
+all.cazys.copy <- all.cazys.copy[is.element(all.cazys.copy$substrate,substrates.arr),]
+```
+
+## 6.2 PULs
+PULs substrates were obtained by merging the substrate metadata got from dbCAN. The cutoff value was 24 which corresponds to the median of the PULs frequency.
+
+![](/home/chombo/Documents/SEGOVIA/CAZymes_PULs/filteredplots/PULs/Substrate/SubstrateperFamily24/PULs_Acidaminococcaceae_SubstrateDiversity.png)
+
+![](/home/chombo/Documents/SEGOVIA/CAZymes_PULs/filteredplots/PULs/Substrate/SubstrateperFamily24/PULs_Bacteroidaceae_SubstrateDiversity.png)
+
+![](/home/chombo/Documents/SEGOVIA/CAZymes_PULs/filteredplots/PULs/Substrate/SubstrateperFamily24/PULs_Burkholderiaceae_SubstrateDiversity.png)
+
+![](/home/chombo/Documents/SEGOVIA/CAZymes_PULs/filteredplots/PULs/Substrate/SubstrateperFamily24/PULs_Chitinophagaceae_SubstrateDiversity.png)
+
+![](/home/chombo/Documents/SEGOVIA/CAZymes_PULs/filteredplots/PULs/Substrate/SubstrateperFamily24/PULs_Enterobacteriaceae_SubstrateDiversity.png)
+
+![](/home/chombo/Documents/SEGOVIA/CAZymes_PULs/filteredplots/PULs/Substrate/SubstrateperFamily24/PULs_Enterococcaceae_SubstrateDiversity.png)
+
+![](/home/chombo/Documents/SEGOVIA/CAZymes_PULs/filteredplots/PULs/Substrate/SubstrateperFamily24/PULs_Erysipelatoclostridiaceae_SubstrateDiversity.png)
+
+![](/home/chombo/Documents/SEGOVIA/CAZymes_PULs/filteredplots/PULs/Substrate/SubstrateperFamily24/PULs_Flavobacteriaceae_SubstrateDiversity.png)
+
+![](/home/chombo/Documents/SEGOVIA/CAZymes_PULs/filteredplots/PULs/Substrate/SubstrateperFamily24/PULs_Hahellaceae_SubstrateDiversity.png)
+
+![](/home/chombo/Documents/SEGOVIA/CAZymes_PULs/filteredplots/PULs/Substrate/SubstrateperFamily24/PULs_Lachnospiraceae_SubstrateDiversity.png)
+
+![](/home/chombo/Documents/SEGOVIA/CAZymes_PULs/filteredplots/PULs/Substrate/SubstrateperFamily24/PULs_Lactobacillaceae_SubstrateDiversity.png)
+
+![](/home/chombo/Documents/SEGOVIA/CAZymes_PULs/filteredplots/PULs/Substrate/SubstrateperFamily24/PULs_Megasphaeraceae_SubstrateDiversity.png)
+
+![](/home/chombo/Documents/SEGOVIA/CAZymes_PULs/filteredplots/PULs/Substrate/SubstrateperFamily24/PULs_Moraxellaceae_SubstrateDiversity.png)
+
+![](/home/chombo/Documents/SEGOVIA/CAZymes_PULs/filteredplots/PULs/Substrate/SubstrateperFamily24/PULs_Paludibacteraceae_SubstrateDiversity.png)
+
+![](/home/chombo/Documents/SEGOVIA/CAZymes_PULs/filteredplots/PULs/Substrate/SubstrateperFamily24/PULs_Rikenellaceae_SubstrateDiversity.png)
+
+![](/home/chombo/Documents/SEGOVIA/CAZymes_PULs/filteredplots/PULs/Substrate/SubstrateperFamily24/PULs_Ruminococcaceae_SubstrateDiversity.png)
+
+![](/home/chombo/Documents/SEGOVIA/CAZymes_PULs/filteredplots/PULs/Substrate/SubstrateperFamily24/PULs_Thermaceae_SubstrateDiversity.png)
+
+![](/home/chombo/Documents/SEGOVIA/CAZymes_PULs/filteredplots/PULs/Substrate/SubstrateperFamily24/PULs_Veillonellaceae_SubstrateDiversity.png)
+
+![](/home/chombo/Documents/SEGOVIA/CAZymes_PULs/filteredplots/PULs/Substrate/SubstrateperFamily24/PULs_Weeksellaceae_SubstrateDiversity.png)
 \hfill\break
 
-![](/home/chombo/Documents/SEGOVIA/CAZymes_PULs/filteredplots/PULs/Substrate/SubstrateperFamily100/PULs_Acidaminococcaceae_SubstrateDiversity.png)
+## 6.3 CAZymes
+CAZymes substrates were obtained by merging the substrate metadata got from dbCAN and then exclude the GT family. The cutoff value was 54 which corresponds to the median of the CAZymes frequency.
 
-![](/home/chombo/Documents/SEGOVIA/CAZymes_PULs/filteredplots/PULs/Substrate/SubstrateperFamily100/PULs_Bacteroidaceae_SubstrateDiversity.png)
+![](/home/chombo/Documents/SEGOVIA/CAZymes_PULs/filteredplots/CAZymes/Substrate/SubstrateperFamily54/CAZy_Acidaminococcaceae_SubstrateDiversity.png)
 
-![](/home/chombo/Documents/SEGOVIA/CAZymes_PULs/filteredplots/PULs/Substrate/SubstrateperFamily100/PULs_Burkholderiaceae_SubstrateDiversity.png)
+![](/home/chombo/Documents/SEGOVIA/CAZymes_PULs/filteredplots/CAZymes/Substrate/SubstrateperFamily54/CAZy_Bacteroidaceae_SubstrateDiversity.png)
 
-![](/home/chombo/Documents/SEGOVIA/CAZymes_PULs/filteredplots/PULs/Substrate/SubstrateperFamily100/PULs_Chitinophagaceae_SubstrateDiversity.png)
+![](/home/chombo/Documents/SEGOVIA/CAZymes_PULs/filteredplots/CAZymes/Substrate/SubstrateperFamily54/CAZy_Burkholderiaceae_SubstrateDiversity.png)
 
-![](/home/chombo/Documents/SEGOVIA/CAZymes_PULs/filteredplots/PULs/Substrate/SubstrateperFamily100/PULs_Enterobacteriaceae_SubstrateDiversity.png)
+![](/home/chombo/Documents/SEGOVIA/CAZymes_PULs/filteredplots/CAZymes/Substrate/SubstrateperFamily54/CAZy_Chitinophagaceae_SubstrateDiversity.png)
 
-![](/home/chombo/Documents/SEGOVIA/CAZymes_PULs/filteredplots/PULs/Substrate/SubstrateperFamily100/PULs_Enterococcaceae_SubstrateDiversity.png)
+![](/home/chombo/Documents/SEGOVIA/CAZymes_PULs/filteredplots/CAZymes/Substrate/SubstrateperFamily54/CAZy_Enterobacteriaceae_SubstrateDiversity.png)
 
-![](/home/chombo/Documents/SEGOVIA/CAZymes_PULs/filteredplots/PULs/Substrate/SubstrateperFamily100/PULs_Erysipelatoclostridiaceae_SubstrateDiversity.png)
+![](/home/chombo/Documents/SEGOVIA/CAZymes_PULs/filteredplots/CAZymes/Substrate/SubstrateperFamily54/CAZy_Enterococcaceae_SubstrateDiversity.png)
 
-![](/home/chombo/Documents/SEGOVIA/CAZymes_PULs/filteredplots/PULs/Substrate/SubstrateperFamily100/PULs_Flavobacteriaceae_SubstrateDiversity.png)
+![](/home/chombo/Documents/SEGOVIA/CAZymes_PULs/filteredplots/CAZymes/Substrate/SubstrateperFamily54/CAZy_Erysipelatoclostridiaceae_SubstrateDiversity.png)
 
-![](/home/chombo/Documents/SEGOVIA/CAZymes_PULs/filteredplots/PULs/Substrate/SubstrateperFamily100/PULs_Hahellaceae_SubstrateDiversity.png)
+![](/home/chombo/Documents/SEGOVIA/CAZymes_PULs/filteredplots/CAZymes/Substrate/SubstrateperFamily54/CAZy_Flavobacteriaceae_SubstrateDiversity.png)
 
-![](/home/chombo/Documents/SEGOVIA/CAZymes_PULs/filteredplots/PULs/Substrate/SubstrateperFamily100/PULs_Lachnospiraceae_SubstrateDiversity.png)
+![](/home/chombo/Documents/SEGOVIA/CAZymes_PULs/filteredplots/CAZymes/Substrate/SubstrateperFamily54/CAZy_Hahellaceae_SubstrateDiversity.png)
 
-![](/home/chombo/Documents/SEGOVIA/CAZymes_PULs/filteredplots/PULs/Substrate/SubstrateperFamily100/PULs_Lactobacillaceae_SubstrateDiversity.png)
+![](/home/chombo/Documents/SEGOVIA/CAZymes_PULs/filteredplots/CAZymes/Substrate/SubstrateperFamily54/CAZy_Lachnospiraceae_SubstrateDiversity.png)
 
-![](/home/chombo/Documents/SEGOVIA/CAZymes_PULs/filteredplots/PULs/Substrate/SubstrateperFamily100/PULs_Megasphaeraceae_SubstrateDiversity.png)
+![](/home/chombo/Documents/SEGOVIA/CAZymes_PULs/filteredplots/CAZymes/Substrate/SubstrateperFamily54/CAZy_Lactobacillaceae_SubstrateDiversity.png)
 
-![](/home/chombo/Documents/SEGOVIA/CAZymes_PULs/filteredplots/PULs/Substrate/SubstrateperFamily100/PULs_Moraxellaceae_SubstrateDiversity.png)
+![](/home/chombo/Documents/SEGOVIA/CAZymes_PULs/filteredplots/CAZymes/Substrate/SubstrateperFamily54/CAZy_Megasphaeraceae_SubstrateDiversity.png)
 
-![](/home/chombo/Documents/SEGOVIA/CAZymes_PULs/filteredplots/PULs/Substrate/SubstrateperFamily100/PULs_Paludibacteraceae_SubstrateDiversity.png)
+![](/home/chombo/Documents/SEGOVIA/CAZymes_PULs/filteredplots/CAZymes/Substrate/SubstrateperFamily54/CAZy_Moraxellaceae_SubstrateDiversity.png)
 
-![](/home/chombo/Documents/SEGOVIA/CAZymes_PULs/filteredplots/PULs/Substrate/SubstrateperFamily100/PULs_Rikenellaceae_SubstrateDiversity.png)
+![](/home/chombo/Documents/SEGOVIA/CAZymes_PULs/filteredplots/CAZymes/Substrate/SubstrateperFamily54/CAZy_Paludibacteraceae_SubstrateDiversity.png)
 
-![](/home/chombo/Documents/SEGOVIA/CAZymes_PULs/filteredplots/PULs/Substrate/SubstrateperFamily100/PULs_Ruminococcaceae_SubstrateDiversity.png)
+![](/home/chombo/Documents/SEGOVIA/CAZymes_PULs/filteredplots/CAZymes/Substrate/SubstrateperFamily54/CAZy_Rikenellaceae_SubstrateDiversity.png)
 
-![](/home/chombo/Documents/SEGOVIA/CAZymes_PULs/filteredplots/PULs/Substrate/SubstrateperFamily100/PULs_Thermaceae_SubstrateDiversity.png)
+![](/home/chombo/Documents/SEGOVIA/CAZymes_PULs/filteredplots/CAZymes/Substrate/SubstrateperFamily54/CAZy_Ruminococcaceae_SubstrateDiversity.png)
 
-![](/home/chombo/Documents/SEGOVIA/CAZymes_PULs/filteredplots/PULs/Substrate/SubstrateperFamily100/PULs_Veillonellaceae_SubstrateDiversity.png)
+![](/home/chombo/Documents/SEGOVIA/CAZymes_PULs/filteredplots/CAZymes/Substrate/SubstrateperFamily54/CAZy_Thermaceae_SubstrateDiversity.png)
 
-![](/home/chombo/Documents/SEGOVIA/CAZymes_PULs/filteredplots/PULs/Substrate/SubstrateperFamily100/PULs_Weeksellaceae_SubstrateDiversity.png)
+![](/home/chombo/Documents/SEGOVIA/CAZymes_PULs/filteredplots/CAZymes/Substrate/SubstrateperFamily54/CAZy_Veillonellaceae_SubstrateDiversity.png)
+
+![](/home/chombo/Documents/SEGOVIA/CAZymes_PULs/filteredplots/CAZymes/Substrate/SubstrateperFamily54/CAZy_Weeksellaceae_SubstrateDiversity.png)

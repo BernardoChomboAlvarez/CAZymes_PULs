@@ -9,7 +9,7 @@ suppressPackageStartupMessages(library(pracma))
 
 
 ## FUNCTIONS
-plot.pcoa <- function(mtx,metadata,labels,component) {
+plot.pcoa <- function(mtx,metadata,labels,component) { # nolint
     if (length(component) >= 6) {
         short.name <- substr(component, 1, 3) 
     } else {
@@ -17,7 +17,7 @@ plot.pcoa <- function(mtx,metadata,labels,component) {
     }
     
     PULs <- mtx
-    Bray=vegdist(PULs,"bray")
+    Bray=vegdist(PULs,"bray") # nolint
     PULs_bray=capscale(Bray~-1)
     PULs_bray_eig = eigenvals(PULs_bray)
     percentage_variance_explained <- PULs_bray_eig / sum(PULs_bray_eig)
